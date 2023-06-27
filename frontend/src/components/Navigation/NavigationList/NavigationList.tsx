@@ -16,15 +16,19 @@ export const NavigationList: React.FC<Props> = props => {
   const getElementsHeight = debounce(() => {
     const navHeight = document.getElementById('navigation')!.clientHeight;
     const headHeight = document.getElementById('header')!.clientHeight;
+
     setNavHeight(navHeight);
     setHeadHeight(headHeight);
   }, 300);
+  
+  useEffect(() => {
+    setNavigationItems(navItems); 
+  }, [navItems])
 
   useEffect(() => {
-    setNavigationItems(navItems);
     getElementsHeight();
     window.addEventListener('resize', getElementsHeight);
-  }, [navItems, getElementsHeight]);
+  }, [getElementsHeight]);
 
   const navigation = (
     <Navigation 
