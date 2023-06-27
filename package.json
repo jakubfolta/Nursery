@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "git-gui": "^0.0.7"
+  }
+}

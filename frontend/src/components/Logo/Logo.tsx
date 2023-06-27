@@ -6,8 +6,8 @@ import desktopLogo from "../../assets/images/logo-maluszkowo-desktop.png";
 export const Logo: React.FC = () => (
   <StyledLogoContainer>
     <StyledLogo
-      srcSet={`${mobileLogo} 90w, ${tabletLogo} 120w, ${desktopLogo} 140w`}
-      sizes="(max-width: 640px) 90px, (max-width: 1024px) 120px, 140px"
+      srcSet={`${mobileLogo} 70w, ${tabletLogo} 120w, ${desktopLogo} 140w`}
+      sizes="(max-width: 640px) 70px, (max-width: 1024px) 120px, 140px"
       src={desktopLogo}
       alt="Maluszkowo logo"
     />

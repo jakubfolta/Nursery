@@ -2,13 +2,16 @@ import styled, { css } from "styled-components";
 import { StyledProps } from "./interfaces";
 
 export const Container = styled.div<StyledProps>`
-  position: absolute;
-  top: ${props => props.headerHeight}px;
-  width: 100%;
-  max-height: 0px;
   background: var(--color-white);
-  border-bottom: 1px solid var(--color-grey);
   overflow: hidden;
+
+  ${props => !props.isDesktop && css`
+    position: absolute;
+    top: ${props.headerHeight}px;
+    left: 0px;
+    max-height: 0px;
+    width: 100%;
+  `}
   
   ${props => props.isVisible
     ? css`animation: slideDown var(--menu-animation-time) ease forwards;`
@@ -25,7 +28,7 @@ export const Container = styled.div<StyledProps>`
   }
 `
 
-export const Navigation = styled.ul`
+export const Navigation = styled.ul<{isDesktop: boolean}>`
+  display: ${props => props.isDesktop ? 'flex' : 'block'};
   list-style: none;
-  color: var(--color-white);
 `

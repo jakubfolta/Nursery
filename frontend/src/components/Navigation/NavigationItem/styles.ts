@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const NavItem = styled.li`
   &:hover span::after { width: 100%; }
-  color: var(--color-black);
+  color: var(--color-dark);
 
   &:nth-of-type(odd) span::after {
     transform: rotate(1deg);
@@ -18,15 +18,20 @@ export const NavigationLink = styled(NavLink)`
   width: 100%;
   padding: 1rem 0;
   text-align: center;
-  font-size: var(--big-font-size);
+  font-size: var(--medium-font-size);
   color: inherit;
   text-decoration: none;
+
+  @media only screen and (min-width: 1024px) {
+    padding: 0.5rem;
+  }
 `
 
 export const NavigationText = styled.span`
   position: relative;
   display: inline-block;
   padding: .4rem .5rem .8rem;
+  letter-spacing: 1px;
   
   &::after {
     position: absolute;
@@ -36,7 +41,15 @@ export const NavigationText = styled.span`
     width: 0%;
     height: 3px;
     transform: rotate(-1deg);
-    background-color: var(--color-black);
+    background-color: var(--color-dark);
     transition: width .2s;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding: 0.5rem var(--padding-xsmall);
+  }
+
+  @media only screen and (min-width: 1400px) {
+    padding: 0.5rem var(--padding-small);
   }
 `

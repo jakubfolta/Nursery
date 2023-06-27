@@ -4,7 +4,6 @@ export const ButtonContainer = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 2rem;
   width: 5rem;
   height: 5rem;
   border: none;
@@ -15,7 +14,7 @@ export const ButtonContainer = styled.button`
 const line = css`
   width: 2.8rem;
   height: .3rem;
-  background-color: var(--color-black);
+  background-color: var(--color-dark);
 `
 
 export const Button = styled.span`
