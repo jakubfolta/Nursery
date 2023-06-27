@@ -16,18 +16,24 @@ export const NavigationList: React.FC<Props> = props => {
   const getElementsHeight = debounce(() => {
     const navHeight = document.getElementById('navigation')!.clientHeight;
     const headHeight = document.getElementById('header')!.clientHeight;
+
     setNavHeight(navHeight);
     setHeadHeight(headHeight);
   }, 300);
+  
+  useEffect(() => {
+    setNavigationItems(navItems); 
+  }, [navItems])
 
   useEffect(() => {
-    setNavigationItems(navItems);
     getElementsHeight();
     window.addEventListener('resize', getElementsHeight);
-  }, [navItems, getElementsHeight]);
+  }, [getElementsHeight]);
 
   const navigation = (
-    <Navigation id="navigation">
+    <Navigation 
+      id="navigation"
+      isDesktop={props.isDesktop}>
       {navigationItems.map((item, index) => (
         <NavigationItem
           key={index}
@@ -41,6 +47,7 @@ export const NavigationList: React.FC<Props> = props => {
     <Container 
       isClicked={props.isClicked}
       isVisible={props.isVisible}
+      isDesktop={props.isDesktop}
       navigationHeight={navHeight}
       headerHeight={headHeight}>
       {navigation}

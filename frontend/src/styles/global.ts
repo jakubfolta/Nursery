@@ -52,7 +52,9 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     // Measures
     --menu-animation-time: ${CONSTANTS.seconds}s;
-    --header-padding: 3rem;
+    --padding-xsmall: 0.3rem;
+    --padding-small: 1rem;
+    --padding-medium: 2rem;
     
     // Colors
     --color-accent: #21e004;
@@ -62,8 +64,8 @@ export const GlobalStyle = createGlobalStyle`
     --color-background: #f7f7f7;
     --color-white: #fcfcfc;
     --color-grey: #f2f2f2;
-    --color-black: #444;
-    --color-black-2: #555;
+    --color-dark: #0e3f00;
+    --color-dark-2: #0b2d00;
     /* --color-text-gray: #e2e0e0; */
     
     

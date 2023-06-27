@@ -2,12 +2,9 @@ import styled from 'styled-components';
 
 export const StyledLogoContainer = styled.div`
   position: relative;
-  bottom: -4rem;
-
-  margin-left: 3rem;
-  margin-right: auto;
-  width: 10rem;
-  height: 10rem;
+  bottom: 0rem;
+  width: 7rem;
+  height: 7rem;
   background-color: var(--color-white);
 `
 

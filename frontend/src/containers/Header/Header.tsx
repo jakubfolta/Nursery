@@ -1,20 +1,33 @@
 import { useEffect, useState } from "react";
 import { Logo, MenuButton, NavigationList } from "../../components";
-import { StyledHeader } from "./styles";
+import { StyledContainer, StyledHeader } from "./styles";
 import { CONSTANTS } from "../../styles/global";
+import { debounce } from 'lodash-es';
 
 export const Header: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isMenuReady, setIsMenuReady] = useState(true);
+  const [isMenuDesktop, setIsMenuDesktop] = useState(false);
   const [menuButtonClass, setMenuButtonClass] = useState('');
   
   useEffect(() => {
+    getScreenWidth();
+    window.addEventListener('resize', getScreenWidth);
+    
     if (!isMenuReady) {
       setTimeout(() => {
         setIsMenuReady(true);
       }, CONSTANTS.seconds * 1000);
     }
   }, [isMenuReady])
+
+  const getScreenWidth = debounce(() => {
+    const width = window.screen.width;
+
+    if (width >= 1024) setIsMenuDesktop(true);
+    else setIsMenuDesktop(false);
+    console.log('WIDTH', width);
+  }, 100)
   
   const onClickHandler = () => {  
     if (!isMenuReady) return;
@@ -26,14 +39,19 @@ export const Header: React.FC = () => {
   
   return (
     <StyledHeader id="header">
-      <Logo />
-      <MenuButton 
-        onButtonClick={onClickHandler}
-        buttonState={menuButtonClass}
-      />
-      <NavigationList 
-        isVisible={isMenuVisible} 
-        isClicked={!isMenuReady} />
+      <StyledContainer>
+        <Logo />
+        {!isMenuDesktop && 
+          <MenuButton 
+            onButtonClick={onClickHandler}
+            buttonState={menuButtonClass}
+          />
+        }
+        <NavigationList 
+          isVisible={isMenuVisible} 
+          isClicked={!isMenuReady}
+          isDesktop={isMenuDesktop} />
+      </StyledContainer>
     </StyledHeader>
   );
 }
