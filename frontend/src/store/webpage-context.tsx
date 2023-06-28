@@ -21,6 +21,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
         const updatedNavigationItems = orderedNavigationItems.map((item: NavigationItemProps) => {
           return {
             title: item.title,
+            order: item.order,
             slug: item.slug
           };
         });
