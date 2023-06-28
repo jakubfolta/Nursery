@@ -18,13 +18,15 @@ export const NavigationLink = styled(NavLink)`
   width: 100%;
   padding: 1rem 0;
   text-align: center;
-  font-size: var(--medium-font-size);
+  font-size: 18px;
   color: inherit;
   text-decoration: none;
 
   @media only screen and (min-width: 1024px) {
     padding: 0.5rem;
   }
+
+  &&.active span::after { width: 100%; }
 `
 
 export const NavigationText = styled.span`
@@ -46,10 +48,10 @@ export const NavigationText = styled.span`
   }
 
   @media only screen and (min-width: 1024px) {
-    padding: 0.5rem var(--padding-xsmall);
+    padding: .5rem var(--padding-xsmall);
   }
 
   @media only screen and (min-width: 1400px) {
-    padding: 0.5rem var(--padding-small);
+    padding: .5rem var(--padding-small);
   }
 `

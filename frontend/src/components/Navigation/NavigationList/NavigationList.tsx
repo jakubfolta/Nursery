@@ -38,7 +38,7 @@ export const NavigationList: React.FC<Props> = props => {
         <NavigationItem
           key={index}
           title={item.title}
-          link={item.slug} />
+          link={item.order === 1 ? '/' : item.slug} />
       ))}
     </Navigation>
   );
