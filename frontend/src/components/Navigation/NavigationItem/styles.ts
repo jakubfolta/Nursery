@@ -48,10 +48,10 @@ export const NavigationText = styled.span`
   }
 
   @media only screen and (min-width: 1024px) {
-    padding: 0.5rem var(--padding-xsmall);
+    padding: .5rem var(--padding-xsmall);
   }
 
   @media only screen and (min-width: 1400px) {
-    padding: 0.5rem var(--padding-small);
+    padding: .5rem var(--padding-small);
   }
 `

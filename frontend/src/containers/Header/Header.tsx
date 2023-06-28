@@ -26,7 +26,6 @@ export const Header: React.FC = () => {
 
     if (width >= 1024) setIsMenuDesktop(true);
     else setIsMenuDesktop(false);
-    console.log('WIDTH', width);
   }, 100)
   
   const onClickHandler = () => {  
