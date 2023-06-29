@@ -11,7 +11,7 @@ import { createGlobalStyle } from 'styled-components';
 */
 
 export const CONSTANTS = {
-  seconds: .8
+  seconds: .3
 };
 
 export const GlobalStyle = createGlobalStyle`

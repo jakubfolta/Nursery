@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export const ButtonContainer = styled.button`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 5rem;
@@ -12,151 +13,64 @@ export const ButtonContainer = styled.button`
 `
 
 const line = css`
-  width: 2.8rem;
+  position: relative;
   height: .3rem;
   background-color: var(--color-dark);
 `
 
-export const Button = styled.span`
+export const Line1 = styled.span`
   ${line}
-  position: relative;
-  display: flex;
-  justify-content: center;
-  bottom: -1rem;
+  top: -.5rem;
+  width: 4rem;
   
-  &::before,
-  &::after {
-    ${line}
-    position: absolute;
-    content: '';
-    visibility: visible;
-  }
+  &.opened { animation: joinLine1 var(--menu-animation-time) forwards; }
+  &.closed { animation: expandLine1 var(--menu-animation-time); }
 
-  &::before { top: -2rem; }
-  &::after { top: -1rem; }
-
-  &.opened {
-    visibility: hidden;
-    transition: visibility 0s calc(var(--menu-animation-time) * 0.70);
-  }
-
-  &.closed {
-    visibility: visible;
-    transition: visibility 0s calc(var(--menu-animation-time) * 0.70);
-  }
-
-  &.opened::before,
-  &.opened::after,
-  &.closed::before,
-  &.closed::after {
-    animation-duration: var(--menu-animation-time);
-    animation-timing-function: ease-in;
-    animation-fill-mode: forwards;
-  }
-
-  &.opened::before { animation-name: joinBefore; }
-  &.opened::after { animation-name: joinAfter; }
-
-  &.closed::before { animation-name: expandBefore; }
-  &.closed::after { animation-name: expandAfter; }  
-
-  @keyframes joinBefore {
-    0% { top: -2rem; }
-    10% { transform: rotate(-20deg); }
-    32% { transform: rotate(0deg); }
-    
-    33% {
-      top: -1rem;
-      visibility: hidden;
+  @keyframes joinLine1 {
+    100% {
+      top: .3rem;
+      rotate: 45deg;
     }
+  }
 
-    34% { top: 0; }
-    69% { visibility: hidden; }
-    
-    70% {
-      top: 0;
-      visibility: visible;
-    }
-
-    90% {
-      top: -1rem;
-      transform: rotate(0deg);
+  @keyframes expandLine1 {
+    0% {
+      top: .3rem;
+      rotate: 45deg;
     }
 
     100% {
-      top: -1rem;
-      transform: rotate(-45deg);
+      top: -.5rem;
+      rotate: 0;
+    }
+  }
+`
+
+export const Line2 = styled.span`
+  ${line}
+  top: .5rem;
+  left: .5rem;
+  width: 3rem;
+
+  &.opened { animation: joinLine2 var(--menu-animation-time) forwards; }
+  &.closed { animation: expandLine2 var(--menu-animation-time); }
+
+  @keyframes joinLine2 {
+    100% {
+      top: .3rem;
+      rotate: -45deg;
     }
   }
 
-  @keyframes expandBefore {
+  @keyframes expandLine2 {
     0% {
-      top: -1rem;
-      transform: rotate(-45deg);
-    }
-
-    32% { transform: rotate(180deg); }
-    
-    32.1% {
-      visibility: hidden;
-      transform: rotate(0deg);
-    }
-    
-    33% {
-      top: -1rem; 
-      visibility: visible;
-    }
-
-    70% { top: 0rem; }
-    100% { top: -2rem; }
-  }
-
-  
-  @keyframes joinAfter {
-    33% {
-      top: -1rem;
-      transform: rotate(0deg);
-    }
-
-    43% { transform: rotate(20deg); }
-    65% { transform: rotate(0deg); }
-    66% { top: 0rem; }
-    
-    70% {
-      top: 0;
-      visibility: visible;
-    }
-    
-    90% {
-      top: -1rem;
-      transform: rotate(0deg);
+      top: .3rem;
+      rotate: -45deg;
     }
     
     100% {
-      top: -1rem;
-      transform: rotate(45deg);
+      top: .5rem;
+      rotate: 0;
     }
-  }
-
-  @keyframes expandAfter {
-    0% {
-      top: -1rem;
-      transform: rotate(45deg);
-    }
-
-    32% { transform: rotate(-180deg); }
-    
-    32.1% {
-      visibility: hidden;
-      transform: rotate(0deg);
-    }
-    
-    33% {
-      top: -1rem; 
-      visibility: visible;
-    }
-    
-    70% { top: 0rem; }
-    100% { top: -1rem; }
   }
 `
