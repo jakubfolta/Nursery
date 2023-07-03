@@ -3,6 +3,7 @@ import { Logo, MenuButton, NavigationList } from "../../components";
 import { StyledContainer, StyledHeader } from "./styles";
 import { CONSTANTS } from "../../styles/global";
 import { debounce } from 'lodash-es';
+import { Backdrop } from "../../components/Backdrop/Backdrop";
 
 export const Header: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -43,14 +44,19 @@ export const Header: React.FC = () => {
         {!isMenuDesktop && 
           <MenuButton 
             onButtonClick={onClickHandler}
-            buttonState={menuButtonClass}
-          />
+            buttonState={menuButtonClass} />
         }
         <NavigationList 
           isVisible={isMenuVisible} 
           isClicked={!isMenuReady}
           isDesktop={isMenuDesktop} />
       </StyledContainer>
+      {!isMenuDesktop && 
+        <Backdrop
+          onBackdropClick={onClickHandler} 
+          isVisible={isMenuVisible}
+          isClicked={!isMenuReady} />
+      }
     </StyledHeader>
   );
 }
