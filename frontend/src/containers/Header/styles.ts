@@ -16,6 +16,7 @@ export const StyledContainer = styled.div`
   width: 100%;
   max-width: 540px;
   padding: 0 .5rem;
+  z-index: 10;
 
   @media only screen and (min-width: 150px) {
     justify-content: space-between;

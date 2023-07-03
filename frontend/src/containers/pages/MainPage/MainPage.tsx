@@ -16,7 +16,6 @@ export const MainPage: React.FC = () => {
     }
   }, [mainPageContent]);
 
-
   return (
     <StyledHero>
       <StyledHeading>{heroHeading}</StyledHeading>
