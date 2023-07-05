@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Logo, MenuButton, NavigationList } from "../../components";
+import { Logo, MenuButton, NavigationList, Backdrop } from "../../components";
 import { StyledContainer, StyledHeader } from "./styles";
 import { CONSTANTS } from "../../styles/global";
 import { debounce } from 'lodash-es';
-import { Backdrop } from "../../components/Backdrop/Backdrop";
+
+const menuAnimationDuration = CONSTANTS.menuAnimationDuration * 1000;
 
 export const Header: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -11,6 +12,13 @@ export const Header: React.FC = () => {
   const [isMenuDesktop, setIsMenuDesktop] = useState(false);
   const [menuButtonClass, setMenuButtonClass] = useState('');
   
+  const getScreenWidth = debounce(() => {
+    const width = window.screen.width;
+
+    if (width >= 1024) setIsMenuDesktop(true);
+    else setIsMenuDesktop(false);
+  }, 100);
+
   useEffect(() => {
     getScreenWidth();
     window.addEventListener('resize', getScreenWidth);
@@ -18,16 +26,9 @@ export const Header: React.FC = () => {
     if (!isMenuReady) {
       setTimeout(() => {
         setIsMenuReady(true);
-      }, CONSTANTS.seconds * 1000);
+      }, menuAnimationDuration);
     }
-  }, [isMenuReady])
-
-  const getScreenWidth = debounce(() => {
-    const width = window.screen.width;
-
-    if (width >= 1024) setIsMenuDesktop(true);
-    else setIsMenuDesktop(false);
-  }, 100)
+  }, [isMenuReady, getScreenWidth])
   
   const onClickHandler = () => {  
     if (!isMenuReady) return;

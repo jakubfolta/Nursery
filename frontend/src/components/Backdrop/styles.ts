@@ -12,8 +12,8 @@ export const StyledBackdrop = styled.div<StyledProps>`
 	opacity: 0;
 
 	${props => props.isVisible
-		? css`animation: appear var(--menu-animation-time) forwards;`
-		: !props.isVisible && props.isClicked && css`animation: hide var(--menu-animation-time);`
+		? css`animation: appear var(--menu-animation-duration) forwards;`
+		: !props.isVisible && props.isClicked && css`animation: hide var(--menu-animation-duration);`
 	}
 
 	@keyframes appear {
