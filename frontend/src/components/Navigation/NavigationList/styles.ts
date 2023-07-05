@@ -14,8 +14,8 @@ export const Container = styled.div<StyledProps>`
   `}
   
   ${props => props.isVisible
-    ? css`animation: slideDown var(--menu-animation-time) ease forwards;`
-    : !props.isVisible && props.isClicked && css`animation: slideUp var(--menu-animation-time) ease forwards;`}
+    ? css`animation: slideDown var(--menu-animation-duration) ease forwards;`
+    : !props.isVisible && props.isClicked && css`animation: slideUp var(--menu-animation-duration) ease forwards;`}
 
   @keyframes slideDown {
     from { max-height: 0; }
