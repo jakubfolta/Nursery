@@ -11,7 +11,8 @@ import { createGlobalStyle } from 'styled-components';
 */
 
 export const CONSTANTS = {
-  seconds: .3
+  menuAnimationDuration: .3,
+  pageTransitionDuration: 1
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -51,7 +52,8 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     // Measures
-    --menu-animation-time: ${CONSTANTS.seconds}s;
+    --menu-animation-duration: ${CONSTANTS.menuAnimationDuration}s;
+    --page-transition-duration: ${CONSTANTS.pageTransitionDuration}s;
     --padding-xsmall: 0.3rem;
     --padding-small: 1rem;
     --padding-medium: 2rem;
