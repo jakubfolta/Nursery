@@ -3,15 +3,38 @@ import { Logo, MenuButton, NavigationList, Backdrop } from "../../components";
 import { StyledContainer, StyledHeader } from "./styles";
 import { CONSTANTS } from "../../styles/global";
 import { debounce } from 'lodash-es';
+import { useLocation } from "react-router-dom";
 
 const menuAnimationDuration = CONSTANTS.menuAnimationDuration * 1000;
+const halfPageTransitionDuration = CONSTANTS.pageTransitionDuration * 1000 / 2;
 
 export const Header: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isMenuReady, setIsMenuReady] = useState(true);
   const [isMenuDesktop, setIsMenuDesktop] = useState(false);
   const [menuButtonClass, setMenuButtonClass] = useState('');
+  const [recentUrl, setRecentUrl] = useState('/');
+
+  const location = useLocation().pathname;
   
+  useEffect(() => {
+    setRecentUrl(location);
+    getScreenWidth();
+    window.addEventListener('resize', getScreenWidth);
+  }, [])
+
+  useEffect(() => {
+    if (location !== recentUrl) setRecentUrl(location);
+  }, [location, recentUrl])
+  
+  useEffect(() => {
+    if (!isMenuReady) {
+      setTimeout(() => {
+        setIsMenuReady(true);
+      }, menuAnimationDuration);
+    }
+  }, [isMenuReady])
+
   const getScreenWidth = debounce(() => {
     const width = window.screen.width;
 
@@ -19,35 +42,37 @@ export const Header: React.FC = () => {
     else setIsMenuDesktop(false);
   }, 100);
 
-  useEffect(() => {
-    getScreenWidth();
-    window.addEventListener('resize', getScreenWidth);
-    
-    if (!isMenuReady) {
-      setTimeout(() => {
-        setIsMenuReady(true);
-      }, menuAnimationDuration);
-    }
-  }, [isMenuReady, getScreenWidth])
-  
-  const onClickHandler = () => {  
-    if (!isMenuReady) return;
-
+  const toggleNavigation = () => {
     setIsMenuReady(false);
     setIsMenuVisible(prevState => !prevState);
     isMenuVisible ? setMenuButtonClass('closed') : setMenuButtonClass('opened');
+  };
+
+  const onClickHandler = () => {  
+    if (!isMenuReady) return;
+
+    toggleNavigation();
+  };
+
+  const onNavItemClickHandler = (isLogoClick?: boolean) => {
+    if (isLogoClick && !isMenuVisible || window.location.pathname === recentUrl) return;
+
+    setTimeout(() => {
+      toggleNavigation();
+    }, halfPageTransitionDuration);
   };
   
   return (
     <StyledHeader id="header">
       <StyledContainer>
-        <Logo />
+        <Logo onLogoClick={() => onNavItemClickHandler(true)} />
         {!isMenuDesktop && 
           <MenuButton 
             onButtonClick={onClickHandler}
             buttonState={menuButtonClass} />
         }
         <NavigationList 
+          onNavItemClick={onNavItemClickHandler}
           isVisible={isMenuVisible} 
           isClicked={!isMenuReady}
           isDesktop={isMenuDesktop} />
