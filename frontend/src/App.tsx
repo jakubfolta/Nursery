@@ -22,7 +22,6 @@ export const App: React.FC = () => {
   const location = useLocation();
   
   useEffect(() => {
-    console.log('FIRST TIME ONLY');
     setTimeout(() => {
       setIsFirstVisit(false);
       setShowTransitionPage(false);

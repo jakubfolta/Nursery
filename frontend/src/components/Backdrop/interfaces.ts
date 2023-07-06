@@ -4,5 +4,5 @@ export interface StyledProps {
 }
 
 export interface Props extends StyledProps {
-  onBackdropClick: React.MouseEventHandler;
+  onBackdropClick: () => void;
 }

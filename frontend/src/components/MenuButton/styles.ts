@@ -23,8 +23,8 @@ export const Line1 = styled.span`
   top: -.5rem;
   width: 4rem;
   
-  &.opened { animation: joinLine1 var(--menu-animation-time) forwards; }
-  &.closed { animation: expandLine1 var(--menu-animation-time); }
+  &.opened { animation: joinLine1 var(--menu-animation-duration) forwards; }
+  &.closed { animation: expandLine1 var(--menu-animation-duration); }
 
   @keyframes joinLine1 {
     100% {
@@ -52,8 +52,8 @@ export const Line2 = styled.span`
   left: .5rem;
   width: 3rem;
 
-  &.opened { animation: joinLine2 var(--menu-animation-time) forwards; }
-  &.closed { animation: expandLine2 var(--menu-animation-time); }
+  &.opened { animation: joinLine2 var(--menu-animation-duration) forwards; }
+  &.closed { animation: expandLine2 var(--menu-animation-duration); }
 
   @keyframes joinLine2 {
     100% {

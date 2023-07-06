@@ -36,6 +36,7 @@ export const NavigationList: React.FC<Props> = props => {
       isDesktop={props.isDesktop}>
       {navigationItems.map((item, index) => (
         <NavigationItem
+          onNavItemClick={props.onNavItemClick}
           key={index}
           title={item.title}
           link={item.order === 1 ? '/' : item.slug} />
