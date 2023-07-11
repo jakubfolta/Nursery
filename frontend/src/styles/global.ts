@@ -50,6 +50,14 @@ export const GlobalStyle = createGlobalStyle`
     color: var(--color-primary);
   }
 
+  h1 { line-height: 1.125; }
+  h2 {
+    font-size: var(--xl-font-size);
+    line-height: 1.25;
+  }
+
+  p, li { line-height: 1.5; }
+
   :root {
     // Measures
     --menu-animation-duration: ${CONSTANTS.menuAnimationDuration}s;
@@ -61,9 +69,11 @@ export const GlobalStyle = createGlobalStyle`
     // Colors
     --color-accent: #21e004;
     --color-accent-2: #188507;
-    --color-accent-3: #023047;
+    --color-accent-3: hsl(200, 95%, 15%);
+    --color-accent-copyright: hsl(200, 95%, 10%);
     --color-accent-4: #219ebc;
     --color-background: #f7f7f7;
+    --color-footer-text: hsl(200, 20%, 99%);
     --color-white: #fcfcfc;
     --color-grey: #f2f2f2;
     --color-dark: #0e3f00;
@@ -77,7 +87,7 @@ export const GlobalStyle = createGlobalStyle`
     --default-font-size: 1.6rem;
     --medium-font-size: 1.8rem;
     --big-font-size: 2rem;
-    --xl-font-size: 2.4rem;
+    --xl-font-size: 2.7rem;
     --heading-font-size: 4rem;
     
     // Animations

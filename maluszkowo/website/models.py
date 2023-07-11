@@ -42,4 +42,18 @@ class Review(models.Model):
 
   def __str__(self):
     return self.author
+  
+class NurseryDetail(models.Model):
+  address = models.CharField(max_length=100, blank=False)
+  phone = models.CharField(
+    validators=[MinLengthValidator(9, message='Minimalna ilość znaków to 9.')],
+    blank=False,
+    max_length=20
+  )
+  email = models.CharField(blank=False, max_length=100)
+  facebook_link = models.CharField(blank=False, max_length=100)
+  year = models.IntegerField(blank=False)
+
+  def __str__(self):
+    return self.address
     

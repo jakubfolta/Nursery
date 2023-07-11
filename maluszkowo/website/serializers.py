@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Page, NavigationItem, Review
+from .models import Page, NavigationItem, Review, NurseryDetail
 
 class PageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,3 +15,8 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ('author', 'review', 'rating', 'is_main_page_review', 'date')
+
+class NurseryDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NurseryDetail
+        fields = ('address', 'phone', 'email', 'facebook_link', 'year')

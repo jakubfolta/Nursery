@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import PageSerializer, NavigationItemSerializer, ReviewSerializer
-from .models import Page, NavigationItem, Review
+from .serializers import PageSerializer, NavigationItemSerializer, ReviewSerializer, NurseryDetailSerializer
+from .models import Page, NavigationItem, Review, NurseryDetail
 
 from drf_multiple_model.views import ObjectMultipleModelAPIView
 
@@ -24,5 +24,10 @@ class PageView(ObjectMultipleModelAPIView, viewsets.ModelViewSet):
       'queryset': Review.objects.all(),
       'serializer_class': ReviewSerializer,
       'label': 'reviews'
+    },
+    {
+      'queryset': NurseryDetail.objects.all(),
+      'serializer_class': NurseryDetailSerializer,
+      'label': 'nursery_details'
     },
   ]

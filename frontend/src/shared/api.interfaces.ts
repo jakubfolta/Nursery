@@ -26,3 +26,12 @@ export interface NavigationItemProps {
   order: number;
   slug: string;
 }
+
+export interface NurseryDetailsProps {
+  description: string;
+  address: string;
+  email: string;
+  facebook_link: string;
+  phone: string;
+  year: number;
+}

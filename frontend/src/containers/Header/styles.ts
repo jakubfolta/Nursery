@@ -18,20 +18,12 @@ export const StyledContainer = styled.div`
   padding: 0 .5rem;
   z-index: 10;
 
-  @media only screen and (min-width: 150px) {
-    justify-content: space-between;
-  }
-
+  @media only screen and (min-width: 150px) { justify-content: space-between; }
   @media only screen and (min-width: 768px) {
     max-width: 768px;
     padding: 0;
   }
 
-  @media only screen and (min-width: 1024px) {
-    max-width: 1024px; 
-  }
-
-  @media only screen and (min-width: 1400px) {
-    max-width: 1400px; 
-  }
+  @media only screen and (min-width: 1024px) { max-width: 1024px; }
+  @media only screen and (min-width: 1400px) { max-width: 1400px; }
 `

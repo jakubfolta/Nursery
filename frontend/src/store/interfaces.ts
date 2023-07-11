@@ -1,7 +1,8 @@
-import { PagesProps, NavigationItemProps } from "../shared/api.interfaces";
+import { PagesProps, NavigationItemProps, NurseryDetailsProps } from "../shared/api.interfaces";
 
 export interface Context {
   pages: PagesProps;
-  navigationItems: NavigationItemProps[],
+  navigationItems: NavigationItemProps[];
+  nurseryDetails: NurseryDetailsProps;
   isFetchingError: boolean;
 }
