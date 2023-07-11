@@ -7,8 +7,8 @@ import { Props } from "./interfaces"
 import { NavigationItemProps } from "../../../shared/api.interfaces";
 
 export const NavigationList: React.FC<Props> = props => {
-  const [navHeight, setNavHeight] = useState(0);
-  const [headHeight, setHeadHeight] = useState(0);
+  const [navHeight, setNavHeight] = useState(-1);
+  const [headHeight, setHeadHeight] = useState(-1);
   const [navigationItems, setNavigationItems] = useState<NavigationItemProps[]>([]);
   
   const navItems = useContext(WebpageContext).navigationItems;
