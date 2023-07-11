@@ -3,8 +3,8 @@ import { WebpageContext } from "../../../store/webpage-context";
 import { StyledHeading, StyledHero } from "./styles";
 
 export const MainPage: React.FC = () => {
-  const [heroHeading, setHeroHeading] = useState('')
-  const [heroDescription, setHeroDescription] = useState('')
+  const [heroHeading, setHeroHeading] = useState('');
+  const [heroDescription, setHeroDescription] = useState('');
 
   const mainPageContent = useContext(WebpageContext).pages['Main page'];
   // console.log('MAIN PAGE CONTENT', mainPageContent);

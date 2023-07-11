@@ -50,6 +50,14 @@ export const GlobalStyle = createGlobalStyle`
     color: var(--color-primary);
   }
 
+  h1 { line-height: 1.125; }
+  h2 {
+    font-size: var(--xl-font-size);
+    line-height: 1.25;
+  }
+
+  p, li { line-height: 1.5; }
+
   :root {
     // Measures
     --menu-animation-duration: ${CONSTANTS.menuAnimationDuration}s;
@@ -79,7 +87,7 @@ export const GlobalStyle = createGlobalStyle`
     --default-font-size: 1.6rem;
     --medium-font-size: 1.8rem;
     --big-font-size: 2rem;
-    --xl-font-size: 2.4rem;
+    --xl-font-size: 2.7rem;
     --heading-font-size: 4rem;
     
     // Animations

@@ -1,23 +1,27 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { NavigationItemProps, FetchedPageProps, PagesProps } from "../shared/api.interfaces";
+import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps } from "../shared/api.interfaces";
 import { Context } from "./interfaces";
 
 export const WebpageContext = React.createContext<Context>({
   pages: {},
   navigationItems: [],
+  nurseryDetails: {} as NurseryDetailsProps,
   isFetchingError: false
 });
 
 const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
   const [pagesContent, setPagesContent] = useState<PagesProps>({});
   const [navigationItems, setNavigationItems] = useState<NavigationItemProps[]>([]);
+  const [nurseryDetails, setNurseryDetails] = useState<NurseryDetailsProps>({} as NurseryDetailsProps);
   const [isFetchingError, setIsFetchingError] = useState(Boolean);
 
   useEffect(() => {
     axios.get("/api/website/")
       .then(result => {
-        const orderedNavigationItems = result.data.navigation_items.sort((a: NavigationItemProps, b: NavigationItemProps) => a.order - b.order);
+        const data = result.data;
+
+        const orderedNavigationItems = data.navigation_items.sort((a: NavigationItemProps, b: NavigationItemProps) => a.order - b.order);
         const updatedNavigationItems = orderedNavigationItems.map((item: NavigationItemProps) => {
           return {
             title: item.title,
