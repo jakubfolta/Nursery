@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { ContactList, Description, FooterContact, FooterContainer, FooterCopyright, FooterSocial, LogoContainer, SectionsWrapper, SocialLink, WebsiteAuthorLink } from "./styles"
+import { ContactLink, ContactList, Description, FooterContact, FooterContainer, FooterCopyright, FooterSocial, LogoContainer, SectionsWrapper, SocialLink, WebsiteAuthorLink } from "./styles"
 import { WebpageContext } from "../../store/webpage-context";
 import footerLogo from "../../assets/images/logo-maluszkowo-footer.png";
 import { IoLogoFacebook } from "react-icons/io";
@@ -41,9 +41,26 @@ export const Footer: React.FC = () => {
           <div>
             <h2>Kontakt</h2>
             <ContactList>
-              <li>Telefon: {phone}</li>
-              <li>{address}</li>
-              <li>{email}</li>
+              <li>
+                <ContactLink href={`tel:${phone}`}>
+                  Telefon: {phone}
+                </ContactLink>
+              </li>
+              <li>
+                <ContactLink 
+                  href={`https://www.google.com/maps/search/?api=1&query=Maluszkowo+${address}`}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {address}
+                </ContactLink>
+              </li>
+              <li>
+                <ContactLink
+                  href={`mailto:${email}`} 
+                  target="_blank">
+                  {email}
+                </ContactLink>
+              </li>
             </ContactList>
           </div>
         </FooterContact>
