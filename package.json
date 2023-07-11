@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "git-gui": "^0.0.7"
+    "git-gui": "^0.0.7",
+    "react-icons": "^4.10.1"
   }
 }

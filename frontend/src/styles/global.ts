@@ -61,9 +61,11 @@ export const GlobalStyle = createGlobalStyle`
     // Colors
     --color-accent: #21e004;
     --color-accent-2: #188507;
-    --color-accent-3: #023047;
+    --color-accent-3: hsl(200, 95%, 15%);
+    --color-accent-copyright: hsl(200, 95%, 10%);
     --color-accent-4: #219ebc;
     --color-background: #f7f7f7;
+    --color-footer-text: hsl(200, 20%, 99%);
     --color-white: #fcfcfc;
     --color-grey: #f2f2f2;
     --color-dark: #0e3f00;

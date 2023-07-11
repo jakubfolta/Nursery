@@ -25,19 +25,23 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
             slug: item.slug
           };
         });
-
+        
         const updatedPagesContent: PagesProps = {};
-        result.data.pages.forEach((page: FetchedPageProps) => {
+        data.pages.forEach((page: FetchedPageProps) => {
           const {description, ...rest} = page;
           updatedPagesContent[page.description] = rest;
         });
         
-        console.log('DATA', result.data);
-        console.log('UPDATED PAGES', updatedPagesContent);
-        console.log('NAVIGATION ITEMS', updatedNavigationItems);
-
+        const nurseryDetails: NurseryDetailsProps = data.nursery_details[0];
+        nurseryDetails['description'] = data.pages[0].text_1;
+        // console.log('NURSERY DETAILS', nurseryDetails);
+        // console.log('DATA', result.data);
+        
+        // console.log('UPDATED PAGES', updatedPagesContent);
+        // console.log('NAVIGATION ITEMS', updatedNavigationItems);
         setNavigationItems(updatedNavigationItems);
         setPagesContent(updatedPagesContent);
+        setNurseryDetails(nurseryDetails);
       })
       .catch(error => {
         const errorMessage = error.response.data.error;
@@ -49,6 +53,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
   const contextValue: Context = {
     pages: pagesContent,
     navigationItems: navigationItems,
+    nurseryDetails: nurseryDetails,
     isFetchingError: isFetchingError
   }
 
