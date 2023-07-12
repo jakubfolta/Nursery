@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Logo, MenuButton, NavigationList, Backdrop } from "../../components";
 import { StyledContainer, StyledHeader } from "./styles";
 import { CONSTANTS } from "../../styles/global";
@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 const menuAnimationDuration = CONSTANTS.menuAnimationDuration * 1000;
 const halfPageTransitionDuration = CONSTANTS.pageTransitionDuration * 1000 / 2;
 
-export const Header: React.FC = () => {
+export const Header: React.FC<{children: React.ReactNode}> = props => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isMenuReady, setIsMenuReady] = useState(true);
   const [isMenuDesktop, setIsMenuDesktop] = useState(false);
@@ -64,6 +64,7 @@ export const Header: React.FC = () => {
   
   return (
     <StyledHeader id="header">
+      {props.children}
       <StyledContainer>
         <Logo onLogoClick={() => onNavItemClickHandler(true)} />
         {!isMenuDesktop && 

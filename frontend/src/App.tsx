@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
 import { Navigate, useLocation } from 'react-router-dom';
 import { CONSTANTS, GlobalStyle } from './styles/global';
-import { Layout, PageTransition } from './components';
+import { Layout } from './components';
 import { MainPage } from './containers/pages/MainPage/MainPage';
 import WebpageContextProvider from './store/webpage-context';
 
@@ -56,10 +56,9 @@ export const App: React.FC = () => {
   return (
     <WebpageContextProvider>
       <GlobalStyle />
-      <Layout>
-        {showTransitionPage &&
-          <PageTransition isFirstVisit={isFirstVisit} />
-        }
+      <Layout
+        showTransitionPage={showTransitionPage}
+        isFirstVisit={isFirstVisit}>
         {routes}
       </Layout>
     </WebpageContextProvider>

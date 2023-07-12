@@ -12,7 +12,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const CONSTANTS = {
   menuAnimationDuration: .3,
-  pageTransitionDuration: 1
+  pageTransitionDuration: 1.2
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -48,6 +48,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Nunito', sans-serif;
     font-size: var(--medium-font-size);
     color: var(--color-primary);
+
+    &::-webkit-scrollbar { display: none; }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   h1 { line-height: 1.125; }
