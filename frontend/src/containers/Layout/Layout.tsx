@@ -1,14 +1,11 @@
 import { debounce } from "lodash-es";
-import { Header } from "../../components";
+import { Header, PageTransition } from "../../components";
 import { Footer } from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { MainContainer } from "./styles";
+import { Props } from "./interface";
 
-interface Props {
-  children?: React.ReactNode;
-}
-
-export const Layout: React.FC<Props> = ({ children }) => {
+export const Layout: React.FC<Props> = props => {
   const [headerHeight, setHeaderHeight] = useState(-1);
 
   useEffect(() => {
@@ -23,9 +20,12 @@ export const Layout: React.FC<Props> = ({ children }) => {
 
   return (
     <>
-      <Header />
+      <Header>
+        {props.showTransitionPage &&
+          <PageTransition isFirstVisit={props.isFirstVisit} />}
+      </Header>
       <MainContainer headerHeight={headerHeight}>
-        {children}
+        {props.children}
       </MainContainer>
       <Footer />
     </>
