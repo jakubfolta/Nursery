@@ -1,0 +1,122 @@
+import styled, { css } from "styled-components"
+
+export const ContactFormContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-contact);
+  padding: 3rem 0;
+`
+
+export const FormWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-contact-text);
+  width: 100%;
+  max-width: 640px;
+  padding: 1rem 0;
+`
+
+export const Form = styled.form`
+  width: 80%;
+  text-align: center;
+
+  & > *:not(:first-child) { margin-top: 3rem; }
+`
+
+export const FieldWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: var(--big-font-size);
+  font-weight: 600;
+`
+
+export const IconWrapper = styled.span`
+  position: absolute;
+  left: .5rem;
+  font-size: var(--xl-font-size);
+`
+
+const textEmailInput = css`
+  border: none;
+  border-bottom: 2px solid var(--color-contact-text);
+  transition: border-color .3s;
+
+  &:placeholder-shown + label { opacity: 0; }
+  &:not(:placeholder-shown) + label {
+    font-size: var(--default-font-size);
+    font-weight: normal;
+    transform: translateY(3.3rem);
+    opacity: 1;
+  }
+`
+
+const input = css`
+  width: 100%;
+  background-color: var(--color-contact);
+  font-family: inherit;
+  font-size: var(--big-font-size);
+  font-weight: 600;
+  color: var(--color-contact-text);
+  padding: 1rem 4rem;
+  cursor: pointer;
+
+  &:focus { outline: none; }
+  &::placeholder { color: var(--color-form-placeholder); }
+`
+
+export const TextInput = styled.input<{textValid: boolean}>`
+  ${input}
+  ${textEmailInput}
+  border-color: ${props => props.textValid && 'var(--color-accent)'};
+  &:focus { border-color: ${props => props.textValid ? 'var(--color-accent)' : 'var(--color-warning)'}; }
+`
+
+export const EmailInput = styled.input<{emailValid: boolean}>`
+  ${input}
+  ${textEmailInput}
+  border-color: ${props => props.emailValid && 'var(--color-accent)'};
+  &:focus { border-color: ${props => props.emailValid ? 'var(--color-accent)' : 'var(--color-warning)'} }
+`
+
+export const TextArea = styled.textarea`
+  ${input}
+  border: 2px solid var(--color-contact-text);
+  border-radius: 5px;
+  height: 12rem;
+  resize: none;
+`
+
+export const Label = styled.label`
+  position: absolute;
+  left: 4rem;
+  color: var(--color-form-placeholder);
+  cursor: pointer;
+  transition: all .3s;
+`
+
+export const TextAreaLabel = styled.label`
+  position: absolute;
+  left: 4rem;
+  font-size: var(--default-font-size);
+  transform: translateY(7.3rem);
+  opacity: 0;
+`
+
+export const SubmitButton = styled.input<{isFormValid: boolean}>`
+  width: 80%;
+  padding: 1rem 2rem;
+  background-color: var(--color-contact);
+  border: 2px solid;
+  border-color: ${props => props.isFormValid ? 'var(--color-accent)' : 'var(--color-contact-invalid)'};
+  border-radius: 5px;
+  font-size: var(--xl-font-size);
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: ${props => props.isFormValid ? 'var(--color-contact-text)' : 'var(--color-contact-invalid)'};
+  cursor: ${props => props.isFormValid ? 'pointer' : 'not-allowed'};
+  transition: all .3s;
+
+  @media only screen and (min-width: 1024px) { width: 60%; }
+`
