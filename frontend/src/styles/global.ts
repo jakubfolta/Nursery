@@ -40,6 +40,14 @@ export const GlobalStyle = createGlobalStyle`
     @media only screen and (min-width: 1280px) {
       font-size: 81.25% // 1rem = 13px
     }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: var(--color-contact-text);
+    }
   }
 
   body {
@@ -75,9 +83,13 @@ export const GlobalStyle = createGlobalStyle`
     --color-accent-2: #188507;
     --color-accent-3: hsl(200, 95%, 15%);
     --color-accent-copyright: hsl(200, 95%, 10%);
-    --color-accent-4: #219ebc;
+    --color-contact: hsl(192, 70%, 43%);
+    --color-contact-text: hsl(192, 20%, 99%);
+    --color-contact-invalid: hsl(192, 20%, 69%);
+    --color-form-placeholder: hsl(192, 20%, 40%);
     --color-background: #f7f7f7;
     --color-footer-text: hsl(200, 20%, 99%);
+    --color-warning: 	hsl(0, 100%, 55%);
     --color-white: #fcfcfc;
     --color-grey: #f2f2f2;
     --color-dark: #0e3f00;

@@ -8,6 +8,7 @@ export const StyledHeader = styled.div`
   justify-content: center;
   padding: var(--padding-small);
   background: var(--color-white);
+  z-index: 10;
 `
 
 export const StyledContainer = styled.div`

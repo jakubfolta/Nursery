@@ -6,3 +6,4 @@ export { NavigationList } from './Navigation/NavigationList/NavigationList';
 export { NavigationItem } from './Navigation/NavigationItem/NavigationItem';
 export { Backdrop } from './Backdrop/Backdrop';
 export { PageTransition } from './PageTransition/PageTransition';
+export { ContactForm } from './ContactForm/ContactForm';
