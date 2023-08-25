@@ -1,16 +1,17 @@
+import { CSSProperties } from 'react';
 import { FaChild } from 'react-icons/fa';
 import { BsFillEnvelopePaperHeartFill } from 'react-icons/bs';
 import { TbMessage2Heart } from 'react-icons/tb';
-import { ContactFormContainer, EmailInput, FieldWrapper, Form, FormWrapper, IconWrapper, Label, SubmitButton, TextArea, TextAreaLabel, TextInput } from './styles';
+import { ButtonText, ContactFormContainer, EmailInput, FieldWrapper, Form, FormWrapper, IconWrapper, Label, ResultMessage, SubmitButton, TextArea, TextAreaLabel, TextInput } from './styles';
+import DotLoader from "react-spinners/DotLoader";
 import { Props } from './interfaces';
+
+const override: CSSProperties = { position: "absolute" }
 
 export const ContactForm: React.FC<Props> = props => (
   <ContactFormContainer>
     <FormWrapper>
-      <Form
-        method="post"
-        // action={`https://www.flexyform.com/f/${formKey}`}
-        >
+      <Form onSubmit={props.onFormSubmit}>
         <FieldWrapper>
           <IconWrapper>
             <FaChild />
@@ -54,16 +55,33 @@ export const ContactForm: React.FC<Props> = props => (
           <TextArea
             name="message"
             placeholder="Wiadomość do Maluszkowo..."
-            id="message" />
+            id="message"
+            value={props.messageValue}
+            onChange={props.onFieldChange} />
           <TextAreaLabel htmlFor="message">
             Wiadomość do Maluszkowo...
           </TextAreaLabel>
         </FieldWrapper>
+        {props.showMessage
+          && <ResultMessage isMessageSent={props.isMessageSent}>
+               {props.message}
+             </ResultMessage>
+        }
         <SubmitButton
           type="submit"
-          value="Wyślij"
           isFormValid={props.isFormValid}
-          disabled={!props.isFormValid} />
+          disabled={!props.isFormValid}>
+          <DotLoader
+            loading={props.isLoading}
+            cssOverride={override}
+            color="#fcfdfd"
+            size={35}
+            aria-label="Loading Spinner"
+            data-testid="loader" />
+          <ButtonText isLoading={props.isLoading}>
+            Wyślij
+          </ButtonText>
+        </SubmitButton>
       </Form>
     </FormWrapper>
   </ContactFormContainer>
