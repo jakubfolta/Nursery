@@ -83,7 +83,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-accent-2: #188507;
     --color-accent-3: hsl(200, 95%, 15%);
     --color-accent-copyright: hsl(200, 95%, 10%);
-    --color-contact: hsl(192, 70%, 43%);
+    --color-contact: hsl(192, 70%, 40%);
     --color-contact-text: hsl(192, 20%, 99%);
     --color-contact-invalid: hsl(192, 20%, 69%);
     --color-form-placeholder: hsl(192, 20%, 40%);

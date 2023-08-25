@@ -13,6 +13,11 @@ export interface Form {
       rules: {
         isEmail: boolean
       }
+    },
+    message: {
+      value: string,
+      isValid: boolean,
+      rules: {}
     }
   }
 }

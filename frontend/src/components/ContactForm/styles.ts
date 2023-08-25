@@ -18,8 +18,10 @@ export const FormWrapper = styled.div`
 `
 
 export const Form = styled.form`
+  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 80%;
-  text-align: center;
 
   & > *:not(:first-child) { margin-top: 3rem; }
 `
@@ -104,7 +106,12 @@ export const TextAreaLabel = styled.label`
   opacity: 0;
 `
 
-export const SubmitButton = styled.input<{isFormValid: boolean}>`
+export const SubmitButton = styled.button<{isFormValid: boolean}>`
+  position: relative;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80%;
   padding: 1rem 2rem;
   background-color: var(--color-contact);
@@ -119,4 +126,18 @@ export const SubmitButton = styled.input<{isFormValid: boolean}>`
   transition: all .3s;
 
   @media only screen and (min-width: 1024px) { width: 60%; }
+`
+
+export const ButtonText = styled.span<{isLoading: boolean}>`
+  opacity: ${props => props.isLoading ? 0 : 1};
+`
+
+export const ResultMessage = styled.span<{isMessageSent: boolean}>`
+  position: absolute;
+  bottom: 6rem;
+  align-self: center;
+  font-size: var(--small-font-size);
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: ${props => props.isMessageSent ? 'var(--color-accent)' : 'var(--color-warning)'};
 `

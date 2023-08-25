@@ -17,6 +17,15 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
   const [isFetchingError, setIsFetchingError] = useState(Boolean);
 
   useEffect(() => {
+    // axios.post("http://localhost:8000/contact", {msg: "hellllo"})
+    //   .then(result => {
+    //     console.log(result);
+    //   })
+    //   .catch(error => {
+    //     return
+    //   })
+
+
     axios.get("/api/website/")
       .then(result => {
         const data = result.data;
@@ -59,7 +68,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
     navigationItems: navigationItems,
     nurseryDetails: nurseryDetails,
     isFetchingError: isFetchingError
-  }
+  };
 
   return (
     <WebpageContext.Provider value={contextValue}>
