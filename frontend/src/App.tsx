@@ -12,7 +12,6 @@ const OfferComponent = React.lazy(() => import('./containers/pages/Offer/Offer')
 const ContactComponent = React.lazy(() => import('./containers/pages/Contact/Contact'));
 
 const pageTransitionDuration = CONSTANTS.pageTransitionDuration * 1000;
-const newRouteDelay = pageTransitionDuration / 2;
 
 export const App: React.FC = () => {
   const [displayLocation, setDisplayLocation] = useState('/');
@@ -34,7 +33,7 @@ export const App: React.FC = () => {
 
       setTimeout(() => {
         setDisplayLocation(location.pathname);
-      }, newRouteDelay);
+      }, 200);
       setTimeout(() => {
         setShowTransitionPage(false);
       }, pageTransitionDuration);

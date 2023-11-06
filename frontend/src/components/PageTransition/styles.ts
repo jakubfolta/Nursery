@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 const slideUp = keyframes`
-  40% {
+  20% {
     top: 0;
     opacity: 1;
   }
