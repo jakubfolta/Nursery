@@ -70,7 +70,7 @@ export const ContactForm: React.FC<Props> = props => (
         <SubmitButton
           type="submit"
           isFormValid={props.isFormValid}
-          disabled={!props.isFormValid}>
+          disabled={!props.isFormValid || props.isLoading}>
           <DotLoader
             loading={props.isLoading}
             cssOverride={override}
