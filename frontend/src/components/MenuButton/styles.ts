@@ -19,7 +19,7 @@ const line = css`
 `
 
 export const Line1 = styled.span`
-  ${line}
+  ${line};
   top: -.5rem;
   width: 4rem;
   
@@ -47,7 +47,7 @@ export const Line1 = styled.span`
 `
 
 export const Line2 = styled.span`
-  ${line}
+  ${line};
   top: .5rem;
   left: .5rem;
   width: 3rem;
