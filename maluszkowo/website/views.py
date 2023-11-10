@@ -52,19 +52,19 @@ class EmailAPI(APIView):
             }
         )
 
-    try:
-        send_mail(
-            subject = "Wiadomość do Maluszkowo...",
-            message = message,
-            from_email = settings.EMAIL_HOST_USER,
-            recipient_list = [settings.RECIPIENT_ADDRESS],
-            html_message=html_message,
-            fail_silently=False,
-        )
-        result = {
-            "status": status.HTTP_200_OK,
-            "message": "success"
-        }
-        return Response(result)
-    except:
-        raise
+        try:
+            send_mail(
+                subject = "Wiadomość do Maluszkowo...",
+                message = message,
+                from_email = settings.EMAIL_HOST_USER,
+                recipient_list = [settings.RECIPIENT_ADDRESS],
+                html_message=html_message,
+                fail_silently=False,
+            )
+            result = {
+                "status": status.HTTP_200_OK,
+                "message": "success"
+            }
+            return Response(result)
+        except:
+            raise
