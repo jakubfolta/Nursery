@@ -1,4 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const hover = css`
+  transition: color .3s;
+
+  &:hover { color: var(--color-accent); }
+`
 
 export const FooterContainer = styled.footer`
   display: flex;
@@ -62,9 +68,7 @@ export const ContactLink = styled.a`
   text-decoration: none;
   color: var(--color-footer-text);
   padding: .5rem 0;
-  transition: color .3s;
-
-  &:hover { color: var(--color-accent); }
+  ${hover};
 `
 
 export const FooterSocial = styled.div`
@@ -95,4 +99,5 @@ export const FooterCopyright = styled.div`
 export const WebsiteAuthorLink = styled.a`
   color: var(--color-footer-text);
   text-decoration: none;
+  ${hover};
 `

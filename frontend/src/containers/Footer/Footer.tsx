@@ -77,12 +77,12 @@ export const Footer: React.FC = () => {
 
       <FooterCopyright>
         <p>&copy; {copyrightYear} Maluszkowo</p>
-        <p>A website by 
+        <p>
           <WebsiteAuthorLink
             href="https://www.folta.me/"
             target="_blank"
             rel="noopener noreferrer">
-              &nbsp;Folta
+              A website by Folta
           </WebsiteAuthorLink>
         </p>
       </FooterCopyright>
