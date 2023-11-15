@@ -1,12 +1,26 @@
-import React from "react";
-import { StyledDogImage, StyledHero } from "./styles";
-import dog from './../../../assets/images/fun-backpacker-bulldog-cartoon-character.png';
+import React, { useContext, useEffect, useState } from "react";
+import Hero from "../../../components/Hero/Hero";
+import { WebpageContext } from "../../../store/webpage-context";
 
-const AboutUs: React.FC = () => (
-  <>
-    <StyledHero>About us Page</StyledHero>
-    <StyledDogImage src={dog} />
-  </>
-)
+const AboutUs: React.FC = () => {
+  const [heroHeading, setHeroHeading] = useState('');
+  const [heroDescription, setHeroDescription] = useState('');
+
+  const aboutUsPageContent = useContext(WebpageContext).pages['About us'];
+
+  useEffect(() => {
+    if (aboutUsPageContent) {
+      setHeroHeading(aboutUsPageContent.heading_1);
+      setHeroDescription(aboutUsPageContent.text_1);
+    }
+  }, [aboutUsPageContent]);
+
+  return (
+    <Hero 
+      heading={heroHeading}
+      description={heroDescription}
+    />
+  );
+};
 
 export default AboutUs;

@@ -111,7 +111,7 @@ export const GlobalStyle = createGlobalStyle`
     --medium-font-size: 1.8rem;
     --big-font-size: 2rem;
     --xl-font-size: 2.7rem;
-    --heading-font-size: 4rem;
+    --heading-font-size: 5rem;
     
     // Animations
     

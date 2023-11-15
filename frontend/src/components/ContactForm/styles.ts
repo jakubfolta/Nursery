@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components"
 
 export const ContactFormContainer = styled.div`
+  align-self: stretch;
   display: flex;
   justify-content: center;
   background-color: var(--color-contact);

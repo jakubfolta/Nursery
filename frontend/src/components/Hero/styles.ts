@@ -1,8 +1,7 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledHero = styled.div`
   height: 60vh;
-  /* background-color: var(--color-accent); */
   max-width: 540px;
   padding: 0 1rem;
 
@@ -11,8 +10,13 @@ export const StyledHero = styled.div`
 `
 
 export const StyledHeading = styled.h1`
-  padding-top: 3rem;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
   font-family: 'Itim', cursive;
   font-size: var(--heading-font-size);
   color: var(--color-white);
+`
+
+export const StyledDescription = styled.p`
+  font-size: var(--big-font-size);
 `
