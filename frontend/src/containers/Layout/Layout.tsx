@@ -24,7 +24,9 @@ export const Layout: React.FC<Props> = props => {
         {props.showTransitionPage &&
           <PageTransition isFirstVisit={props.isFirstVisit} />}
       </Header>
-      <MainContainer headerHeight={headerHeight}>
+      <MainContainer 
+        headerHeight={headerHeight}
+        theme={props.theme}>
         {props.children}
       </MainContainer>
       <Footer />
