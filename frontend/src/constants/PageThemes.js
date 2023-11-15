@@ -1,4 +1,7 @@
 export const pageThemes = {
   '/': 'mainPageTheme',
-  '/o-nas': 'aboutUsTheme'
+  '/o-nas': 'aboutUsPageTheme',
+  '/oferta': 'offerPageTheme',
+  '/kontakt': 'contactPageTheme',
+  '/dla-rodzicow': 'parentsPageTheme'
 }

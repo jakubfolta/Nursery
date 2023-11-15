@@ -9,6 +9,7 @@ const defaultFormState = {
   name: {
     value: '',
     isValid: false,
+    isTouched: false,
     rules: {
       minLength: 2
     }
@@ -16,6 +17,7 @@ const defaultFormState = {
   email: {
     value: '',
     isValid: false,
+    isTouched: false,
     rules: {
       isEmail: true
     }
@@ -66,6 +68,7 @@ const Contact: React.FC = () => {
     
     let updatedFormFields = JSON.parse(JSON.stringify(formState.formFields));
     const updatedField = updatedFormFields[fieldType];
+    updatedField.isTouched = true;
     
     if (Object.keys(fieldRules).length) {
       const isValueValid = checkValidity(fieldValue, fieldRules);
@@ -130,7 +133,9 @@ const Contact: React.FC = () => {
         emailValue={formState.formFields.email.value}
         messageValue={formState.formFields.message.value}
         isNameValid={formState.formFields.name.isValid}
+        isNameTouched={formState.formFields.name.isTouched}
         isEmailValid={formState.formFields.email.isValid}
+        isEmailTouched={formState.formFields.email.isTouched}
         isFormValid={isValidForm}
         isLoading={isLoading}
         showMessage={showMessage}

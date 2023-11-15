@@ -43,7 +43,7 @@ export const IconWrapper = styled.span`
 
 const textEmailInput = css`
   border: none;
-  border-bottom: 2px solid var(--color-contact-text);
+  border-bottom: 3px solid var(--color-contact-text);
   transition: border-color .3s;
 
   &:placeholder-shown + label { opacity: 0; }
@@ -69,23 +69,21 @@ const input = css`
   &::placeholder { color: var(--color-form-placeholder); }
 `
 
-export const TextInput = styled.input<{textValid: boolean}>`
+export const TextInput = styled.input<{textValid: boolean, textTouched: boolean}>`
   ${input}
   ${textEmailInput}
-  border-color: ${props => props.textValid && 'var(--color-accent)'};
-  &:focus { border-color: ${props => props.textValid ? 'var(--color-accent)' : 'var(--color-warning)'}; }
+  border-color: ${props => !props.textTouched ? '' : props.textValid ? 'var(--color-accent)' : 'var(--color-warning)'};
 `
 
-export const EmailInput = styled.input<{emailValid: boolean}>`
+export const EmailInput = styled.input<{emailValid: boolean, emailTouched: boolean}>`
   ${input}
   ${textEmailInput}
-  border-color: ${props => props.emailValid && 'var(--color-accent)'};
-  &:focus { border-color: ${props => props.emailValid ? 'var(--color-accent)' : 'var(--color-warning)'} }
+  border-color: ${props => !props.emailTouched ? '' : props.emailValid ? 'var(--color-accent)' : 'var(--color-warning)'};
 `
 
 export const TextArea = styled.textarea`
   ${input}
-  border: 2px solid var(--color-contact-text);
+  border: 3px solid var(--color-contact-text);
   border-radius: 5px;
   height: 12rem;
   resize: none;
@@ -116,7 +114,7 @@ export const SubmitButton = styled.button<{isFormValid: boolean}>`
   width: 80%;
   padding: 1rem 2rem;
   background-color: var(--color-contact);
-  border: 2px solid;
+  border: 3px solid;
   border-color: ${props => props.isFormValid ? 'var(--color-accent)' : 'var(--color-contact-invalid)'};
   border-radius: 5px;
   font-size: var(--xl-font-size);

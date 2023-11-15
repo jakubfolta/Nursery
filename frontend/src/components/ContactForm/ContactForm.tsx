@@ -23,6 +23,7 @@ export const ContactForm: React.FC<Props> = props => (
             id="name"
             autoComplete="off"
             textValid={props.isNameValid}
+            textTouched={props.isNameTouched}
             value={props.nameValue}
             onChange={props.onFieldChange} />
           <Label htmlFor="name">
@@ -41,6 +42,7 @@ export const ContactForm: React.FC<Props> = props => (
             id="email"
             autoComplete="off"
             emailValid={props.isEmailValid}
+            emailTouched={props.isEmailTouched}
             value={props.emailValue}
             onChange={props.onFieldChange} />
           <Label htmlFor="email">

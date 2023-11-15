@@ -12,16 +12,21 @@ import { createGlobalStyle } from 'styled-components';
 
 const COLORS = {
   accentOne: '#21e004',
-  accentTwo: '#21e004',
-  accentThree: '#21e004',
-  accentFour: '#21e004',
+  accentTwo: '#61CAFF',
+  accentThree: '#F6BA39',
+  accentFour: '#8D3682',
+  accentFive: '#303772',
+  accentSix: '#91C952'
 }
 
 export const CONSTANTS = {
   menuAnimationDuration: .3,
   pageTransitionDuration: 1.2,
   mainPageTheme: COLORS.accentOne,
-  aboutUsTheme: COLORS.accentTwo,
+  aboutUsPageTheme: COLORS.accentTwo,
+  offerPageTheme: COLORS.accentThree,
+  contactPageTheme: COLORS.accentFour,
+  parentsPageTheme: COLORS.accentFive,
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -89,10 +94,11 @@ export const GlobalStyle = createGlobalStyle`
     
     // Colors
     --color-accent: ${COLORS.accentOne};
+    --color-accent-4: ${COLORS.accentFour};
     --color-accent-2: #188507;
     --color-accent-3: hsl(200, 95%, 15%);
     --color-accent-copyright: hsl(200, 95%, 10%);
-    --color-contact: hsl(192, 70%, 40%);
+    /* --color-contact: hsl(192, 70%, 40%); */
     --color-contact-text: hsl(192, 20%, 99%);
     --color-contact-invalid: hsl(192, 20%, 69%);
     --color-form-placeholder: hsl(192, 20%, 40%);

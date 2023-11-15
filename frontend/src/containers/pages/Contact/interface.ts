@@ -3,6 +3,7 @@ export interface Form {
     name: {
       value: string,
       isValid: boolean,
+      isTouched: boolean,
       rules: {
         minLength: number
       }
@@ -10,6 +11,7 @@ export interface Form {
     email: {
       value: string,
       isValid: boolean,
+      isTouched: boolean,
       rules: {
         isEmail: boolean
       }
