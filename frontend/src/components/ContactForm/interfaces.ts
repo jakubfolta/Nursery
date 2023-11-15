@@ -5,7 +5,9 @@ export interface Props {
   emailValue: string;
   messageValue: string;
   isNameValid: boolean;
+  isNameTouched: boolean;
   isEmailValid: boolean;
+  isEmailTouched: boolean;
   isFormValid: boolean;
   isLoading: boolean;
   showMessage: boolean;
