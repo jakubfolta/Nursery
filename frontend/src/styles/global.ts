@@ -10,9 +10,18 @@ import { createGlobalStyle } from 'styled-components';
 1536px + :      2xl
 */
 
+const COLORS = {
+  accentOne: '#21e004',
+  accentTwo: '#21e004',
+  accentThree: '#21e004',
+  accentFour: '#21e004',
+}
+
 export const CONSTANTS = {
   menuAnimationDuration: .3,
-  pageTransitionDuration: 1.2
+  pageTransitionDuration: 1.2,
+  mainPageTheme: COLORS.accentOne,
+  aboutUsTheme: COLORS.accentTwo,
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -79,7 +88,7 @@ export const GlobalStyle = createGlobalStyle`
     --padding-medium: 2rem;
     
     // Colors
-    --color-accent: #21e004;
+    --color-accent: ${COLORS.accentOne};
     --color-accent-2: #188507;
     --color-accent-3: hsl(200, 95%, 15%);
     --color-accent-copyright: hsl(200, 95%, 10%);
@@ -93,9 +102,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-white: #fcfcfc;
     --color-grey: #f2f2f2;
     --color-dark: #0e3f00;
-    --color-dark-2: #0b2d00;
-    /* --color-text-gray: #e2e0e0; */
-    
+    --color-dark-2: #0b2d00;    
     
     // Fonts
     --xsmall-font-size: 1.2rem;

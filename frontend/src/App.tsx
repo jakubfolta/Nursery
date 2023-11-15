@@ -5,6 +5,7 @@ import { CONSTANTS, GlobalStyle } from './styles/global';
 import { Layout } from './components';
 import { MainPage } from './containers/pages/MainPage/MainPage';
 import WebpageContextProvider from './store/webpage-context';
+import { pageThemes } from './constants/PageThemes';
 
 const AboutUsComponent = React.lazy(() => import('./containers/pages/AboutUs/AboutUs'));
 const ParentsComponent = React.lazy(() => import('./containers/pages/Parents/Parents'));
@@ -17,15 +18,18 @@ export const App: React.FC = () => {
   const [displayLocation, setDisplayLocation] = useState('/');
   const [isFirstVisit, setIsFirstVisit] = useState(true);
   const [showTransitionPage, setShowTransitionPage] = useState(true);
+  const [pageTheme, setPageTheme] = useState('');
   
   const location = useLocation();
-  
+
   useEffect(() => {
+    updatePageTheme(location.pathname);
+
     setTimeout(() => {
       setIsFirstVisit(false);
       setShowTransitionPage(false);
     }, pageTransitionDuration);
-  }, [])
+  }, []);
   
   useEffect(() => {
     if (displayLocation !== location.pathname) {
@@ -33,12 +37,20 @@ export const App: React.FC = () => {
 
       setTimeout(() => {
         setDisplayLocation(location.pathname);
+        updatePageTheme(location.pathname);
       }, 200);
       setTimeout(() => {
         setShowTransitionPage(false);
       }, pageTransitionDuration);
     }
-  }, [location, displayLocation])
+  }, [location, displayLocation]);
+
+  const updatePageTheme = (path: string) => {
+    const themeLabel = pageThemes[path as keyof typeof pageThemes];
+    const color = CONSTANTS[themeLabel as keyof typeof CONSTANTS] as string;
+
+    setPageTheme(color);
+  };
 
   const routes = 
     <Suspense fallback={<div>Loading...</div>}>
@@ -57,7 +69,8 @@ export const App: React.FC = () => {
       <GlobalStyle />
       <Layout
         showTransitionPage={showTransitionPage}
-        isFirstVisit={isFirstVisit}>
+        isFirstVisit={isFirstVisit}
+        theme={pageTheme}>
         {routes}
       </Layout>
     </WebpageContextProvider>
