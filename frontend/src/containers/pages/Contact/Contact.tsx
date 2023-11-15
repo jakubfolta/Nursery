@@ -1,8 +1,9 @@
-import React, { ChangeEvent, FormEvent, useState } from "react"
-import { StyledHero } from "./styles"
+import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { ContactForm } from "../../../components";
 import { Form } from "./interface";
 import axios from "axios";
+import Hero from "../../../components/Hero/Hero";
+import { WebpageContext } from "../../../store/webpage-context";
 
 const defaultFormState = {
   name: {
@@ -33,6 +34,17 @@ const Contact: React.FC = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [isMessageSent, setIsMessageSent] = useState(false);
   const [message, setMessage] = useState('');
+  const [heroHeading, setHeroHeading] = useState('');
+  const [heroDescription, setHeroDescription] = useState('');
+
+  const contactPageContent = useContext(WebpageContext).pages['Contact'];
+
+  useEffect(() => {
+    if (contactPageContent) {
+      setHeroHeading(contactPageContent.heading_1);
+      setHeroDescription(contactPageContent.text_1);
+    }
+  }, [contactPageContent]);
   
   const checkValidity = (value: string, rules: {isEmail: boolean} | {minLength: number} | {}) => {
     let isValid = false;
@@ -107,7 +119,10 @@ const Contact: React.FC = () => {
 
   return (
     <>
-      <StyledHero>Contact Page</StyledHero>
+      <Hero 
+        heading={heroHeading}
+        description={heroDescription}
+      />
       <ContactForm 
         onFieldChange={onChangeHandler}
         onFormSubmit={onSubmitFormHandler}

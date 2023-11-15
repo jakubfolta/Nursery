@@ -41,7 +41,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
         // console.log('NURSERY DETAILS', nurseryDetails);
         // console.log('DATA', result.data);
         
-        // console.log('UPDATED PAGES', updatedPagesContent);
+        console.log('UPDATED PAGES', updatedPagesContent);
         // console.log('NAVIGATION ITEMS', updatedNavigationItems);
         setNavigationItems(updatedNavigationItems);
         setPagesContent(updatedPagesContent);

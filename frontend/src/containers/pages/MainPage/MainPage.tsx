@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
 import { WebpageContext } from "../../../store/webpage-context";
-import { StyledHeading, StyledHero } from "./styles";
+import Hero from "../../../components/Hero/Hero";
 
 export const MainPage: React.FC = () => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
 
   const mainPageContent = useContext(WebpageContext).pages['Main page'];
-  // console.log('MAIN PAGE CONTENT', mainPageContent);
 
   useEffect(() => {
     if (mainPageContent) {
@@ -17,9 +16,9 @@ export const MainPage: React.FC = () => {
   }, [mainPageContent]);
 
   return (
-    <StyledHero>
-      <StyledHeading>{heroHeading}</StyledHeading>
-      {heroDescription}
-    </StyledHero>
+    <Hero 
+      heading={heroHeading}
+      description={heroDescription}
+    />
   );
-}
+};
