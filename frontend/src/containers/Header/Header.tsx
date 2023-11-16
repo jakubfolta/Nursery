@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 const menuAnimationDuration = CONSTANTS.menuAnimationDuration * 1000;
 const halfPageTransitionDuration = CONSTANTS.pageTransitionDuration * 1000 / 2;
 
-export const Header: React.FC<{children: React.ReactNode}> = props => {
+export const Header: React.FC<{children: React.ReactNode, theme: string}> = props => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isMenuReady, setIsMenuReady] = useState(true);
   const [isMenuDesktop, setIsMenuDesktop] = useState(false);
@@ -63,7 +63,10 @@ export const Header: React.FC<{children: React.ReactNode}> = props => {
   };
   
   return (
-    <StyledHeader id="header">
+    <StyledHeader 
+      id="header"
+      theme={props.theme}
+    >
       {props.children}
       <StyledContainer>
         <Logo onLogoClick={() => onNavItemClickHandler(true)} />

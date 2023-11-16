@@ -2,12 +2,12 @@ import styled, { keyframes } from "styled-components";
 
 const slideUp = keyframes`
   20% {
-    top: 0;
+    top: calc(0px - var(--header-border));
     opacity: 1;
   }
 
   55% {
-    top: 0;
+    top: calc(0px - var(--header-border));
     opacity: 1;
   }
 
@@ -19,7 +19,7 @@ const slideUp = keyframes`
 
 export const TransitionPage = styled.div<{isFirstVisit: boolean}>`
   position: absolute;
-  top: 0;
+  top: calc(0px - var(--header-border));
   left: 0;
   display: flex;
   justify-content: center;

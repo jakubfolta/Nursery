@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.header`
+export const StyledHeader = styled.header<{theme: string}>`
   position: fixed;
   top: 0;
   width: 100%;
@@ -8,6 +8,7 @@ export const StyledHeader = styled.header`
   justify-content: center;
   padding: var(--padding-small);
   background: var(--color-white);
+  border-top: var(--header-border) solid ${props => props.theme};
   z-index: 10;
 `
 
