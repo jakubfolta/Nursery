@@ -9,7 +9,8 @@ def check_limit(actual_count, limit):
     return True
 
 class PageAdmin(custom_admin.BaseAdmin):
-  list_display = ('description',)
+  list_display = ('description', 'heading_1')
+  readonly_fields = ('description',)
 
   def has_add_permission(self, request):
     num_objects = self.model.objects.count()
@@ -20,10 +21,15 @@ class ReviewAdmin(admin.ModelAdmin):
   readonly_fields = ('date',)
   list_filter = ('rating',)
 
-class NavigationItemAdmin(admin.ModelAdmin):
+class NavigationItemAdmin(custom_admin.BaseAdmin):
   list_display = ('title', 'order', 'slug')
   exclude = ('slug',)
   ordering = ('order',)
+  readonly_fields = ('title',)
+
+  def has_add_permission(self, request):
+    num_objects = self.model.objects.count()
+    return check_limit(num_objects, 5)
 
 class NurseryDetailAdmin(custom_admin.BaseAdmin):
   list_display = ('address', 'phone', 'email', 'facebook_link', 'year')
