@@ -11,7 +11,7 @@ export const Layout: React.FC<Props> = props => {
   useEffect(() => {
     getHeaderHeight();
     window.addEventListener('resize', getHeaderHeight);
-  }, [])
+  }, []);
 
   const getHeaderHeight = debounce(() => {
     const headHeight = document.getElementById('header')!.clientHeight;

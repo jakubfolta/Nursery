@@ -38,6 +38,7 @@ export const App: React.FC = () => {
       setTimeout(() => {
         setDisplayLocation(location.pathname);
         updatePageTheme(location.pathname);
+        scrollToTheTop();
       }, 200);
       setTimeout(() => {
         setShowTransitionPage(false);
@@ -50,6 +51,14 @@ export const App: React.FC = () => {
     const color = CONSTANTS[themeLabel as keyof typeof CONSTANTS] as string;
 
     setPageTheme(color);
+  };
+
+  const scrollToTheTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0, 
+      behavior: 'instant' as ScrollBehavior,
+    });
   };
 
   const routes = 
