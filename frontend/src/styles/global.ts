@@ -67,9 +67,10 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: var(--color-background);
     box-sizing: border-box;
-    font-family: 'Nunito', sans-serif;
+    /* font-family: 'Nunito', sans-serif; */
+    /* font-family: 'Playpen Sans', cursive; */
+    font-family: 'Sono', monospace;
     font-size: var(--medium-font-size);
-    color: var(--color-primary);
 
     &::-webkit-scrollbar { display: none; }
     -ms-overflow-style: none;
@@ -82,7 +83,10 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.25;
   }
 
-  p, li { line-height: 1.5; }
+  p, li {
+    line-height: 1.5;
+    letter-spacing: -1px;
+  }
 
   :root {
     // Measures
@@ -106,7 +110,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-background: #f7f7f7;
     --color-footer-text: hsl(200, 20%, 99%);
     --color-warning: 	hsl(0, 100%, 55%);
-    --color-white: #fcfcfc;
+    --color-white: hsl(112, 67%, 97%);
     --color-grey: #f2f2f2;
     --color-dark: #0e3f00;
     --color-dark-2: #0b2d00;    
