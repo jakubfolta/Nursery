@@ -102,7 +102,7 @@ export const GlobalStyle = createGlobalStyle`
     /* --color-contact: hsl(192, 70%, 40%); */
     --color-contact-text: hsl(192, 20%, 99%);
     --color-contact-invalid: hsl(192, 20%, 69%);
-    --color-form-placeholder: hsl(192, 20%, 40%);
+    --color-form-placeholder: #A0BABF;
     --color-background: #f7f7f7;
     --color-footer-text: hsl(200, 20%, 99%);
     --color-warning: 	hsl(0, 100%, 55%);
