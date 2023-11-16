@@ -88,6 +88,7 @@ export const GlobalStyle = createGlobalStyle`
     // Measures
     --menu-animation-duration: ${CONSTANTS.menuAnimationDuration}s;
     --page-transition-duration: ${CONSTANTS.pageTransitionDuration}s;
+    --header-border: 6px;
     --padding-xsmall: 0.3rem;
     --padding-small: 1rem;
     --padding-medium: 2rem;

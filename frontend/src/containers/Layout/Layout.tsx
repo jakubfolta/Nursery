@@ -20,7 +20,7 @@ export const Layout: React.FC<Props> = props => {
 
   return (
     <>
-      <Header>
+      <Header theme={props.theme}>
         {props.showTransitionPage &&
           <PageTransition isFirstVisit={props.isFirstVisit} />}
       </Header>
