@@ -13,7 +13,7 @@ const slideUp = keyframes`
 
   100% {
     top: -100vh;
-    opacity: 1;
+    opacity: 0.1;
   }
 `
 
