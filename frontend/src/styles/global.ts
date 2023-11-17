@@ -65,6 +65,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    height: 100vh;
     background-color: var(--color-background);
     box-sizing: border-box;
     /* font-family: 'Nunito', sans-serif; */
@@ -72,9 +73,9 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Sono', monospace;
     font-size: var(--medium-font-size);
 
-    &::-webkit-scrollbar { display: none; }
+    /* &::-webkit-scrollbar { display: none; }
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    scrollbar-width: none; */
   }
 
   h1 { line-height: 1.125; }

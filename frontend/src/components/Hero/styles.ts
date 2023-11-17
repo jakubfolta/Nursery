@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const StyledHero = styled.div`
-  height: 60vh;
+  height: 2000px;
   max-width: 540px;
   padding: 0 1rem;
   color: var(--color-white);
