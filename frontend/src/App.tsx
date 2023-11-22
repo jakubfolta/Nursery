@@ -6,6 +6,17 @@ import { Layout } from './components';
 import { MainPage } from './containers/pages/MainPage/MainPage';
 import WebpageContextProvider from './store/webpage-context';
 import { pageThemes } from './constants/PageThemes';
+import Scrollbar from 'smooth-scrollbar';
+import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
+
+const options = {
+  plugins: {
+    overscroll: { effect: 'glow' }
+  }
+};
+
+Scrollbar.use(OverscrollPlugin);
+const scrollbar = Scrollbar.init(document.querySelector('#my-scrollbar') as HTMLElement, options);
 
 const AboutUsComponent = React.lazy(() => import('./containers/pages/AboutUs/AboutUs'));
 const ParentsComponent = React.lazy(() => import('./containers/pages/Parents/Parents'));
@@ -23,6 +34,15 @@ export const App: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
+    const fixed = document?.getElementById('header');
+
+    scrollbar.addListener(function(status) {
+      var offset = status.offset;
+     
+     (fixed as HTMLElement).style.top = offset.y + 'px';
+     (fixed as HTMLElement).style.left = offset.x + 'px';
+    });
+
     updatePageTheme(location.pathname);
 
     setTimeout(() => {
@@ -54,11 +74,7 @@ export const App: React.FC = () => {
   };
 
   const scrollToTheTop = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0, 
-      behavior: 'instant' as ScrollBehavior,
-    });
+    scrollbar.scrollTo(0, 0);
   };
 
   const routes = 
