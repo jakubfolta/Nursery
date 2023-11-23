@@ -8,8 +8,22 @@ export const StyledHeader = styled.header<{theme: string}>`
   justify-content: center;
   padding: var(--padding-small);
   background: var(--color-white);
-  border-top: var(--header-border) solid ${props => props.theme};
+  border-top: var(--header-border) solid transparent;
   z-index: 10;
+
+  &::before {
+    position: absolute;
+    top: calc(-1 * var(--header-border));
+    left: 0;
+    content: '';
+    width: 100%;
+    height: var(--header-border);
+    background: ${props => props.theme};
+    background: linear-gradient(to left, 
+      ${props => `hsl(from ${props.theme} h s 23%)`} 0%,
+      ${props => `hsl(from ${props.theme} h s 30%)`} 50%,
+      ${props => props.theme} 100%);
+  }
 `
 
 export const StyledContainer = styled.div`
