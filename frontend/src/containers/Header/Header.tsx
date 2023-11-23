@@ -38,7 +38,7 @@ export const Header: React.FC<{children: React.ReactNode, theme: string}> = prop
   const getScreenWidth = debounce(() => {
     const width = window.screen.width;
 
-    if (width >= 1024) setIsMenuDesktop(true);
+    if (width >= 992) setIsMenuDesktop(true);
     else setIsMenuDesktop(false);
   }, 100);
 

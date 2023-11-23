@@ -18,7 +18,7 @@ export const StyledLogoContainer = styled.div`
     height: 10rem;
   }
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 992px) {
     position: absolute;
     display: flex;
     justify-content: center;

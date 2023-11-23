@@ -24,10 +24,10 @@ export const StyledContainer = styled.div`
 
   @media only screen and (min-width: 150px) { justify-content: space-between; }
   @media only screen and (min-width: 768px) {
-    max-width: 768px;
+    max-width: 720px;
     padding: 0;
   }
 
-  @media only screen and (min-width: 1024px) { max-width: 1024px; }
+  @media only screen and (min-width: 1200px) { max-width: 1140px; }
   @media only screen and (min-width: 1400px) { max-width: 1400px; }
 `
