@@ -23,8 +23,8 @@ export const SectionsWrapper = styled.div`
 
   & > *:not(:first-child) { margin-top: 2rem; }
 
-  @media only screen and (min-width: 768px) { max-width: 768px; }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 768px) { max-width: 720px; }
+  @media only screen and (min-width: 1200px) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -48,7 +48,7 @@ export const Description = styled.div`
 export const LogoContainer = styled.div`
   align-self: center;
 
-  @media only screen and (min-width: 1024px) { align-self: flex-start; }
+  @media only screen and (min-width: 1200px) { align-self: flex-start; }
 `
 
 export const FooterContact = styled.div`
@@ -75,7 +75,7 @@ export const FooterSocial = styled.div`
   display: flex;
   justify-content: center;
 
-  @media only screen and (min-width: 1024px) { flex-basis: 100%; }
+  @media only screen and (min-width: 1200px) { flex-basis: 100%; }
 `
 
 export const SocialLink = styled.a`
