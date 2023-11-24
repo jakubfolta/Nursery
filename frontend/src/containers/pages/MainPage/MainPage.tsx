@@ -8,7 +8,7 @@ import desktopPaintingGirl from "../../../assets/images/painting-girl-desktop.jp
 import mobileKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-mobile.jpg";
 import desktopKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-desktop.jpg";
 
-import { StyledImage, StyledImageContainer } from "./styles";
+import { StyledImage, StyledImageContainer, StyledSquare, StyledTriangle } from "./styles";
 
 export const MainPage: React.FC = () => {
   const [heroHeading, setHeroHeading] = useState('');
@@ -27,6 +27,8 @@ export const MainPage: React.FC = () => {
     <Hero 
       heading={heroHeading}
       description={heroDescription}>
+      <StyledSquare id="square" />
+      <StyledTriangle id="triangle" />
       <StyledImageContainer>
         <StyledImage 
           srcSet={`${mobileKidsGrass} 420w, ${desktopKidsGrass} 560w`}

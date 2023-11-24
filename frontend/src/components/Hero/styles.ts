@@ -18,6 +18,7 @@ export const StyledHero = styled.div`
 
   @media only screen and (min-width: 1200px) {
     max-width: 1140px;
+    margin-top: 6rem;
     padding-left: 0;
     padding-right: 0;
   }
@@ -26,6 +27,7 @@ export const StyledHero = styled.div`
 `
 
 export const StyledContainer = styled.div`
+  position: relative;
   flex: 1 1 50%;
   
   @media only screen and (min-width: 1200px) {
