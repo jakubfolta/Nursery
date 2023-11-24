@@ -10,7 +10,7 @@ export const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--color-accent-3);
+  background-color: var(--color-footer-background);
   font-size: 18px;
   color: var(--color-footer-text);
 `

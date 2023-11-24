@@ -100,21 +100,21 @@ export const GlobalStyle = createGlobalStyle`
     
     // Colors
     --color-accent: ${COLORS.accentOne};
+    --color-accent-2: ${COLORS.accentTwo};
+    --color-accent-3: ${COLORS.accentThree};
     --color-accent-4: ${COLORS.accentFour};
-    --color-accent-2: #188507;
-    --color-accent-3: hsl(200, 95%, 15%);
+    --color-accent-5: ${COLORS.accentFive};
+
     --color-accent-copyright: hsl(200, 95%, 10%);
-    /* --color-contact: hsl(192, 70%, 40%); */
     --color-contact-text: hsl(192, 20%, 99%);
     --color-contact-invalid: hsl(192, 20%, 69%);
+    --color-footer-background: hsl(200, 95%, 15%);
     --color-form-placeholder: #A0BABF;
     --color-background: #f7f7f7;
     --color-footer-text: hsl(200, 20%, 99%);
     --color-warning: 	hsl(0, 100%, 55%);
     --color-white: hsl(112, 67%, 97%);
-    --color-grey: #f2f2f2;
     --color-dark: #0e3f00;
-    --color-dark-2: #0b2d00;    
     
     // Fonts
     --xsmall-font-size: 1.2rem;

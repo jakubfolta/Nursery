@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.main<{headerHeight: number, theme: string}>`
+  height: 2000px;
   display: flex;
   flex-direction: column;
   margin-top: ${props => props.headerHeight}px;
