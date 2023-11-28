@@ -32,16 +32,15 @@ export const App: React.FC = () => {
   const [isFirstVisit, setIsFirstVisit] = useState(true);
   const [showTransitionPage, setShowTransitionPage] = useState(true);
   const [pageTheme, setPageTheme] = useState('');
-  // const [isTabletSize, setIsTabletSize] = useState(false);
-  // const [isDesktopSize, setIsDesktopSize] = useState(false);
+  const [isDesktopSize, setIsDesktopSize] = useState(false);
   
   const location = useLocation();
 
   useEffect(() => {
-    // getScreenWidth();
+    getScreenWidth();
     const header = document?.getElementById('header');
 
-    // window.addEventListener('resize', getScreenWidth);
+    window.addEventListener('resize', getScreenWidth);
     scrollbar.addListener(function(status) {
       var offset = status.offset;
      
@@ -57,24 +56,18 @@ export const App: React.FC = () => {
     }, pageTransitionDuration);
   }, []);
 
-  // useEffect(() => {
-  //   const square = document?.getElementById('square');
-  //   const triangle = document?.getElementById('triangle');
-
-  //   scrollbar.addListener(function(status) {
-  //     var offset = status.offset;
-     
-  //     (square as HTMLElement).style.top = !isTabletSize && !isDesktopSize
-  //       ? ((offset.y / 20 * -1) - 30) + 'px' 
-  //       : isTabletSize ? ((offset.y / 5 * -1) - 30) + 'px'
-  //       : ((offset.y / 2 * -1) - 30) + 'px'; 
-  //     (triangle as HTMLElement).style.bottom = !isTabletSize && !isDesktopSize
-  //       ? ((offset.y / 30 * -1) - 30) + 'px' 
-  //       : isTabletSize ? (offset.y / 15 - 100) + 'px'
-  //       : (offset.y / 10 - 30) + 'px';
-  //   });
-
-  // }, [isTabletSize, isDesktopSize])
+  useEffect(() => {
+    if (isDesktopSize && displayLocation === '/') {
+      const underline = document?.getElementById('underline');
+      const underlineWidth = getComputedStyle((underline as HTMLElement)).width.replace('px', '');
+      
+      scrollbar.addListener(function(status) {
+        var offset = status.offset;
+        
+        (underline as HTMLElement).style.width = +underlineWidth + offset.y + 'px';
+      }); 
+    }
+  }, [isDesktopSize, displayLocation])
   
   useEffect(() => {
     if (displayLocation !== location.pathname) {
@@ -102,25 +95,20 @@ export const App: React.FC = () => {
     scrollbar.scrollTo(0, 0);
   };
 
-  // const getScreenWidth = debounce(() => {
-  //   const width = window.screen.width;
+  const getScreenWidth = debounce(() => {
+    const width = window.screen.width;
 
-  //   setIsTabletSize(false);
-  //   setIsDesktopSize(false);
+    setIsDesktopSize(false);
 
-  //   if (width >= 768) {
-  //     setIsTabletSize(true);
-  //   };
-  //   if (width >= 992) {
-  //     setIsDesktopSize(true);
-  //     setIsTabletSize(false);
-  //   };
-  // }, 100);
+    if (width >= 1200) {
+      setIsDesktopSize(true);
+    };
+  }, 100);
 
   const routes = 
     <Suspense fallback={<div>Loading...</div>}>
       <Routes location={displayLocation}>
-        <Route path="/" element={<MainPage />}  />
+        <Route path="/" element={<MainPage isDesktopSize={isDesktopSize} />}  />
         <Route path="/o-nas" element={<AboutUsComponent />}  />
         <Route path="/dla-rodzicow" element={<ParentsComponent />}  />
         <Route path="/oferta" element={<OfferComponent />}  />
@@ -135,7 +123,8 @@ export const App: React.FC = () => {
       <Layout
         showTransitionPage={showTransitionPage}
         isFirstVisit={isFirstVisit}
-        theme={pageTheme}>
+        theme={pageTheme}
+        displayLocation={displayLocation}>
         {routes}
       </Layout>
     </WebpageContextProvider>
