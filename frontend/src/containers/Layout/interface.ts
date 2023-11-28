@@ -3,4 +3,5 @@ export interface Props {
   isFirstVisit: boolean;
   showTransitionPage: boolean;
   theme: string;
+  displayLocation: string;
 }

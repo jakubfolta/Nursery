@@ -8,9 +8,9 @@ import desktopPaintingGirl from "../../../assets/images/painting-girl-desktop.jp
 import mobileKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-mobile.jpg";
 import desktopKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-desktop.jpg";
 
-import { StyledImage, StyledImageContainer, StyledSquare, StyledTriangle } from "./styles";
+import { StyledDivider, StyledImage, StyledImageContainer, StyledImageContainerShadow, Wave } from "./styles";
 
-export const MainPage: React.FC = () => {
+export const MainPage: React.FC<{isDesktopSize: boolean}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
 
@@ -24,31 +24,41 @@ export const MainPage: React.FC = () => {
   }, [mainPageContent]);
 
   return (
-    <Hero 
-      heading={heroHeading}
-      description={heroDescription}>
-      <StyledSquare id="square" />
-      <StyledTriangle id="triangle" />
-      <StyledImageContainer>
-        <StyledImage 
-          srcSet={`${mobileKidsGrass} 420w, ${desktopKidsGrass} 560w`}
-          sizes="(max-width: 767px) 420px, 560px"
-          src={desktopKidsGrass}
-          alt="Dzieci na trawie"
-        />
-        <StyledImage 
-          srcSet={`${mobilePaintingGirl} 420w, ${desktopPaintingGirl} 560w`}
-          sizes="(max-width: 767px) 420px, 560px"
-          src={desktopPaintingGirl}
-          alt="Malujaca dziewczynka"
-        />
-        <StyledImage 
-          srcSet={`${mobileKidsPlayingWithWater} 420w, ${desktopKidsPlayingWithWater} 560w`}
-          sizes="(max-width: 767px) 420px, 560px"
-          src={desktopKidsPlayingWithWater}
-          alt="Dzieci bawiace sie woda"
-        />
-      </StyledImageContainer>
-    </Hero>
+    <>
+    
+      <Hero
+        isMainPage
+        isDesktopSize={props.isDesktopSize}
+        heading={heroHeading}
+        description={heroDescription}>
+        <StyledImageContainer>
+          <StyledImage 
+            srcSet={`${mobileKidsGrass} 420w, ${desktopKidsGrass} 560w`}
+            sizes="(max-width: 767px) 420px, 560px"
+            src={desktopKidsGrass}
+            alt="Dzieci na trawie"
+          />
+          <StyledImage 
+            srcSet={`${mobilePaintingGirl} 420w, ${desktopPaintingGirl} 560w`}
+            sizes="(max-width: 767px) 420px, 560px"
+            src={desktopPaintingGirl}
+            alt="Malujaca dziewczynka"
+          />
+          <StyledImage 
+            srcSet={`${mobileKidsPlayingWithWater} 420w, ${desktopKidsPlayingWithWater} 560w`}
+            sizes="(max-width: 767px) 420px, 560px"
+            src={desktopKidsPlayingWithWater}
+            alt="Dzieci bawiace sie woda"
+          />
+        </StyledImageContainer>
+        <StyledImageContainerShadow />
+      </Hero>
+      <StyledDivider>
+        <Wave />
+        <Wave />
+        <Wave />
+        <Wave />
+      </StyledDivider>
+    </>
   );
 };

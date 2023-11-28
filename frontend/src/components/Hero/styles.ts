@@ -60,3 +60,15 @@ export const StyledHeading = styled.h1`
 export const StyledDescription = styled.p`
   font-size: var(--big-font-size);
 `
+
+export const StyledUnderline = styled.span`
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  min-width: 100px;
+  max-width: 600px;
+  width: 100px;
+  height: 10px;
+  border-radius: 3px;
+  background-color: var(--color-white);
+`

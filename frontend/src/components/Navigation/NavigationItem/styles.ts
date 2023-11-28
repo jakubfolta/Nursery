@@ -16,15 +16,13 @@ export const NavigationLink = styled(NavLink)`
   position: relative;
   display: inline-block;
   width: 100%;
-  padding: 1rem 0;
+  padding: 1rem 0.5rem;
   text-align: center;
   font-size: 18px;
   color: inherit;
   text-decoration: none;
 
-  @media only screen and (min-width: 1024px) {
-    padding: 0.5rem;
-  }
+  @media only screen and (min-width: 1024px) { padding: 0.5rem; }
 
   &&.active span::after { width: 100%; }
 `

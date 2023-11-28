@@ -20,13 +20,16 @@ export const Layout: React.FC<Props> = props => {
 
   return (
     <>
-      <Header theme={props.theme}>
+      <Header 
+        theme={props.theme}
+        isMainPage={props.displayLocation === '/'}>
         {props.showTransitionPage &&
           <PageTransition isFirstVisit={props.isFirstVisit} />}
       </Header>
       <MainContainer 
         headerHeight={headerHeight}
-        theme={props.theme}>
+        theme={props.theme}
+        isMainPage={props.displayLocation === '/'}>
         {props.children}
       </MainContainer>
       <Footer />
