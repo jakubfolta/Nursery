@@ -1,4 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+import Background from "./../../../assets/images/waves.svg";
 
 const showUp1 = keyframes`
   0% { opacity: 1; }
@@ -25,53 +26,61 @@ const showUp3 = keyframes`
   100% { opacity: 0; }
 `
 
-const rotateSquare = keyframes`
-  0% {
-    transform: rotate(0deg);
-    left: 0;
+const shapeChange = keyframes`
+  0% { border-radius: 73% 27% 41% 59% / 43% 54% 46% 57%; }
+  25% { border-radius: 73% 27% 29% 71% / 71% 71% 29% 29%; }
+  50% { border-radius: 47% 53% 46% 54% / 37% 35% 65% 63%; }
+  75% { border-radius: 77% 23% 77% 23% / 37% 67% 33% 63%; }
+  100% { border-radius: 73% 27% 41% 59% / 43% 54% 46% 57%; }
+`
+
+const waveAnimation = css`
+  @keyframes wave {
+    100% { background-position: 700px; }
   }
 
-  50% {
-    transform: rotate(360deg);
-    left: 87%;
-  }
-  
-  100% {
-    transform: rotate(0deg);
-    left: 0%;
+  @media only screen and (min-width: 536px) {
+    @keyframes wave {
+      100% { background-position: 1000px; }
+    }
   }
 `
 
-const rotateTriangle = keyframes`
-  0% {
-    transform: rotate(0deg);
-    right: 0;
-  }
-
-  50% {
-    transform: rotate(270deg);
-    right: 87%;
-  }
-  100% {
-    transform: rotate(0deg);
-    right: 0%;
-  }
+const imageContainer = css`
+  width: 80%;
+  border-radius: 73% 27% 41% 59% / 43% 54% 46% 57%;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.4);
+  animation: ${shapeChange} 20s infinite;
+  @media only screen and (min-width: 992px) { width: 90%; }
 `
 
 export const StyledImageContainer = styled.div`
+  ${imageContainer}
+
   position: relative;
   display: flex;
-  width: 80%;
-  border-radius: 20%;
+  background-color: hsl(0, 0%, 60%);
   overflow: hidden;
-  
-  @media only screen and (min-width: 992px) { width: 90%; }
+  z-index: 1;  
+`
+
+export const StyledImageContainerShadow = styled.div`
+  ${imageContainer}
+
+  position: absolute;
+  top: 30px;
+  left: 8px;
+  height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.3);
+
+  @media only screen and (min-width: 536px) { left: 107px; }
+  @media only screen and (min-width: 992px) { left: 56px; }
 `
 
 export const StyledImage = styled.img`
   width: 100%;
   object-fit: cover;
-  animation-duration: 12s;
+  animation-duration: 18s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-name: ${showUp1};
@@ -89,69 +98,43 @@ export const StyledImage = styled.img`
   }
 `
 
-export const StyledSquare = styled.div`
-  position: absolute;
-  top: -30px;
-  left: 0;
-  width: 50px;
-  height: 50px;
-  background: var(--color-accent-2);
-  background: linear-gradient(to left, 
-    hsl(from var(--color-accent-2) h s 23%) 0%,
-    var(--color-accent-2) 100%);    
-  border-radius: 10%;
-  opacity: .7;
-  z-index: 1;
-  animation: ${rotateSquare} 6s infinite;
-
-  @media only screen and (min-width: 536px) {
-    width: 70px;
-    height: 70px;
-  }
-
-  @media only screen and (min-width: 768px) {
-    width: 90px;
-    height: 90px;
-  }
-
-  @media only screen and (min-width: 992px) {
-    width: 70px;
-    height: 70px;
-    opacity: 1;
-  }
+export const StyledDivider = styled.div`
+  position: relative;
+  width: 100%;
+  height: 90px;
 `
 
-export const StyledTriangle = styled.div`
-  position: absolute;
-  bottom: -30px;
-  right: 0px;
-  width: 50px;
-  height: 50px;
-  clip-path: polygon(0px 0px, 10% 0px, 12% 1px, 13% 2px, 14% 2px, 98% 86%, 98% 87%, 99% 88%, 100% 90%, 100% 100%, 0px 100%);
-  background: var(--color-accent-3);
-  background: linear-gradient(to left, 
-    hsl(from var(--color-accent-3) h s 23%) 0%,
-    var(--color-accent-3) 100%);
-  border-radius: 15%;
-  opacity: .7;
-  z-index: 1;
-  animation: ${rotateTriangle} 6s infinite;
-
-  @media only screen and (min-width: 536px) {
-    width: 70px;
-    height: 70px;
-  }
-
-  @media only screen and (min-width: 768px) {
-    bottom: -100px;
-    width: 90px;
-    height: 90px;
-  }
+export const Wave = styled.div`
+  ${waveAnimation}
   
-  @media only screen and (min-width: 992px) {
-    bottom: -30px;
-    width: 70px;
-    height: 70px;
-    opacity: 1;
-  }
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  background-image: url(${Background});
+  background-size: 700px;
+  transform: rotate(180deg);
+  animation: wave 20s reverse linear infinite;
+
+  @media only screen and (min-width: 536px) { background-size: 1000px; }
+  
+   &:nth-child(2) {
+    opacity: .8;
+    height: 120px;
+    animation-duration: 15s;
+    animation-direction: normal;
+   }
+
+   &:nth-child(3) {
+    opacity: .4;
+    height: 150px;
+    animation-duration: 8s;
+    animation-direction: normal;
+   }
+
+   &:nth-child(4) {
+    opacity: .2;
+    height: 110px;
+    animation-duration: 12s;
+   }
 `
