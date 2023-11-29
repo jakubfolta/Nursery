@@ -22,7 +22,7 @@ export const Line1 = styled.span`
   ${line};
   top: -.5rem;
   width: 4rem;
-  
+
   &.opened { animation: joinLine1 var(--menu-animation-duration) forwards; }
   &.closed { animation: expandLine1 var(--menu-animation-duration); }
 

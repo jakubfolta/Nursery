@@ -54,11 +54,12 @@ export const Header: React.FC<{children: React.ReactNode, theme: string, isMainP
     toggleNavigation();
   };
 
-  const onNavItemClickHandler = (isLogoClick?: boolean) => {
-    if (isLogoClick && !isMenuVisible || window.location.pathname === recentUrl) return;
-
+  const onNavItemClickHandler = () => {
+    if (!isMenuVisible || window.location.pathname === recentUrl) return;
+    
     setTimeout(() => {
-      toggleNavigation();
+      setIsMenuVisible(prevState => !prevState);
+      setMenuButtonClass('');
     }, halfPageTransitionDuration);
   };
   
@@ -69,13 +70,13 @@ export const Header: React.FC<{children: React.ReactNode, theme: string, isMainP
       isMainPage={props.isMainPage}>
       {props.children}
       <StyledContainer>
-        <Logo onLogoClick={() => onNavItemClickHandler(true)} />
+        <Logo onLogoClick={onNavItemClickHandler} />
         {!isMenuDesktop && 
           <MenuButton 
             onButtonClick={onClickHandler}
             buttonState={menuButtonClass} />
         }
-        <NavigationList 
+        <NavigationList
           onNavItemClick={onNavItemClickHandler}
           isVisible={isMenuVisible} 
           isClicked={!isMenuReady}
