@@ -7,27 +7,32 @@ import mobilePaintingGirl from "../../../assets/images/painting-girl-mobile.jpg"
 import desktopPaintingGirl from "../../../assets/images/painting-girl-desktop.jpg";
 import mobileKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-mobile.jpg";
 import desktopKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-desktop.jpg";
+import funnyMonkey from "../../../assets/images/funny-monkey.png";
+import funnyDog from "../../../assets/images/funny-dog.png";
 
-import { StyledDivider, StyledImage, StyledImageContainer, StyledImageContainerShadow, Wave } from "./styles";
+import { FacilitiesDescription, FacilitiesImage, FacilitiesImageBox, FacilitiesImageHeading, FacilitiesImagesContainer, FacilitiesSection, StyledDivider, StyledImage, StyledImageContainer, StyledImageContainerShadow, Wave } from "./styles";
 
-export const MainPage: React.FC<{isDesktopSize: boolean}> = props => {
+export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
+  const [sectionHeading, setSectionHeading] = useState<string | undefined>('');
+  const [sectionDescription, setSectionDescription] = useState<string | undefined>('');
 
   const mainPageContent = useContext(WebpageContext).pages['Main page'];
-
   useEffect(() => {
     if (mainPageContent) {
       setHeroHeading(mainPageContent.heading_1);
       setHeroDescription(mainPageContent.text_1);
+      setSectionHeading(mainPageContent.heading_2);
+      setSectionDescription(mainPageContent.text_2);
     }
   }, [mainPageContent]);
 
   return (
     <>
-    
       <Hero
         isMainPage
+        theme={props.theme}
         isDesktopSize={props.isDesktopSize}
         heading={heroHeading}
         description={heroDescription}>
@@ -53,12 +58,34 @@ export const MainPage: React.FC<{isDesktopSize: boolean}> = props => {
         </StyledImageContainer>
         <StyledImageContainerShadow />
       </Hero>
+
       <StyledDivider>
         <Wave />
         <Wave />
         <Wave />
         <Wave />
       </StyledDivider>
+
+      <FacilitiesSection>
+        <div>
+          <h2>{sectionHeading}</h2>
+          <FacilitiesDescription>
+            {sectionDescription}
+          </FacilitiesDescription>
+        </div>
+
+        <FacilitiesImagesContainer id="facilities-images-container">
+          {/* <FacilitiesImageBox to="/o-nas#sectionId"> */}
+          <FacilitiesImageBox to="/">
+            <FacilitiesImage id="funny-maluszkowo-image" src={funnyMonkey} alt="Zabawna małpka" />
+            <FacilitiesImageHeading>Maluszkowo</FacilitiesImageHeading>
+          </FacilitiesImageBox>
+          <FacilitiesImageBox to="/">
+            <FacilitiesImage id="funny-starszakowo-image" src={funnyDog} alt="Zabawny piesek" />
+            <FacilitiesImageHeading>Starszakowo</FacilitiesImageHeading>
+          </FacilitiesImageBox>
+        </FacilitiesImagesContainer>
+      </FacilitiesSection>
     </>
   );
 };

@@ -4,7 +4,7 @@ export const ContactFormContainer = styled.div`
   align-self: stretch;
   display: flex;
   justify-content: center;
-  background-color: var(--color-contact);
+  background-color: var(--color-accent-4);
   padding: 3rem 0;
 `
 
@@ -57,7 +57,7 @@ const textEmailInput = css`
 
 const input = css`
   width: 100%;
-  background-color: var(--color-contact);
+  background-color: var(--color-accent-4);
   font-family: inherit;
   font-size: var(--big-font-size);
   font-weight: 600;
@@ -113,7 +113,7 @@ export const SubmitButton = styled.button<{isFormValid: boolean}>`
   align-items: center;
   width: 80%;
   padding: 1rem 2rem;
-  background-color: var(--color-contact);
+  background-color: var(--color-accent-4);
   border: 3px solid;
   border-color: ${props => props.isFormValid ? 'var(--color-accent)' : 'var(--color-contact-invalid)'};
   border-radius: 5px;

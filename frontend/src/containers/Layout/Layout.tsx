@@ -27,9 +27,7 @@ export const Layout: React.FC<Props> = props => {
           <PageTransition isFirstVisit={props.isFirstVisit} />}
       </Header>
       <MainContainer 
-        headerHeight={headerHeight}
-        theme={props.theme}
-        isMainPage={props.displayLocation === '/'}>
+        headerHeight={headerHeight}>
         {props.children}
       </MainContainer>
       <Footer />

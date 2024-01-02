@@ -29,7 +29,7 @@ const defaultFormState = {
   }
 }
 
-const Contact: React.FC = () => {
+const Contact: React.FC<{theme: string}> = props => {
   const [formState, setFormState] = useState<Form>({formFields: defaultFormState});
   const [isValidForm, setIsValidForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -123,6 +123,7 @@ const Contact: React.FC = () => {
   return (
     <>
       <Hero 
+        theme={props.theme}
         heading={heroHeading}
         description={heroDescription}
       />

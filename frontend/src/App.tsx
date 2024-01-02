@@ -1,73 +1,112 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
 import { Navigate, useLocation } from 'react-router-dom';
 import { CONSTANTS, GlobalStyle } from './styles/global';
 import { Layout } from './components';
-import { MainPage } from './containers/pages/MainPage/MainPage';
 import WebpageContextProvider from './store/webpage-context';
 import { pageThemes } from './constants/PageThemes';
 import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 import { debounce } from 'lodash-es';
+import { websiteRoutes } from './routes/Routes';
 
-const options = {
+type ScrollStatus = {
+  offset: {
+    x: number,
+    y: number,
+  },
+  limit: {
+    x: number,
+    y: number,
+  }
+};
+
+const scrollbarOptions = {
   plugins: {
     overscroll: { effect: 'glow' }
   }
 };
 
 Scrollbar.use(OverscrollPlugin);
-const scrollbar = Scrollbar.init(document.querySelector('#my-scrollbar') as HTMLElement, options);
-window.history.scrollRestoration = 'manual'
-
-const AboutUsComponent = React.lazy(() => import('./containers/pages/AboutUs/AboutUs'));
-const ParentsComponent = React.lazy(() => import('./containers/pages/Parents/Parents'));
-const OfferComponent = React.lazy(() => import('./containers/pages/Offer/Offer'));
-const ContactComponent = React.lazy(() => import('./containers/pages/Contact/Contact'));
+const scrollbar = Scrollbar.init(document.querySelector('#my-scrollbar') as HTMLElement, scrollbarOptions);
+window.history.scrollRestoration = 'manual';
 
 const pageTransitionDuration = CONSTANTS.pageTransitionDuration * 1000;
+const underlineWidth = CONSTANTS.underlineWidth;
 
 export const App: React.FC = () => {
-  const [displayLocation, setDisplayLocation] = useState('/');
+  const [displayLocation, setDisplayLocation] = useState('');
   const [isFirstVisit, setIsFirstVisit] = useState(true);
   const [showTransitionPage, setShowTransitionPage] = useState(true);
   const [pageTheme, setPageTheme] = useState('');
   const [isDesktopSize, setIsDesktopSize] = useState(false);
-  
+  const [isRowImagesDirection, setIsRowImagesDirection] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [intersectionOffsetTop, setIntersectionOffsetTop] = useState(-1);
+  const [isUnderlineListener, setIsUnderlineListener] = useState(false);
   const location = useLocation();
+  
+  const maluszkowoImage = document.getElementById('funny-maluszkowo-image');
+  const starszakowoImage = document.getElementById('funny-starszakowo-image');
+
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      setIsIntersecting(true);
+      setIntersectionOffsetTop(scrollbar.scrollTop);
+    } else {
+      setIsIntersecting(false);
+    }
+  });
 
   useEffect(() => {
-    getScreenWidth();
-    const header = document?.getElementById('header');
+    const header = document.getElementById('header');
+    const scrollContent = document.querySelector('.scroll-content');
 
-    window.addEventListener('resize', getScreenWidth);
-    scrollbar.addListener(function(status) {
-      var offset = status.offset;
-     
-      (header as HTMLElement).style.top = offset.y + 'px';
-      (header as HTMLElement).style.left = offset.x + 'px';
-    });
-
+    if (scrollContent) {
+      (scrollContent as HTMLElement).style.position = 'relative';
+      (scrollContent as HTMLElement).style.zIndex = '1';
+    }
     updatePageTheme(location.pathname);
+    getScreenWidth();
+    window.addEventListener('resize', getScreenWidth);
 
+    scrollbar.addListener(function(status) {
+      let offset = status.offset;
+      
+      if (header) {
+        (header as HTMLElement).style.top = offset.y + 'px';
+      }
+    });
+    
     setTimeout(() => {
       setIsFirstVisit(false);
       setShowTransitionPage(false);
     }, pageTransitionDuration);
   }, []);
+  
+  useEffect(() => {
+    if (displayLocation !== '/' && isUnderlineListener) {
+      scrollbar.removeListener(underlineListener);
+      setIsUnderlineListener(false);
+    }
+    if (isDesktopSize && displayLocation === '/') {
+      scrollbar.addListener(underlineListener);
+      setIsUnderlineListener(true);
+    }
+    if (displayLocation === '/') {
+      const facilitiesImagesContainer = document.getElementById('facilities-images-container');
+      facilitiesImagesContainer && observer.observe(facilitiesImagesContainer);
+    }
+  }, [isDesktopSize, displayLocation]);
 
   useEffect(() => {
-    if (isDesktopSize && displayLocation === '/') {
-      const underline = document?.getElementById('underline');
-      const underlineWidth = getComputedStyle((underline as HTMLElement)).width.replace('px', '');
-      
-      scrollbar.addListener(function(status) {
-        var offset = status.offset;
-        
-        (underline as HTMLElement).style.width = +underlineWidth + offset.y + 'px';
-      }); 
+    if (!isIntersecting && intersectionOffsetTop !== -1) {
+      scrollbar.removeListener(imagesListener);
     }
-  }, [isDesktopSize, displayLocation])
+    if (isIntersecting) {
+      scrollbar.addListener(imagesListener);
+    }
+  }, [isIntersecting]);
   
   useEffect(() => {
     if (displayLocation !== location.pathname) {
@@ -84,11 +123,33 @@ export const App: React.FC = () => {
     }
   }, [location, displayLocation]);
 
+  const underlineListener = useCallback((status: ScrollStatus, underline = document.getElementById('underline')) => {
+    let offset = status.offset;
+
+    (underline as HTMLElement).style.width = underlineWidth + offset.y + 'px';
+  }, []);
+
+  const imagesListener = useCallback((status: ScrollStatus) => {
+    const resetedOffset = status.offset.y - intersectionOffsetTop;
+    const imageOffsetPosition = -resetedOffset / 8 - 20 + 'px';
+    
+    (maluszkowoImage as HTMLElement).style.top = imageOffsetPosition;
+    if (!isRowImagesDirection) {
+      (starszakowoImage as HTMLElement).style.top = -resetedOffset / 8 + 'px';
+    } else {
+      (starszakowoImage as HTMLElement).style.top = imageOffsetPosition;
+    }
+  }, [intersectionOffsetTop]);
+
   const updatePageTheme = (path: string) => {
     const themeLabel = pageThemes[path as keyof typeof pageThemes];
-    const color = CONSTANTS[themeLabel as keyof typeof CONSTANTS] as string;
+    const color = getThemeColor(themeLabel);
 
     setPageTheme(color);
+  };
+  
+  const getThemeColor = (label: string) => {
+    return CONSTANTS[label as keyof typeof CONSTANTS] as string;
   };
 
   const scrollToTheTop = () => {
@@ -98,24 +159,25 @@ export const App: React.FC = () => {
   const getScreenWidth = debounce(() => {
     const width = window.screen.width;
 
+    setIsRowImagesDirection(false);
     setIsDesktopSize(false);
+
+    if (width >= 992) {
+      setIsRowImagesDirection(true);
+    };
 
     if (width >= 1200) {
       setIsDesktopSize(true);
     };
   }, 100);
 
-  const routes = 
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes location={displayLocation}>
-        <Route path="/" element={<MainPage isDesktopSize={isDesktopSize} />}  />
-        <Route path="/o-nas" element={<AboutUsComponent />}  />
-        <Route path="/dla-rodzicow" element={<ParentsComponent />}  />
-        <Route path="/oferta" element={<OfferComponent />}  />
-        <Route path="/kontakt" element={<ContactComponent />}  />
-        <Route path="/*" element={<Navigate to="/" />}  />
-      </Routes>
-    </Suspense>
+  const routes = websiteRoutes.map((route, index) => {
+    const Component = route.component;
+
+    return (
+      <Route key={index} path={route.path} element={<Component theme={getThemeColor(route.themeLabel)} {...(route.path === '/' && {isDesktopSize: isDesktopSize})} /> } />
+    );
+  });
   
   return (
     <WebpageContextProvider>
@@ -125,7 +187,12 @@ export const App: React.FC = () => {
         isFirstVisit={isFirstVisit}
         theme={pageTheme}
         displayLocation={displayLocation}>
-        {routes}
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes location={displayLocation}>
+            {routes}
+            <Route path="/*" element={<Navigate to="/" />} />
+          </Routes>
+        </Suspense>
       </Layout>
     </WebpageContextProvider>
   );

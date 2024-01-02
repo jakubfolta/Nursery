@@ -22,6 +22,7 @@ const COLORS = {
 export const CONSTANTS = {
   menuAnimationDuration: .3,
   pageTransitionDuration: 1.2,
+  underlineWidth: 100,
   mainPageTheme: COLORS.accentOne,
   aboutUsPageTheme: COLORS.accentTwo,
   offerPageTheme: COLORS.accentThree,
@@ -66,7 +67,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     height: 100vh;
-    background-color: var(--color-background);
+    background-color: var(--color-white);
     box-sizing: border-box;
     /* font-family: 'Nunito', sans-serif; */
     /* font-family: 'Playpen Sans', cursive; */
@@ -78,11 +79,12 @@ export const GlobalStyle = createGlobalStyle`
     scrollbar-width: none; */
   }
 
-  h1 { line-height: 1.125; }
-  h2 {
-    font-size: var(--xl-font-size);
-    line-height: 1.25;
+  h1, h2 {
+    font-family: 'Itim', cursive;
+    line-height: 1.125;
   }
+
+  h2 { font-size: var(--section-heading-font-size); }
 
   p, li {
     line-height: 1.5;
@@ -93,6 +95,7 @@ export const GlobalStyle = createGlobalStyle`
     // Measures
     --menu-animation-duration: ${CONSTANTS.menuAnimationDuration}s;
     --page-transition-duration: ${CONSTANTS.pageTransitionDuration}s;
+    --underline-width: ${CONSTANTS.underlineWidth}px;
     --header-border: 6px;
     --padding-xsmall: 0.3rem;
     --padding-small: 1rem;
@@ -110,11 +113,10 @@ export const GlobalStyle = createGlobalStyle`
     --color-contact-invalid: hsl(192, 20%, 69%);
     --color-footer-background: hsl(200, 95%, 15%);
     --color-form-placeholder: #A0BABF;
-    --color-background: #f7f7f7;
     --color-footer-text: hsl(200, 20%, 99%);
     --color-warning: 	hsl(0, 100%, 55%);
     --color-white: hsl(112, 67%, 97%);
-    --color-dark: #0e3f00;
+    --color-dark: hsl(24, 5%, 20%);
     
     // Fonts
     --xsmall-font-size: 1.2rem;
@@ -123,6 +125,7 @@ export const GlobalStyle = createGlobalStyle`
     --medium-font-size: 1.8rem;
     --big-font-size: 2rem;
     --xl-font-size: 2.7rem;
+    --section-heading-font-size: 4.7rem;
     --heading-font-size: 5rem;
     
     // Animations
