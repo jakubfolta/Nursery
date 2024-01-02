@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Hero from "../../../components/Hero/Hero";
 import { WebpageContext } from "../../../store/webpage-context";
 
-const Parents: React.FC = () => {
+const Parents: React.FC<{theme: string}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
 
@@ -17,6 +17,7 @@ const Parents: React.FC = () => {
 
   return (
     <Hero 
+      theme={props.theme}
       heading={heroHeading}
       description={heroDescription}
     />
