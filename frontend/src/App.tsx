@@ -145,7 +145,7 @@ export const App: React.FC = () => {
 
     (maluszkowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
     if (!isRowImagesDirection) {
-      (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 20 + 'px';
+      (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 40 + 'px';
     } else {
       (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
     }

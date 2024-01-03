@@ -7,24 +7,45 @@ import mobilePaintingGirl from "../../../assets/images/painting-girl-mobile.jpg"
 import desktopPaintingGirl from "../../../assets/images/painting-girl-desktop.jpg";
 import mobileKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-mobile.jpg";
 import desktopKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-desktop.jpg";
+import mobileRainbowHands from "../../../assets/images/rainbow-hands-mobile.jpg";
+import desktopRainbowHands from "../../../assets/images/rainbow-hands-desktop.jpg";
 import funnyMonkey from "../../../assets/images/funny-monkey.png";
 import funnyDog from "../../../assets/images/funny-dog.png";
 
-import { FacilitiesDescription, FacilitiesImage, FacilitiesImageBox, FacilitiesImageHeading, FacilitiesImagesContainer, FacilitiesSection, StyledDivider, StyledImage, StyledImageContainer, StyledImageContainerShadow, Wave } from "./styles";
+import {
+  FacilitiesImage,
+  FacilitiesImageBox,
+  FacilitiesImageHeading,
+  FacilitiesImagesContainer,
+  FacilitiesSection,
+  StyledDivider,
+  StyledImage,
+  StyledImageContainer,
+  StyledImageContainerShadow,
+  ValuesDescriptionContainer,
+  ValuesImage,
+  ValuesImageContainer,
+  ValuesSection,
+  Wave } from "./styles";
 
 export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
-  const [sectionHeading, setSectionHeading] = useState<string | undefined>('');
-  const [sectionDescription, setSectionDescription] = useState<string | undefined>('');
+  const [facilitiesSectionHeading, setFacilitiesSectionHeading] = useState<string | undefined>('');
+  const [facilitiesSectionDescription, setFacilitiesSectionDescription] = useState<string | undefined>('');
+  const [valuesSectionHeading, setValuesSectionHeading] = useState<string | undefined>('');
+  const [valuesSectionDescription, setValuesSectionDescription] = useState<string | undefined>('');
 
   const mainPageContent = useContext(WebpageContext).pages['Main page'];
+
   useEffect(() => {
     if (mainPageContent) {
       setHeroHeading(mainPageContent.heading_1);
       setHeroDescription(mainPageContent.text_1);
-      setSectionHeading(mainPageContent.heading_2);
-      setSectionDescription(mainPageContent.text_2);
+      setFacilitiesSectionHeading(mainPageContent.heading_2);
+      setFacilitiesSectionDescription(mainPageContent.text_2);
+      setValuesSectionHeading(mainPageContent.heading_3);
+      setValuesSectionDescription(mainPageContent.text_3);
     }
   }, [mainPageContent]);
 
@@ -68,10 +89,8 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
 
       <FacilitiesSection>
         <div>
-          <h2>{sectionHeading}</h2>
-          <FacilitiesDescription>
-            {sectionDescription}
-          </FacilitiesDescription>
+          <h2>{facilitiesSectionHeading}</h2>
+          <p>{facilitiesSectionDescription}</p>
         </div>
 
         <FacilitiesImagesContainer id="facilities-images-container">
@@ -86,6 +105,22 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
           </FacilitiesImageBox>
         </FacilitiesImagesContainer>
       </FacilitiesSection>
+
+      <ValuesSection>
+        <ValuesDescriptionContainer>
+          <h2>{valuesSectionHeading}</h2>
+          <p>{valuesSectionDescription}</p>
+        </ValuesDescriptionContainer>
+
+        <ValuesImageContainer>
+          <ValuesImage 
+            srcSet={`${mobileRainbowHands} 520w, ${desktopRainbowHands} 700w`}
+            sizes="(max-width: 767px) 520px, 700px"
+            src={desktopRainbowHands}
+            alt="Kolorowe rece"
+          />
+        </ValuesImageContainer>
+      </ValuesSection>
     </>
   );
 };
