@@ -100,11 +100,14 @@ export const App: React.FC = () => {
       scrollbar.addListener(underlineListener);
       setIsUnderlineListener(true);
     }
+    if (!isDesktopSize && isUnderlineListener) {
+      scrollbar.removeListener(underlineListener);
+    }
     if (displayLocation === '/') {
       const facilitiesImagesContainer = document.getElementById('facilities-images-container');
       facilitiesImagesContainer && observer.observe(facilitiesImagesContainer);
     }
-  }, [isDesktopSize, displayLocation]);
+  }, [isDesktopSize, displayLocation, isUnderlineListener]);
 
   useEffect(() => {
     if (!isIntersecting && intersectionOffsetTop !== -1) {
@@ -165,9 +168,9 @@ export const App: React.FC = () => {
 
   const getScreenWidth = debounce(() => {
     const width = window.screen.width;
-
-    setIsRowImagesDirection(false);
+    
     setIsDesktopSize(false);
+    setIsRowImagesDirection(false);
 
     if (width >= 992) {
       setIsRowImagesDirection(true);
