@@ -74,7 +74,7 @@ export const StyledContainer = styled.div`
     justify-content: center;
   }
 
-  &:last-child {
+  &:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -13,9 +13,10 @@ const Hero: React.FC<Props> = props => (
         {props.isMainPage && props.isDesktopSize && <StyledUnderline id="underline" />}
       </StyledContainer>
 
-      <StyledContainer>
-        {props.children}
-      </StyledContainer>
+      {props.children && 
+        <StyledContainer>
+          {props.children}
+        </StyledContainer>}
     </StyledHero>
   </StyledHeroContainer>
 )
