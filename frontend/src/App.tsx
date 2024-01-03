@@ -44,6 +44,7 @@ export const App: React.FC = () => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [intersectionOffsetTop, setIntersectionOffsetTop] = useState(-1);
   const [isUnderlineListener, setIsUnderlineListener] = useState(false);
+  const [maluszkowoImageLastPosition, setMaluszkowoImageLastPosition] = useState(-1);
   const location = useLocation();
   
   const maluszkowoImage = document.getElementById('funny-maluszkowo-image');
@@ -55,8 +56,14 @@ export const App: React.FC = () => {
       setIntersectionOffsetTop(scrollbar.scrollTop);
     } else {
       setIsIntersecting(false);
+      const maluszkowoImage = document.getElementById('funny-maluszkowo-image');
+
+      if (maluszkowoImage) {
+        const topPosition = +getComputedStyle(maluszkowoImage).top.replace('px', '');
+        setMaluszkowoImageLastPosition(topPosition);
+      }
     }
-  });
+  });  
 
   useEffect(() => {
     const header = document.getElementById('header');
@@ -106,7 +113,7 @@ export const App: React.FC = () => {
     if (isIntersecting) {
       scrollbar.addListener(imagesListener);
     }
-  }, [isIntersecting]);
+  }, [isIntersecting, intersectionOffsetTop]);
   
   useEffect(() => {
     if (displayLocation !== location.pathname) {
@@ -131,13 +138,13 @@ export const App: React.FC = () => {
 
   const imagesListener = useCallback((status: ScrollStatus) => {
     const resetedOffset = status.offset.y - intersectionOffsetTop;
-    const imageOffsetPosition = -resetedOffset / 8 - 20 + 'px';
-    
-    (maluszkowoImage as HTMLElement).style.top = imageOffsetPosition;
+    const imageOffsetPosition = -resetedOffset / 10 + maluszkowoImageLastPosition;
+
+    (maluszkowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
     if (!isRowImagesDirection) {
-      (starszakowoImage as HTMLElement).style.top = -resetedOffset / 8 + 'px';
+      (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 20 + 'px';
     } else {
-      (starszakowoImage as HTMLElement).style.top = imageOffsetPosition;
+      (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
     }
   }, [intersectionOffsetTop]);
 
