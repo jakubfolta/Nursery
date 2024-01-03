@@ -156,28 +156,9 @@ export const Wave = styled.div`
 `
 
 export const FacilitiesSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 540px;
-  color: var(--color-dark);
-  padding: 0 1rem 5rem;
+  margin-top: -3rem;
 
-  @media only screen and (min-width: 768px) { max-width: 720px; }
-  @media only screen and (min-width: 992px) { max-width: 960px; }
-  @media only screen and (min-width: 1200px) {
-    max-width: 1140px;
-    padding: 0 0 5rem;
-  }
-
-  @media only screen and (min-width: 1400px) { max-width: 1320px; }
-`
-
-export const FacilitiesDescription = styled.p`
-  margin-top: 2rem;
-  line-height: 1.7;
+  @media only screen and (min-width: 992px) { margin-top: 0; }
 `
 
 export const FacilitiesImagesContainer = styled.div`
@@ -236,8 +217,10 @@ export const FacilitiesImageBox = styled(NavLink)`
 
 export const FacilitiesImage = styled.img`
   position: relative;
-  top: -20px;
+  top: -30px;
   width: 100%;
+
+  @media only screen and (min-width: 536px) { top: -10px; }
 `
 
 export const FacilitiesImageHeading = styled.span`
@@ -245,3 +228,29 @@ export const FacilitiesImageHeading = styled.span`
   bottom: 70px; 
   transition: transform 1s;
 `
+
+export const ValuesSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (min-width: 992px) { flex-direction: initial; }
+`
+export const ValuesDescriptionContainer = styled.div`
+  flex: 1 1 40%;
+`
+
+export const ValuesImageContainer = styled.div`
+  flex: 1 1 50%;
+  margin-top: 4rem;
+  overflow: hidden;
+  border-radius: 13% 87% 12% 88% / 88% 20% 80% 12%;
+
+  @media only screen and (min-width: 992px) { margin: 0 0 0 5rem; }
+`
+
+export const ValuesImage = styled.img`
+  width: 100%;
+`
+

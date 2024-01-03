@@ -79,6 +79,28 @@ export const GlobalStyle = createGlobalStyle`
     scrollbar-width: none; */
   }
 
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 540px;
+    color: var(--color-dark);
+    margin-bottom: 7rem;
+    padding: 0 1rem;
+
+    @media only screen and (min-width: 768px) { max-width: 720px; }
+    @media only screen and (min-width: 992px) { max-width: 960px; }
+    @media only screen and (min-width: 1200px) { max-width: 1140px; }
+    @media only screen and (min-width: 1400px) { max-width: 1320px; }
+  }
+
+  section p {
+    margin-top: 2rem;
+    line-height: 1.7;
+  }
+
   h1, h2 {
     font-family: 'Itim', cursive;
     line-height: 1.125;
