@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import Background from "./../../../assets/images/waves.svg";
+import CheckIcon from "./../../../assets/images/check-icon.png";
 import { NavLink } from "react-router-dom";
 
 const showUp1 = keyframes`
@@ -218,23 +219,25 @@ export const FacilitiesImageBox = styled(NavLink)`
 export const FacilitiesImage = styled.img`
   position: relative;
   top: -30px;
-  width: 100%;
+  width: 130%;
 
+  @media only screen and (min-width: 320px) { width: 100%; }
   @media only screen and (min-width: 536px) { top: -10px; }
 `
 
 export const FacilitiesImageHeading = styled.span`
   position: absolute;
-  bottom: 70px; 
+  bottom: 60px;
+  font-size: 8vw;
   transition: transform 1s;
+
+  @media only screen and (min-width: 320px) {
+    bottom: 70px;
+    font-size: inherit;
+  }
 `
 
 export const ValuesSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
   @media only screen and (min-width: 992px) { flex-direction: initial; }
 `
 export const ValuesDescriptionContainer = styled.div`
@@ -252,5 +255,74 @@ export const ValuesImageContainer = styled.div`
 
 export const ValuesImage = styled.img`
   width: 100%;
+`
+
+export const ExceptionalSection = styled.section`
+  position: relative;
+
+  @media only screen and (min-width: 992px) { flex-direction: initial; }
+`
+
+export const ExceptionalList = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  padding-left: 3rem;
+
+  @media only screen and (min-width: 992px) {
+    flex-direction: initial;
+    flex-wrap: wrap;
+  }
+`
+
+export const ExceptionalListItem = styled.li`
+  position: relative;
+
+  &:nth-child(-n+3) { margin-bottom: 2rem; }
+
+  &::before {
+    position: absolute;
+    top: 0.4rem;
+    left: -3rem;
+    content: url(${CheckIcon});
+  }
+
+  @media only screen and (min-width: 992px) {
+    position: relative;
+    width: 35%;
+
+    &:nth-child(-n+2) { margin-bottom: 3rem; }
+    &:nth-child(even) { left: 30%; }
+    &:nth-child(n+3) { margin-bottom: 0; }
+  }
+`
+
+export const ExceptionalListItemHeading = styled.h3`
+  font-weight: 600;
+  font-size: var(--big-font-size);
+`
+
+export const ExceptionalImageContainer = styled.div`
+  width: 40%;
+  margin-top: 2rem;
+
+  @media only screen and (min-width: 992px) {
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0;
+  }
+`
+
+export const ExceptionalImage = styled.img`
+  width: 100%;
+
+  @media only screen and (min-width: 992px) { width: 25%; }
+  @media only screen and (min-width: 1200px) { width: 22%; }
+  @media only screen and (min-width: 1400px) { width: 18%; }
 `
 
