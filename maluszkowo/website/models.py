@@ -10,6 +10,15 @@ class Page(models.Model):
   text_2 = models.TextField(blank=True)
   heading_3 = models.CharField(max_length=50, blank=True)
   text_3 = models.TextField(blank=True)
+  heading_4 = models.CharField(max_length=50, blank=True)
+  list_item_heading_1 = models.TextField(blank=True)
+  list_item_description_1 = models.TextField(blank=True)
+  list_item_heading_2 = models.TextField(blank=True)
+  list_item_description_2 = models.TextField(blank=True)
+  list_item_heading_3 = models.TextField(blank=True)
+  list_item_description_3 = models.TextField(blank=True)
+  list_item_heading_4 = models.TextField(blank=True)
+  list_item_description_4 = models.TextField(blank=True)
 
   def __str__(self):
     return self.description
