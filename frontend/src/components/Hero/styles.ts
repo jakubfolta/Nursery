@@ -67,6 +67,7 @@ export const StyledHero = styled.div`
 export const StyledContainer = styled.div`
   position: relative;
   flex: 1 1 50%;
+  overflow-wrap: anywhere;
   
   @media only screen and (min-width: 1200px) {
     display: flex;
