@@ -19,6 +19,15 @@ export interface UpdatedPageProps {
   text_2?: string;
   heading_3?: string;
   text_3?: string;
+  heading_4?: string;
+  list_item_heading_1?: string;
+  list_item_description_1?: string;
+  list_item_heading_2?: string;
+  list_item_description_2?: string;
+  list_item_heading_3?: string;
+  list_item_description_3?: string;
+  list_item_heading_4?: string;
+  list_item_description_4?: string;
 }
 
 export interface NavigationItemProps {

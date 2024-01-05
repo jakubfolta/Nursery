@@ -141,7 +141,7 @@ export const App: React.FC = () => {
 
   const imagesListener = useCallback((status: ScrollStatus) => {
     const resetedOffset = status.offset.y - intersectionOffsetTop;
-    const imageOffsetPosition = -resetedOffset / 10 + maluszkowoImageLastPosition;
+    const imageOffsetPosition = -resetedOffset / 12 + maluszkowoImageLastPosition;
 
     (maluszkowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
     if (!isRowImagesDirection) {

@@ -89,14 +89,24 @@ export const GlobalStyle = createGlobalStyle`
     color: var(--color-dark);
     margin-bottom: 7rem;
     padding: 0 1rem;
-
+    
     @media only screen and (min-width: 768px) { max-width: 720px; }
     @media only screen and (min-width: 992px) { max-width: 960px; }
     @media only screen and (min-width: 1200px) { max-width: 1140px; }
     @media only screen and (min-width: 1400px) { max-width: 1320px; }
+    
+    &:last-child {
+      margin-bottom: 2rem;
+
+      @media only screen and (min-width: 992px) { margin-bottom: 4rem; }
+      @media only screen and (min-width: 1200px) { margin-bottom: 7rem; }
+      @media only screen and (min-width: 1280px) { margin-bottom: 4rem; }
+      @media only screen and (min-width: 1400px) { margin-bottom: 5rem; }
+    }
   }
 
-  section p {
+  section > div { overflow-wrap: anywhere; }
+  section div > p {
     margin-top: 2rem;
     line-height: 1.7;
   }

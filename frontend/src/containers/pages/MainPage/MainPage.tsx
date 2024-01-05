@@ -9,10 +9,18 @@ import mobileKidsPlayingWithWater from "../../../assets/images/kids-playing-with
 import desktopKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-desktop.jpg";
 import mobileRainbowHands from "../../../assets/images/rainbow-hands-mobile.jpg";
 import desktopRainbowHands from "../../../assets/images/rainbow-hands-desktop.jpg";
+import mobileGirlWithBook from "../../../assets/images/girl-with-book-mobile.png";
+import desktopGirlWithBook from "../../../assets/images/girl-with-book-desktop.png";
 import funnyMonkey from "../../../assets/images/funny-monkey.png";
 import funnyDog from "../../../assets/images/funny-dog.png";
 
 import {
+  ExceptionalImage,
+  ExceptionalImageContainer,
+  ExceptionalList,
+  ExceptionalListItem,
+  ExceptionalListItemHeading,
+  ExceptionalSection,
   FacilitiesImage,
   FacilitiesImageBox,
   FacilitiesImageHeading,
@@ -27,6 +35,7 @@ import {
   ValuesImageContainer,
   ValuesSection,
   Wave } from "./styles";
+import { ListItems } from "./interface";
 
 export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
@@ -35,6 +44,8 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
   const [facilitiesSectionDescription, setFacilitiesSectionDescription] = useState<string | undefined>('');
   const [valuesSectionHeading, setValuesSectionHeading] = useState<string | undefined>('');
   const [valuesSectionDescription, setValuesSectionDescription] = useState<string | undefined>('');
+  const [exceptionalSectionHeading, setExceptionalSectionHeading] = useState<string | undefined>('');
+  const [exceptionalSectionListItems, setExceptionalSectionListItems] = useState<ListItems | undefined>();
 
   const mainPageContent = useContext(WebpageContext).pages['Main page'];
 
@@ -46,6 +57,25 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
       setFacilitiesSectionDescription(mainPageContent.text_2);
       setValuesSectionHeading(mainPageContent.heading_3);
       setValuesSectionDescription(mainPageContent.text_3);
+      setExceptionalSectionHeading(mainPageContent.heading_4);
+      setExceptionalSectionListItems({
+        firstItem: {
+          heading: mainPageContent.list_item_heading_1,
+          description: mainPageContent.list_item_description_1
+        },
+        secondItem: {
+          heading: mainPageContent.list_item_heading_2,
+          description: mainPageContent.list_item_description_2
+        },
+        thirdItem: {
+          heading: mainPageContent.list_item_heading_3,
+          description: mainPageContent.list_item_description_3
+        },
+        fourthItem: {
+          heading: mainPageContent.list_item_heading_4,
+          description: mainPageContent.list_item_description_4
+        }
+      })
     }
   }, [mainPageContent]);
 
@@ -121,6 +151,39 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
           />
         </ValuesImageContainer>
       </ValuesSection>
+
+      <ExceptionalSection>
+        <div>
+          <h2>{exceptionalSectionHeading}</h2>
+          <ExceptionalList>
+            <ExceptionalListItem>
+              <ExceptionalListItemHeading>{exceptionalSectionListItems?.firstItem.heading}</ExceptionalListItemHeading>
+              <p>{exceptionalSectionListItems?.firstItem.description}</p>
+            </ExceptionalListItem>
+            <ExceptionalListItem>
+              <ExceptionalListItemHeading>{exceptionalSectionListItems?.secondItem.heading}</ExceptionalListItemHeading>
+              <p>{exceptionalSectionListItems?.secondItem.description}</p>
+            </ExceptionalListItem>
+            <ExceptionalListItem>
+              <ExceptionalListItemHeading>{exceptionalSectionListItems?.thirdItem.heading}</ExceptionalListItemHeading>
+              <p>{exceptionalSectionListItems?.thirdItem.description}</p>
+            </ExceptionalListItem>
+            <ExceptionalListItem>
+              <ExceptionalListItemHeading>{exceptionalSectionListItems?.fourthItem.heading}</ExceptionalListItemHeading>
+              <p>{exceptionalSectionListItems?.fourthItem.description}</p>
+            </ExceptionalListItem>
+          </ExceptionalList>
+        </div>
+
+        <ExceptionalImageContainer>
+          <ExceptionalImage 
+            srcSet={`${mobileGirlWithBook} 210w, ${desktopGirlWithBook} 280w`}
+            sizes="(max-width: 767px) 210px, 280px"
+            src={desktopGirlWithBook}
+            alt="Dziewczynka z ksiazka"
+          />
+        </ExceptionalImageContainer>
+      </ExceptionalSection>
     </>
   );
 };
