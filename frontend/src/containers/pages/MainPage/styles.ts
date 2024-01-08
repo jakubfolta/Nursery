@@ -162,12 +162,17 @@ export const FacilitiesSection = styled.section`
   @media only screen and (min-width: 992px) { margin-top: 0; }
 `
 
+export const FacilitiesDescriptionContainer = styled.div`
+  align-self: stretch;
+  margin-bottom: 8rem;
+`
+
 export const FacilitiesImagesContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 8rem;
+  /* margin-top: 8rem; */
   width: 100%;
   font-size: var(--xl-font-size);
 

@@ -21,6 +21,7 @@ import {
   ExceptionalListItem,
   ExceptionalListItemHeading,
   ExceptionalSection,
+  FacilitiesDescriptionContainer,
   FacilitiesImage,
   FacilitiesImageBox,
   FacilitiesImageHeading,
@@ -40,12 +41,12 @@ import { ListItems } from "./interface";
 export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
-  const [facilitiesSectionHeading, setFacilitiesSectionHeading] = useState<string | undefined>('');
-  const [facilitiesSectionDescription, setFacilitiesSectionDescription] = useState<string | undefined>('');
-  const [valuesSectionHeading, setValuesSectionHeading] = useState<string | undefined>('');
-  const [valuesSectionDescription, setValuesSectionDescription] = useState<string | undefined>('');
-  const [exceptionalSectionHeading, setExceptionalSectionHeading] = useState<string | undefined>('');
-  const [exceptionalSectionListItems, setExceptionalSectionListItems] = useState<ListItems | undefined>();
+  const [facilitiesSectionHeading, setFacilitiesSectionHeading] = useState<string>();
+  const [facilitiesSectionDescription, setFacilitiesSectionDescription] = useState<string>();
+  const [valuesSectionHeading, setValuesSectionHeading] = useState<string>();
+  const [valuesSectionDescription, setValuesSectionDescription] = useState<string>();
+  const [exceptionalSectionHeading, setExceptionalSectionHeading] = useState<string>();
+  const [exceptionalSectionListItems, setExceptionalSectionListItems] = useState<ListItems>();
 
   const mainPageContent = useContext(WebpageContext).pages['Main page'];
 
@@ -118,10 +119,11 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
       </StyledDivider>
 
       <FacilitiesSection>
-        <div>
-          <h2>{facilitiesSectionHeading}</h2>
-          <p>{facilitiesSectionDescription}</p>
-        </div>
+        {(facilitiesSectionHeading || facilitiesSectionDescription) && 
+          <FacilitiesDescriptionContainer>
+            {facilitiesSectionHeading && <h2>{facilitiesSectionHeading}</h2>}
+            {facilitiesSectionDescription && <p>{facilitiesSectionDescription}</p>}
+          </FacilitiesDescriptionContainer>}
 
         <FacilitiesImagesContainer id="facilities-images-container">
           {/* <FacilitiesImageBox to="/o-nas#sectionId"> */}
@@ -174,7 +176,7 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
             </ExceptionalListItem>
           </ExceptionalList>
         </div>
-
+        
         <ExceptionalImageContainer>
           <ExceptionalImage 
             srcSet={`${mobileGirlWithBook} 210w, ${desktopGirlWithBook} 280w`}
