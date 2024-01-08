@@ -139,10 +139,11 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
       </FacilitiesSection>
 
       <ValuesSection>
-        <ValuesDescriptionContainer>
-          <h2>{valuesSectionHeading}</h2>
-          <p>{valuesSectionDescription}</p>
-        </ValuesDescriptionContainer>
+        {(valuesSectionHeading || valuesSectionDescription) &&
+          <ValuesDescriptionContainer>
+            {valuesSectionHeading && <h2>{valuesSectionHeading}</h2>}
+            {valuesSectionDescription && <p>{valuesSectionDescription}</p>}
+          </ValuesDescriptionContainer>}
 
         <ValuesImageContainer>
           <ValuesImage 
