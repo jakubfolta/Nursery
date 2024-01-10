@@ -106,8 +106,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   section > div { overflow-wrap: anywhere; }
-  section div h2 + p { margin-top: 2rem; }
   section div > p { line-height: 1.7; }
+  section div h2 + p,
+  section div h2 + ul { margin-top: 2rem; }
 
   h1, h2 {
     font-family: 'Itim', cursive;

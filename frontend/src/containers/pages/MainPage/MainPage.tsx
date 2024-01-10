@@ -54,12 +54,16 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
     if (mainPageContent) {
       setHeroHeading(mainPageContent.heading_1);
       setHeroDescription(mainPageContent.text_1);
-      setFacilitiesSectionHeading(mainPageContent.heading_2);
-      setFacilitiesSectionDescription(mainPageContent.text_2);
-      setValuesSectionHeading(mainPageContent.heading_3);
-      setValuesSectionDescription(mainPageContent.text_3);
-      setExceptionalSectionHeading(mainPageContent.heading_4);
-      setExceptionalSectionListItems({
+      if (mainPageContent.heading_2 && mainPageContent.text_2) {
+        setFacilitiesSectionHeading(mainPageContent.heading_2);
+        setFacilitiesSectionDescription(mainPageContent.text_2);
+      }
+      if (mainPageContent.heading_3 && mainPageContent.text_3) {
+        setValuesSectionHeading(mainPageContent.heading_3);
+        setValuesSectionDescription(mainPageContent.text_3);
+      }
+
+      const listItems: ListItems = {
         firstItem: {
           heading: mainPageContent.list_item_heading_1,
           description: mainPageContent.list_item_description_1
@@ -76,7 +80,17 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
           heading: mainPageContent.list_item_heading_4,
           description: mainPageContent.list_item_description_4
         }
-      })
+      };
+      
+      if (mainPageContent.heading_4) {
+        const filteredListItems = Object.entries(listItems).filter(item => item[1].heading && item[1].description);
+        const updatedListItems = Object.fromEntries(filteredListItems);
+        
+        if (Object.keys(updatedListItems).length) {
+          setExceptionalSectionHeading(mainPageContent.heading_4);
+          setExceptionalSectionListItems(updatedListItems as ListItems);
+        }
+      }
     }
   }, [mainPageContent]);
 
@@ -118,75 +132,69 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
         <Wave />
       </StyledDivider>
 
-      <FacilitiesSection>
-        {(facilitiesSectionHeading || facilitiesSectionDescription) && 
+      {facilitiesSectionHeading && 
+        <FacilitiesSection>
           <FacilitiesDescriptionContainer>
-            {facilitiesSectionHeading && <h2>{facilitiesSectionHeading}</h2>}
-            {facilitiesSectionDescription && <p>{facilitiesSectionDescription}</p>}
-          </FacilitiesDescriptionContainer>}
+            <h2>{facilitiesSectionHeading}</h2>
+            <p>{facilitiesSectionDescription}</p>
+          </FacilitiesDescriptionContainer>
 
-        <FacilitiesImagesContainer id="facilities-images-container">
-          {/* <FacilitiesImageBox to="/o-nas#sectionId"> */}
-          <FacilitiesImageBox to="/">
-            <FacilitiesImage id="funny-maluszkowo-image" src={funnyMonkey} alt="Zabawna małpka" />
-            <FacilitiesImageHeading>Maluszkowo</FacilitiesImageHeading>
-          </FacilitiesImageBox>
-          <FacilitiesImageBox to="/">
-            <FacilitiesImage id="funny-starszakowo-image" src={funnyDog} alt="Zabawny piesek" />
-            <FacilitiesImageHeading>Starszakowo</FacilitiesImageHeading>
-          </FacilitiesImageBox>
-        </FacilitiesImagesContainer>
-      </FacilitiesSection>
+          <FacilitiesImagesContainer id="facilities-images-container">
+            {/* <FacilitiesImageBox to="/o-nas#sectionId"> */}
+            <FacilitiesImageBox to="/">
+              <FacilitiesImage id="funny-maluszkowo-image" src={funnyMonkey} alt="Zabawna małpka" />
+              <FacilitiesImageHeading>Maluszkowo</FacilitiesImageHeading>
+            </FacilitiesImageBox>
+            <FacilitiesImageBox to="/">
+              <FacilitiesImage id="funny-starszakowo-image" src={funnyDog} alt="Zabawny piesek" />
+              <FacilitiesImageHeading>Starszakowo</FacilitiesImageHeading>
+            </FacilitiesImageBox>
+          </FacilitiesImagesContainer>
+        </FacilitiesSection>
+      }
 
-      <ValuesSection>
-        {(valuesSectionHeading || valuesSectionDescription) &&
+      {valuesSectionHeading &&
+        <ValuesSection>
           <ValuesDescriptionContainer>
-            {valuesSectionHeading && <h2>{valuesSectionHeading}</h2>}
-            {valuesSectionDescription && <p>{valuesSectionDescription}</p>}
-          </ValuesDescriptionContainer>}
+            <h2>{valuesSectionHeading}</h2>
+            <p>{valuesSectionDescription}</p>
+          </ValuesDescriptionContainer>
+          
+          <ValuesImageContainer>
+            <ValuesImage 
+              srcSet={`${mobileRainbowHands} 520w, ${desktopRainbowHands} 700w`}
+              sizes="(max-width: 767px) 520px, 700px"
+              src={desktopRainbowHands}
+              alt="Kolorowe rece"
+            />
+          </ValuesImageContainer>
+        </ValuesSection>
+      }
 
-        <ValuesImageContainer>
-          <ValuesImage 
-            srcSet={`${mobileRainbowHands} 520w, ${desktopRainbowHands} 700w`}
-            sizes="(max-width: 767px) 520px, 700px"
-            src={desktopRainbowHands}
-            alt="Kolorowe rece"
-          />
-        </ValuesImageContainer>
-      </ValuesSection>
-
-      <ExceptionalSection>
-        <div>
-          <h2>{exceptionalSectionHeading}</h2>
-          <ExceptionalList>
-            <ExceptionalListItem>
-              <ExceptionalListItemHeading>{exceptionalSectionListItems?.firstItem.heading}</ExceptionalListItemHeading>
-              <p>{exceptionalSectionListItems?.firstItem.description}</p>
-            </ExceptionalListItem>
-            <ExceptionalListItem>
-              <ExceptionalListItemHeading>{exceptionalSectionListItems?.secondItem.heading}</ExceptionalListItemHeading>
-              <p>{exceptionalSectionListItems?.secondItem.description}</p>
-            </ExceptionalListItem>
-            <ExceptionalListItem>
-              <ExceptionalListItemHeading>{exceptionalSectionListItems?.thirdItem.heading}</ExceptionalListItemHeading>
-              <p>{exceptionalSectionListItems?.thirdItem.description}</p>
-            </ExceptionalListItem>
-            <ExceptionalListItem>
-              <ExceptionalListItemHeading>{exceptionalSectionListItems?.fourthItem.heading}</ExceptionalListItemHeading>
-              <p>{exceptionalSectionListItems?.fourthItem.description}</p>
-            </ExceptionalListItem>
-          </ExceptionalList>
-        </div>
-        
-        <ExceptionalImageContainer>
-          <ExceptionalImage 
-            srcSet={`${mobileGirlWithBook} 210w, ${desktopGirlWithBook} 280w`}
-            sizes="(max-width: 767px) 210px, 280px"
-            src={desktopGirlWithBook}
-            alt="Dziewczynka z ksiazka"
-          />
-        </ExceptionalImageContainer>
-      </ExceptionalSection>
+      {exceptionalSectionHeading &&
+        <ExceptionalSection>
+          <div>
+            <h2>{exceptionalSectionHeading}</h2>
+            <ExceptionalList>
+              {Object.values(exceptionalSectionListItems as ListItems).map((value, index) =>
+                <ExceptionalListItem key={index}>
+                  <ExceptionalListItemHeading>{value.heading}</ExceptionalListItemHeading>
+                  <p>{value.description}</p>
+                </ExceptionalListItem>  
+              )}
+            </ExceptionalList>
+          </div>
+          
+          <ExceptionalImageContainer>
+            <ExceptionalImage 
+              srcSet={`${mobileGirlWithBook} 210w, ${desktopGirlWithBook} 280w`}
+              sizes="(max-width: 767px) 210px, 280px"
+              src={desktopGirlWithBook}
+              alt="Dziewczynka z ksiazka"
+            />
+          </ExceptionalImageContainer>
+        </ExceptionalSection>
+      }
     </>
   );
 };
