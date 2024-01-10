@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps } from "../shared/api.interfaces";
+import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps, UpdatedPageProps } from "../shared/api.interfaces";
 import { Context } from "./interfaces";
 
 export const WebpageContext = React.createContext<Context>({
@@ -31,9 +31,14 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
         });
         
         const updatedPagesContent: PagesProps = {};
+        
         data.pages.forEach((page: FetchedPageProps) => {
           const {description, ...rest} = page;
-          updatedPagesContent[page.description] = rest;
+          
+          const filteredRest = Object.entries(rest).filter(value => value[1]);
+          const updatedRest: unknown = Object.fromEntries(filteredRest);
+
+          updatedPagesContent[page.description] = updatedRest as UpdatedPageProps;
         });
         
         const nurseryDetails: NurseryDetailsProps = data.nursery_details[0];

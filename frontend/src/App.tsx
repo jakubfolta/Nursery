@@ -44,6 +44,7 @@ export const App: React.FC = () => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [intersectionOffsetTop, setIntersectionOffsetTop] = useState(-1);
   const [isUnderlineListener, setIsUnderlineListener] = useState(false);
+  const [isFacilitiesSectionAvailable, setIsFacilitiesSectionAvailable] = useState(false);
   const [maluszkowoImageLastPosition, setMaluszkowoImageLastPosition] = useState(-1);
   const location = useLocation();
   
@@ -96,6 +97,9 @@ export const App: React.FC = () => {
       scrollbar.removeListener(underlineListener);
       setIsUnderlineListener(false);
     }
+    if (displayLocation !== '/' && isFacilitiesSectionAvailable) {
+      setIsFacilitiesSectionAvailable(false);
+    }
     if (isDesktopSize && displayLocation === '/') {
       scrollbar.addListener(underlineListener);
       setIsUnderlineListener(true);
@@ -103,11 +107,11 @@ export const App: React.FC = () => {
     if (!isDesktopSize && isUnderlineListener) {
       scrollbar.removeListener(underlineListener);
     }
-    if (displayLocation === '/') {
+    if (displayLocation === '/' && isFacilitiesSectionAvailable) {
       const facilitiesImagesContainer = document.getElementById('facilities-images-container');
       facilitiesImagesContainer && observer.observe(facilitiesImagesContainer);
     }
-  }, [isDesktopSize, displayLocation, isUnderlineListener]);
+  }, [isDesktopSize, displayLocation, isUnderlineListener, isFacilitiesSectionAvailable]);
 
   useEffect(() => {
     if (!isIntersecting && intersectionOffsetTop !== -1) {
@@ -181,11 +185,15 @@ export const App: React.FC = () => {
     };
   }, 100);
 
+  const setFacilitiesSectionAvailability = () => {
+    setIsFacilitiesSectionAvailable(true);
+  }
+
   const routes = websiteRoutes.map((route, index) => {
     const Component = route.component;
 
     return (
-      <Route key={index} path={route.path} element={<Component theme={getThemeColor(route.themeLabel)} {...(route.path === '/' && {isDesktopSize: isDesktopSize})} /> } />
+      <Route key={index} path={route.path} element={<Component theme={getThemeColor(route.themeLabel)} {...(route.path === '/' && {isDesktopSize: isDesktopSize, setFacilitiesSectionAvailability: setFacilitiesSectionAvailability})} /> } />
     );
   });
   
