@@ -268,27 +268,72 @@ export const ValuesImage = styled.img`
 export const ExceptionalSection = styled.section`
   position: relative;
 
-  @media only screen and (min-width: 992px) { flex-direction: initial; }
+  @media only screen and (min-width: 992px) {
+    flex-direction: initial;
+
+    &:has(li:nth-last-child(1)) {
+      justify-content: flex-start;
+      
+      & div:last-child {
+        top: 2rem;
+        left: 40rem;
+        width: 55%;
+      }
+    }
+
+    &:has(li:nth-last-child(2)) {
+      & div:last-child {
+        top: 4rem;
+        left: 32rem;
+        width: 85%;
+      }
+    }
+
+    &:has(li:nth-last-child(3)) {
+      justify-content: center;
+
+      & div:last-child {
+        top: 7rem;
+        left: 0;
+        width: 100%;
+      }
+    }
+  }
 `
 
 export const ExceptionalList = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
   padding-left: 3rem;
 
   @media only screen and (min-width: 992px) {
     flex-direction: initial;
     flex-wrap: wrap;
+
+    &:has(> li:nth-last-child(1)) {
+      flex-direction: column;
+
+      & li {
+        left: 0;
+        width: 50%;
+      }
+    }
+
+    &:has(> li:nth-last-child(3)) {
+      flex-direction: initial;
+
+      & li { width: 35%; }
+      & li:nth-child(even) { left: 30%; }
+    }    
   }
 `
 
 export const ExceptionalListItem = styled.li`
   position: relative;
+  margin-bottom: 2rem;
 
-  &:nth-child(-n+3) { margin-bottom: 2rem; }
-
+  &:last-child { margin-bottom: 0; }
   &::before {
     position: absolute;
     top: 0.4rem;
@@ -297,12 +342,9 @@ export const ExceptionalListItem = styled.li`
   }
 
   @media only screen and (min-width: 992px) {
-    position: relative;
-    width: 35%;
+    margin-bottom: 3rem;
 
-    &:nth-child(-n+2) { margin-bottom: 3rem; }
-    &:nth-child(even) { left: 30%; }
-    &:nth-child(n+3) { margin-bottom: 0; }
+    &:nth-child(3) { margin-bottom: 0; }
   }
 `
 
@@ -317,11 +359,8 @@ export const ExceptionalImageContainer = styled.div`
 
   @media only screen and (min-width: 992px) {
     position: absolute;
-    top: 7rem;
-    left: 0;
     display: flex;
     justify-content: center;
-    width: 100%;
     margin-top: 0;
   }
 `
