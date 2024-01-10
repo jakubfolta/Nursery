@@ -38,7 +38,7 @@ import {
   Wave } from "./styles";
 import { ListItems } from "./interface";
 
-export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = props => {
+export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean, setFacilitiesSectionAvailability?: () => void}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
   const [facilitiesSectionHeading, setFacilitiesSectionHeading] = useState<string>();
@@ -49,7 +49,7 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
   const [exceptionalSectionListItems, setExceptionalSectionListItems] = useState<ListItems>();
 
   const mainPageContent = useContext(WebpageContext).pages['Main page'];
-
+  
   useEffect(() => {
     if (mainPageContent) {
       setHeroHeading(mainPageContent.heading_1);
@@ -57,6 +57,7 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean}> = prop
       if (mainPageContent.heading_2 && mainPageContent.text_2) {
         setFacilitiesSectionHeading(mainPageContent.heading_2);
         setFacilitiesSectionDescription(mainPageContent.text_2);
+        props.setFacilitiesSectionAvailability && props.setFacilitiesSectionAvailability();
       }
       if (mainPageContent.heading_3 && mainPageContent.text_3) {
         setValuesSectionHeading(mainPageContent.heading_3);
