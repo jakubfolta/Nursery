@@ -2,12 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps, UpdatedPageProps } from "../shared/api.interfaces";
 import { Context } from "./interfaces";
+import { debounce } from "lodash-es";
 
 export const WebpageContext = React.createContext<Context>({
   pages: {},
   navigationItems: [],
   nurseryDetails: {} as NurseryDetailsProps,
-  isFetchingError: false
+  isFetchingError: false,
+  headerHeight: -1
 });
 
 const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
@@ -15,8 +17,12 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
   const [navigationItems, setNavigationItems] = useState<NavigationItemProps[]>([]);
   const [nurseryDetails, setNurseryDetails] = useState<NurseryDetailsProps>({} as NurseryDetailsProps);
   const [isFetchingError, setIsFetchingError] = useState(Boolean);
+  const [headerHeight, setHeaderHeight] = useState(-1);
 
   useEffect(() => {
+    getHeaderHeight();
+    window.addEventListener('resize', getHeaderHeight);
+
     axios.get("/api/website/")
       .then(result => {
         const data = result.data;
@@ -59,11 +65,17 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
       })
   }, []);
 
+  const getHeaderHeight = debounce(() => {
+    const headHeight = document.getElementById('header')!.clientHeight;
+    setHeaderHeight(headHeight);
+  }, 300);
+
   const contextValue: Context = {
     pages: pagesContent,
     navigationItems: navigationItems,
     nurseryDetails: nurseryDetails,
-    isFetchingError: isFetchingError
+    isFetchingError: isFetchingError,
+    headerHeight: headerHeight
   };
 
   return (

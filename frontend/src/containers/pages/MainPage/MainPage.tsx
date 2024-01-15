@@ -27,15 +27,15 @@ import {
   FacilitiesImageHeading,
   FacilitiesImagesContainer,
   FacilitiesSection,
-  StyledDivider,
   StyledImage,
   StyledImageContainer,
   StyledImageContainerShadow,
   ValuesDescriptionContainer,
   ValuesImage,
   ValuesImageContainer,
-  ValuesSection,
-  Wave } from "./styles";
+  ValuesSection
+} 
+  from "./styles";
 import { ListItems } from "./interface";
 
 export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean, setFacilitiesSectionAvailability?: () => void}> = props => {
@@ -125,13 +125,6 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean, setFaci
         </StyledImageContainer>
         <StyledImageContainerShadow />
       </Hero>
-
-      <StyledDivider>
-        <Wave />
-        <Wave />
-        <Wave />
-        <Wave />
-      </StyledDivider>
 
       {facilitiesSectionHeading && 
         <FacilitiesSection>

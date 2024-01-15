@@ -50,18 +50,6 @@ const shake = keyframes`
   100% { transform: rotate(0deg); }
 `
 
-const waveAnimation = css`
-  @keyframes wave {
-    100% { background-position: 700px; }
-  }
-
-  @media only screen and (min-width: 536px) {
-    @keyframes wave {
-      100% { background-position: 1000px; }
-    }
-  }
-`
-
 const imageContainer = css`
   width: 80%;
   border-radius: 73% 27% 41% 59% / 43% 54% 46% 57%;
@@ -114,52 +102,8 @@ export const StyledImage = styled.img`
   }
 `
 
-export const StyledDivider = styled.div`
-  position: relative;
-  bottom: 90px;
-  width: 100%;
-  height: 90px;
-`
-
-export const Wave = styled.div`
-  ${waveAnimation}
-  
-  position: absolute;
-  width: 100%;
-  height: 100px;
-  bottom: 0;
-  background-image: url(${Background});
-  background-size: 700px;
-  transform: rotate(180deg);
-  animation: wave 20s reverse linear infinite;
-
-  @media only screen and (min-width: 536px) { background-size: 1000px; }
-  
-   &:nth-child(2) {
-    opacity: .8;
-    height: 120px;
-    animation-duration: 15s;
-    animation-direction: normal;
-   }
-
-   &:nth-child(3) {
-    opacity: .4;
-    height: 150px;
-    animation-duration: 8s;
-    animation-direction: normal;
-   }
-
-   &:nth-child(4) {
-    opacity: .2;
-    height: 110px;
-    animation-duration: 12s;
-   }
-`
-
 export const FacilitiesSection = styled.section`
-  margin-top: -3rem;
-
-  @media only screen and (min-width: 992px) { margin-top: 0; }
+  margin-top: 6rem;
 `
 
 export const FacilitiesDescriptionContainer = styled.div`
@@ -172,7 +116,6 @@ export const FacilitiesImagesContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin-top: 8rem; */
   width: 100%;
   font-size: var(--xl-font-size);
 

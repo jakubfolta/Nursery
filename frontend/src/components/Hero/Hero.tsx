@@ -1,24 +1,37 @@
-import React from "react";
-import { StyledContainer, StyledDescription, StyledHeading, StyledHero, StyledHeroContainer, StyledUnderline } from "./styles";
+import React, { useContext } from "react";
+import { StyledContainer, StyledDescription, StyledDivider, StyledHeading, StyledHero, StyledHeroContainer, StyledUnderline, Wave } from "./styles";
 import { Props } from "./interface";
+import { WebpageContext } from "../../store/webpage-context";
 
-const Hero: React.FC<Props> = props => (
-  <StyledHeroContainer 
-    theme={props.theme} 
-    isMainPage={props.isMainPage}>
-    <StyledHero>
-      <StyledContainer>
-        <StyledHeading>{props.heading}</StyledHeading>
-        <StyledDescription>{props.description}</StyledDescription>
-        {props.isMainPage && props.isDesktopSize && <StyledUnderline id="underline" />}
-      </StyledContainer>
+const Hero: React.FC<Props> = props => {
+  const headerHeight = useContext(WebpageContext).headerHeight;
 
-      {props.children && 
+  return (
+    <StyledHeroContainer 
+      theme={props.theme} 
+      isMainPage={props.isMainPage}
+      headerHeight={headerHeight}>
+      <StyledHero>
         <StyledContainer>
-          {props.children}
-        </StyledContainer>}
-    </StyledHero>
-  </StyledHeroContainer>
-)
+          <StyledHeading>{props.heading}</StyledHeading>
+          <StyledDescription>{props.description}</StyledDescription>
+          {props.isMainPage && props.isDesktopSize && <StyledUnderline id="underline" />}
+        </StyledContainer>
+
+        {props.children && 
+          <StyledContainer>
+            {props.children}
+          </StyledContainer>}
+      </StyledHero>
+
+      <StyledDivider>
+        <Wave />
+        <Wave />
+        <Wave />
+        <Wave />
+      </StyledDivider>
+    </StyledHeroContainer>
+  );
+};
 
 export default Hero;

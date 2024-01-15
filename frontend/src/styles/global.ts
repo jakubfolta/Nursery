@@ -158,8 +158,5 @@ export const GlobalStyle = createGlobalStyle`
     --xl-font-size: 2.7rem;
     --section-heading-font-size: 4.7rem;
     --heading-font-size: 5rem;
-    
-    // Animations
-    
   }
 `
