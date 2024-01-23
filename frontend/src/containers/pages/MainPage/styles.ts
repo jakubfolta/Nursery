@@ -1,7 +1,4 @@
 import styled, { css, keyframes } from "styled-components";
-import Background from "./../../../assets/images/waves.svg";
-import CheckIcon from "./../../../assets/images/check-icon.png";
-import { NavLink } from "react-router-dom";
 
 const showUp1 = keyframes`
   0% { opacity: 1; }
@@ -36,20 +33,6 @@ const shapeChange = keyframes`
   100% { border-radius: 73% 27% 41% 59% / 43% 54% 46% 57%; }
 `
 
-const shake = keyframes`
-  0% { transform: rotate(0deg); }
-  10% { transform: rotate(3deg); }
-  20% { transform: rotate(-3deg); }
-  30% { transform: rotate(3deg); }
-  40% { transform: rotate(-3deg); }
-  50% { transform: rotate(3deg); }
-  60% { transform: rotate(-3deg); }
-  70% { transform: rotate(3deg); }
-  80% { transform: rotate(-3deg); }
-  90% { transform: rotate(3deg); }
-  100% { transform: rotate(0deg); }
-`
-
 const imageContainer = css`
   width: 80%;
   border-radius: 73% 27% 41% 59% / 43% 54% 46% 57%;
@@ -72,13 +55,22 @@ export const StyledImageContainerShadow = styled.div`
   ${imageContainer}
 
   position: absolute;
-  top: 30px;
-  left: 8px;
+  top: 3rem;
+  left: 2rem;
   height: 100%;
   background-color: hsla(0, 0%, 0%, 0.3);
 
-  @media only screen and (min-width: 536px) { left: 107px; }
-  @media only screen and (min-width: 992px) { left: 56px; }
+  @media only screen and (min-width: 536px) { left: 8rem; }
+  @media only screen and (min-width: 992px) {
+    top: 5rem;
+    left: 4rem;
+    height: 90%;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    left: 6rem;
+    height: 85%;
+  }
 `
 
 export const StyledImage = styled.img`
@@ -101,218 +93,3 @@ export const StyledImage = styled.img`
     left: 0;
   }
 `
-
-export const FacilitiesSection = styled.section`
-  margin-top: 6rem;
-`
-
-export const FacilitiesDescriptionContainer = styled.div`
-  align-self: stretch;
-  margin-bottom: 8rem;
-`
-
-export const FacilitiesImagesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  font-size: var(--xl-font-size);
-
-  @media only screen and (min-width: 768px) { width: 80%; }
-  @media only screen and (min-width: 992px) { flex-direction: initial; }
-`
-
-export const FacilitiesImageBox = styled(NavLink)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  padding: 3rem;
-  background: linear-gradient(70deg, 
-    var(--color-accent) 0%,
-    var(--color-accent-2) 100%);
-  background-size: 220%;
-  border-radius: 29% 71% 45% 55% / 30% 30% 70% 70%;
-  color: var(--color-white);
-  transition: all 1s;
-    
-  &:hover {
-    background-position: 100%;
-    border-radius: 36% 64% 27% 73% / 71% 73% 27% 29%;
-  }
-
-  &:hover img { animation: ${shake} 1s; }
-  &:hover span { transform: scale(1.2); }
-
-  &:last-child {
-    background: linear-gradient(70deg, 
-      var(--color-accent-4) 0%,
-      var(--color-accent-3) 100%);
-    background-size: 220%;
-    margin-top: 10rem;
-    border-radius: 71% 29% 45% 55% / 30% 30% 70% 70%;
-
-    &:hover {
-      background-position: 100%;
-      border-radius: 66% 34% 74% 26% / 73% 73% 27% 27%;
-    }
-
-    @media only screen and (min-width: 992px) { margin: 0 0 0 4rem; }
-  } 
-`
-
-export const FacilitiesImage = styled.img`
-  position: relative;
-  top: -30px;
-  width: 130%;
-
-  @media only screen and (min-width: 320px) { width: 100%; }
-  @media only screen and (min-width: 536px) { top: -10px; }
-`
-
-export const FacilitiesImageHeading = styled.span`
-  position: absolute;
-  bottom: 60px;
-  font-size: 8vw;
-  transition: transform 1s;
-
-  @media only screen and (min-width: 320px) {
-    bottom: 70px;
-    font-size: inherit;
-  }
-`
-
-export const ValuesSection = styled.section`
-  @media only screen and (min-width: 992px) { flex-direction: initial; }
-
-  & div + div {
-    margin-top: 4rem;
-
-    @media only screen and (min-width: 992px) { margin: 0 0 0 5rem; }
-  }
-`
-export const ValuesDescriptionContainer = styled.div`
-  flex: 0 1 40%;
-`
-
-export const ValuesImageContainer = styled.div`
-  flex: 0 1 50%;
-  overflow: hidden;
-  border-radius: 13% 87% 12% 88% / 88% 20% 80% 12%;
-`
-
-export const ValuesImage = styled.img`
-  width: 100%;
-`
-
-export const ExceptionalSection = styled.section`
-  position: relative;
-
-  @media only screen and (min-width: 992px) {
-    flex-direction: initial;
-
-    &:has(li:nth-last-child(1)) {
-      justify-content: flex-start;
-      
-      & div:last-child {
-        top: 2rem;
-        left: 40rem;
-        width: 55%;
-      }
-    }
-
-    &:has(li:nth-last-child(2)) {
-      & div:last-child {
-        top: 4rem;
-        left: 32rem;
-        width: 85%;
-      }
-    }
-
-    &:has(li:nth-last-child(3)) {
-      justify-content: center;
-
-      & div:last-child {
-        top: 7rem;
-        left: 0;
-        width: 100%;
-      }
-    }
-  }
-`
-
-export const ExceptionalList = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  padding-left: 3rem;
-
-  @media only screen and (min-width: 992px) {
-    flex-direction: initial;
-    flex-wrap: wrap;
-
-    &:has(> li:nth-last-child(1)) {
-      flex-direction: column;
-
-      & li {
-        left: 0;
-        width: 50%;
-      }
-    }
-
-    &:has(> li:nth-last-child(3)) {
-      flex-direction: initial;
-
-      & li { width: 35%; }
-      & li:nth-child(even) { left: 30%; }
-    }    
-  }
-`
-
-export const ExceptionalListItem = styled.li`
-  position: relative;
-  margin-bottom: 2rem;
-
-  &:last-child { margin-bottom: 0; }
-  &::before {
-    position: absolute;
-    top: 0.4rem;
-    left: -3rem;
-    content: url(${CheckIcon});
-  }
-
-  @media only screen and (min-width: 992px) {
-    margin-bottom: 3rem;
-
-    &:nth-child(3) { margin-bottom: 0; }
-  }
-`
-
-export const ExceptionalListItemHeading = styled.h3`
-  font-weight: 600;
-  font-size: var(--big-font-size);
-`
-
-export const ExceptionalImageContainer = styled.div`
-  width: 40%;
-  margin-top: 2rem;
-
-  @media only screen and (min-width: 992px) {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    margin-top: 0;
-  }
-`
-
-export const ExceptionalImage = styled.img`
-  width: 100%;
-
-  @media only screen and (min-width: 992px) { width: 25%; }
-  @media only screen and (min-width: 1200px) { width: 22%; }
-  @media only screen and (min-width: 1400px) { width: 18%; }
-`
-

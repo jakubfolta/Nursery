@@ -6,4 +6,5 @@ export interface Context {
   nurseryDetails: NurseryDetailsProps;
   isFetchingError: boolean;
   headerHeight: number;
+  isNurseriesContentAvailable: boolean;
 }

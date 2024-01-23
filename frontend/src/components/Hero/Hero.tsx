@@ -13,9 +13,12 @@ const Hero: React.FC<Props> = props => {
       headerHeight={headerHeight}>
       <StyledHero>
         <StyledContainer>
-          <StyledHeading>{props.heading}</StyledHeading>
-          <StyledDescription>{props.description}</StyledDescription>
-          {props.isMainPage && props.isDesktopSize && <StyledUnderline id="underline" />}
+          <StyledHeading isMainPage={props.isMainPage}>{props.heading}</StyledHeading>
+          <StyledDescription>
+            {props.description}
+            {props.isMainPage && props.isDesktopSize && <StyledUnderline id="underline" />}
+          </StyledDescription>
+          
         </StyledContainer>
 
         {props.children && 

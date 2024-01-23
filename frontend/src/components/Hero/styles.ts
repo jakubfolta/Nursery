@@ -65,13 +65,13 @@ export const StyledHero = styled.div`
 
   @media only screen and (min-width: 768px) { max-width: 720px; }
   @media only screen and (min-width: 992px) {
+    flex: 1;
     flex-direction: row;
     max-width: 960px;
     margin-top: 8rem;
   }
 
   @media only screen and (min-width: 1200px) {
-    flex: 1;
     max-width: 1140px;
     margin-top: 6rem;
     padding-left: 0;
@@ -102,23 +102,28 @@ export const StyledContainer = styled.div`
   }
 `
 
-export const StyledHeading = styled.h1`
+export const StyledHeading = styled.h1<{isMainPage?: boolean}>`
   text-align: center;
   margin-bottom: 2rem;
   padding-top: 2rem;
-  font-size: var(--heading-font-size);
+  font-size: var(--main-page-heading);
+
+  @media only screen and (min-width: 768px) {
+    font-size: ${props => props.isMainPage ? `var(--main-page-heading)` : 'var(--other-pages-heading)'};
+  }
 
   @media only screen and (min-width: 992px) { text-align: left; }
   @media only screen and (min-width: 1200px) { padding-top: 0; }
 `
 
 export const StyledDescription = styled.p`
+  position: relative;
   font-size: var(--big-font-size);
 `
 
 export const StyledUnderline = styled.span`
   position: absolute;
-  bottom: 30px;
+  bottom: -20px;
   left: 0;
   min-width: var(--underline-width);
   max-width: 600px;
@@ -140,7 +145,7 @@ export const Wave = styled.div`
   
   position: absolute;
   width: 100%;
-  height: 100px;
+  height: var(--wave-height);
   bottom: 0;
   background-image: url(${Background});
   background-size: 700px;
