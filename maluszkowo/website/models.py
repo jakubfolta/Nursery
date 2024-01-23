@@ -5,12 +5,14 @@ from django.utils.text import slugify
 class Page(models.Model):
   description = models.CharField(max_length=500)
   heading_1 = models.CharField(max_length=50, blank=False)
-  text_1 = models.TextField(blank=False)
+  text_1 = models.TextField(max_length=210, blank=False)
   heading_2 = models.CharField(max_length=50, blank=True)
   text_2 = models.TextField(blank=True)
   heading_3 = models.CharField(max_length=50, blank=True)
   text_3 = models.TextField(blank=True)
   heading_4 = models.CharField(max_length=50, blank=True)
+  text_4 = models.TextField(blank=True)
+  heading_5 = models.CharField(max_length=50, blank=True)
   list_item_heading_1 = models.TextField(blank=True)
   list_item_description_1 = models.TextField(blank=True)
   list_item_heading_2 = models.TextField(blank=True)
@@ -19,6 +21,14 @@ class Page(models.Model):
   list_item_description_3 = models.TextField(blank=True)
   list_item_heading_4 = models.TextField(blank=True)
   list_item_description_4 = models.TextField(blank=True)
+  list_item_heading_5 = models.TextField(blank=True)
+  list_item_description_5 = models.TextField(blank=True)
+  list_item_heading_6 = models.TextField(blank=True)
+  list_item_description_6 = models.TextField(blank=True)
+  list_item_heading_7 = models.TextField(blank=True)
+  list_item_description_7 = models.TextField(blank=True)
+  list_item_heading_8 = models.TextField(blank=True)
+  list_item_description_8 = models.TextField(blank=True)
 
   def __str__(self):
     return self.description

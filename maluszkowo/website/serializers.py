@@ -12,6 +12,8 @@ class PageSerializer(serializers.ModelSerializer):
           'heading_3',
           'text_3',
           'heading_4',
+          'text_4',
+          'heading_5',
           'list_item_heading_1',
           'list_item_description_1',
           'list_item_heading_2',
@@ -20,6 +22,14 @@ class PageSerializer(serializers.ModelSerializer):
           'list_item_description_3',
           'list_item_heading_4',
           'list_item_description_4',
+          'list_item_heading_5',
+          'list_item_description_5',
+          'list_item_heading_6',
+          'list_item_description_6',
+          'list_item_heading_7',
+          'list_item_description_7',
+          'list_item_heading_8',
+          'list_item_description_8',
         )
 
 class NavigationItemSerializer(serializers.ModelSerializer):
