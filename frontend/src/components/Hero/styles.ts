@@ -1,15 +1,29 @@
-import styled, { css, keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components";
+import Background from "./../../assets/images/waves.svg";
 
 const gradient = keyframes`
   0% { background-position: 0%; }
   100% { background-position: 100%; }
 `
 
-export const StyledHeroContainer = styled.div<{theme: string, isMainPage?: boolean}>`
+const waveAnimation = css`
+  @keyframes wave {
+    100% { background-position: 700px; }
+  }
+
+  @media only screen and (min-width: 536px) {
+    @keyframes wave {
+      100% { background-position: 1000px; }
+    }
+  }
+`
+
+export const StyledHeroContainer = styled.div<{theme: string, isMainPage?: boolean, headerHeight: number}>`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   width: 100%;
-  padding-bottom: 90px;
   background: ${props => !props.isMainPage
     ? `linear-gradient(140deg, 
       ${`hsl(from ${props.theme} h s 23%)`} 0%,
@@ -36,6 +50,8 @@ export const StyledHeroContainer = styled.div<{theme: string, isMainPage?: boole
     animation: ${gradient} 60s linear infinite alternate;
     background-size: 1000%;
   `}
+
+  @media only screen and (min-width: 992px) { height: calc(100vh - (${props => props.headerHeight}px + var(--header-border))); }
 `
 
 export const StyledHero = styled.div`
@@ -49,6 +65,7 @@ export const StyledHero = styled.div`
 
   @media only screen and (min-width: 768px) { max-width: 720px; }
   @media only screen and (min-width: 992px) {
+    flex: 1;
     flex-direction: row;
     max-width: 960px;
     margin-top: 8rem;
@@ -85,23 +102,28 @@ export const StyledContainer = styled.div`
   }
 `
 
-export const StyledHeading = styled.h1`
+export const StyledHeading = styled.h1<{isMainPage?: boolean}>`
   text-align: center;
   margin-bottom: 2rem;
   padding-top: 2rem;
-  font-size: var(--heading-font-size);
+  font-size: var(--main-page-heading);
+
+  @media only screen and (min-width: 768px) {
+    font-size: ${props => props.isMainPage ? `var(--main-page-heading)` : 'var(--other-pages-heading)'};
+  }
 
   @media only screen and (min-width: 992px) { text-align: left; }
   @media only screen and (min-width: 1200px) { padding-top: 0; }
 `
 
 export const StyledDescription = styled.p`
+  position: relative;
   font-size: var(--big-font-size);
 `
 
 export const StyledUnderline = styled.span`
   position: absolute;
-  bottom: 30px;
+  bottom: -20px;
   left: 0;
   min-width: var(--underline-width);
   max-width: 600px;
@@ -109,4 +131,46 @@ export const StyledUnderline = styled.span`
   height: 10px;
   border-radius: 3px;
   background-color: var(--color-white);
+`
+
+export const StyledDivider = styled.div`
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+`
+
+export const Wave = styled.div`
+  ${waveAnimation}
+  
+  position: absolute;
+  width: 100%;
+  height: var(--wave-height);
+  bottom: 0;
+  background-image: url(${Background});
+  background-size: 700px;
+  transform: rotate(180deg);
+  animation: wave 20s reverse linear infinite;
+
+  @media only screen and (min-width: 536px) { background-size: 1000px; }
+  
+   &:nth-child(2) {
+    opacity: .8;
+    height: 120px;
+    animation-duration: 15s;
+    animation-direction: normal;
+   }
+
+   &:nth-child(3) {
+    opacity: .4;
+    height: 150px;
+    animation-duration: 8s;
+    animation-direction: normal;
+   }
+
+   &:nth-child(4) {
+    opacity: .2;
+    height: 110px;
+    animation-duration: 12s;
+   }
 `

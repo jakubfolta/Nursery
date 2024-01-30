@@ -2,12 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps, UpdatedPageProps } from "../shared/api.interfaces";
 import { Context } from "./interfaces";
+import { debounce } from "lodash-es";
 
 export const WebpageContext = React.createContext<Context>({
   pages: {},
   navigationItems: [],
   nurseryDetails: {} as NurseryDetailsProps,
-  isFetchingError: false
+  isFetchingError: false,
+  headerHeight: -1,
+  isNurseriesContentAvailable: false
 });
 
 const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
@@ -15,8 +18,13 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
   const [navigationItems, setNavigationItems] = useState<NavigationItemProps[]>([]);
   const [nurseryDetails, setNurseryDetails] = useState<NurseryDetailsProps>({} as NurseryDetailsProps);
   const [isFetchingError, setIsFetchingError] = useState(Boolean);
+  const [headerHeight, setHeaderHeight] = useState(-1);
+  const [isNurseriesContentAvailable, setIsNurseriesContentAvailable] = useState(false);
 
   useEffect(() => {
+    getHeaderHeight();
+    window.addEventListener('resize', getHeaderHeight);
+
     axios.get("/api/website/")
       .then(result => {
         const data = result.data;
@@ -41,15 +49,19 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
           updatedPagesContent[page.description] = updatedRest as UpdatedPageProps;
         });
         
+        const aboutUsPageContent = updatedPagesContent['About us'];
+        const isNurseriesContentAvailable = !!(aboutUsPageContent.heading_3 && aboutUsPageContent.text_3 && aboutUsPageContent.heading_4 && aboutUsPageContent.text_4);
+
+        // console.log('NURSERY DETAILS', isNurseriesContentAvailable);
         const nurseryDetails: NurseryDetailsProps = data.nursery_details[0];
         nurseryDetails['description'] = data.pages[0].text_1;
-        // console.log('NURSERY DETAILS', nurseryDetails);
         // console.log('DATA', result.data);
         
         console.log('UPDATED PAGES', updatedPagesContent);
         // console.log('NAVIGATION ITEMS', updatedNavigationItems);
         setNavigationItems(updatedNavigationItems);
         setPagesContent(updatedPagesContent);
+        setIsNurseriesContentAvailable(isNurseriesContentAvailable);
         setNurseryDetails(nurseryDetails);
       })
       .catch(error => {
@@ -59,11 +71,18 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
       })
   }, []);
 
+  const getHeaderHeight = debounce(() => {
+    const headHeight = document.getElementById('header')!.clientHeight;
+    setHeaderHeight(headHeight);
+  }, 300);
+
   const contextValue: Context = {
     pages: pagesContent,
     navigationItems: navigationItems,
     nurseryDetails: nurseryDetails,
-    isFetchingError: isFetchingError
+    isFetchingError: isFetchingError,
+    headerHeight: headerHeight,
+    isNurseriesContentAvailable: isNurseriesContentAvailable
   };
 
   return (

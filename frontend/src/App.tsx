@@ -45,7 +45,7 @@ export const App: React.FC = () => {
   const [intersectionOffsetTop, setIntersectionOffsetTop] = useState(-1);
   const [isUnderlineListener, setIsUnderlineListener] = useState(false);
   const [isFacilitiesSectionAvailable, setIsFacilitiesSectionAvailable] = useState(false);
-  const [maluszkowoImageLastPosition, setMaluszkowoImageLastPosition] = useState(-1);
+  const [imageLastPosition, setImageLastPosition] = useState(-1);
   const location = useLocation();
   
   const maluszkowoImage = document.getElementById('funny-maluszkowo-image');
@@ -58,10 +58,14 @@ export const App: React.FC = () => {
     } else {
       setIsIntersecting(false);
       const maluszkowoImage = document.getElementById('funny-maluszkowo-image');
+      const starszakowoImage = document.getElementById('funny-starszakowo-image');
 
       if (maluszkowoImage) {
         const topPosition = +getComputedStyle(maluszkowoImage).top.replace('px', '');
-        setMaluszkowoImageLastPosition(topPosition);
+        setImageLastPosition(topPosition);
+      } else if (starszakowoImage) {
+        const topPosition = +getComputedStyle(starszakowoImage!).top.replace('px', '');
+        setImageLastPosition(topPosition);
       }
     }
   });  
@@ -145,14 +149,20 @@ export const App: React.FC = () => {
 
   const imagesListener = useCallback((status: ScrollStatus) => {
     const resetedOffset = status.offset.y - intersectionOffsetTop;
-    const imageOffsetPosition = -resetedOffset / 12 + maluszkowoImageLastPosition;
+    const imageOffsetPosition = -resetedOffset / 12 + imageLastPosition;
 
-    (maluszkowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
-    if (!isRowImagesDirection) {
-      (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 40 + 'px';
-    } else {
-      (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
+    if (maluszkowoImage) {
+      (maluszkowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
     }
+    if (starszakowoImage) {
+      if (!isRowImagesDirection) {
+        maluszkowoImage
+          ? (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 40 + 'px'
+          : (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
+      } else {
+        (starszakowoImage as HTMLElement).style.top = imageOffsetPosition + 'px';
+      }
+    } 
   }, [intersectionOffsetTop]);
 
   const updatePageTheme = (path: string) => {
@@ -193,7 +203,15 @@ export const App: React.FC = () => {
     const Component = route.component;
 
     return (
-      <Route key={index} path={route.path} element={<Component theme={getThemeColor(route.themeLabel)} {...(route.path === '/' && {isDesktopSize: isDesktopSize, setFacilitiesSectionAvailability: setFacilitiesSectionAvailability})} /> } />
+      <Route 
+        key={index} 
+        path={route.path} 
+        element={<Component 
+          theme={getThemeColor(route.themeLabel)} 
+          {...(route.path === '/'
+            ? {isDesktopSize: isDesktopSize, setFacilitiesSectionAvailability: setFacilitiesSectionAvailability}
+            : route.path === '/o-nas' && {scrollbar: scrollbar})} /> }
+      />
     );
   });
   

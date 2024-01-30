@@ -5,4 +5,6 @@ export interface Context {
   navigationItems: NavigationItemProps[];
   nurseryDetails: NurseryDetailsProps;
   isFetchingError: boolean;
+  headerHeight: number;
+  isNurseriesContentAvailable: boolean;
 }

@@ -28,6 +28,7 @@ export const CONSTANTS = {
   offerPageTheme: COLORS.accentThree,
   contactPageTheme: COLORS.accentFour,
   parentsPageTheme: COLORS.accentFive,
+  waveHeight: 100
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -79,7 +80,7 @@ export const GlobalStyle = createGlobalStyle`
     scrollbar-width: none; */
   }
 
-  section {
+  section:not([data-full]) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,13 +88,23 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     max-width: 540px;
     color: var(--color-dark);
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
     padding: 0 1rem;
+    white-space: pre-wrap;
     
     @media only screen and (min-width: 768px) { max-width: 720px; }
-    @media only screen and (min-width: 992px) { max-width: 960px; }
+    @media only screen and (min-width: 992px) {
+      max-width: 960px;
+      margin-bottom: 7rem;
+    }
+
     @media only screen and (min-width: 1200px) { max-width: 1140px; }
     @media only screen and (min-width: 1400px) { max-width: 1320px; }
+    @media only screen and (min-width: 1700px) { max-width: 1608px; }
+
+    &:first-of-type {
+      margin-top: 6rem;
+    }
     
     &:last-child {
       margin-bottom: 2rem;
@@ -127,6 +138,7 @@ export const GlobalStyle = createGlobalStyle`
     --menu-animation-duration: ${CONSTANTS.menuAnimationDuration}s;
     --page-transition-duration: ${CONSTANTS.pageTransitionDuration}s;
     --underline-width: ${CONSTANTS.underlineWidth}px;
+    --wave-height: ${CONSTANTS.waveHeight}px;
     --header-border: 6px;
     --padding-xsmall: 0.3rem;
     --padding-small: 1rem;
@@ -157,9 +169,7 @@ export const GlobalStyle = createGlobalStyle`
     --big-font-size: 2rem;
     --xl-font-size: 2.7rem;
     --section-heading-font-size: 4.7rem;
-    --heading-font-size: 5rem;
-    
-    // Animations
-    
+    --main-page-heading: 5.5rem;
+    --other-pages-heading: 10rem;
   }
 `
