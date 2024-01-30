@@ -82,6 +82,7 @@ export const ExceptionalListItem = styled.li`
 
     &:nth-child(3) { margin-bottom: 0; }
   }
+  @media only screen and (min-width: 1700px) { margin-bottom: 4rem; }
 `
 
 export const ExceptionalListItemHeading = styled.h3`
@@ -107,4 +108,5 @@ export const ExceptionalImage = styled.img`
   @media only screen and (min-width: 992px) { width: 25%; }
   @media only screen and (min-width: 1200px) { width: 22%; }
   @media only screen and (min-width: 1400px) { width: 18%; }
+  @media only screen and (min-width: 1700px) { width: 15%; }
 `

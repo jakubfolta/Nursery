@@ -4,4 +4,6 @@ export interface Props {
   sectionDescription: string;
   starszakowo?: boolean;
   isMaluszkowo?: boolean;
+  isStarszakowo?: boolean;
+  isCharacteristic: boolean;
 }

@@ -100,6 +100,7 @@ export const GlobalStyle = createGlobalStyle`
 
     @media only screen and (min-width: 1200px) { max-width: 1140px; }
     @media only screen and (min-width: 1400px) { max-width: 1320px; }
+    @media only screen and (min-width: 1700px) { max-width: 1608px; }
 
     &:first-of-type {
       margin-top: 6rem;

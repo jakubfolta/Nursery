@@ -8,10 +8,10 @@ import desktopPaintingGirl from "../../../assets/images/painting-girl-desktop.jp
 import mobileKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-mobile.jpg";
 import desktopKidsPlayingWithWater from "../../../assets/images/kids-playing-with-water-desktop.jpg";
 import { StyledImage, StyledImageContainer, StyledImageContainerShadow } from "./styles";
-import { ListItems } from "./interface";
 import { FacilitiesSection } from "./FacilitiesSection/FacilitiesSection";
 import { ValuesSection } from "./ValuesSection/ValuesSection";
 import { ExceptionalSection } from "./ExceptionalSection/ExceptionalSection";
+import { getListItems } from "../../../utilities/getListItems";
 
 export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean, setFacilitiesSectionAvailability?: () => void}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
@@ -21,7 +21,7 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean, setFaci
   const [valuesSectionHeading, setValuesSectionHeading] = useState<string>();
   const [valuesSectionDescription, setValuesSectionDescription] = useState<string>();
   const [exceptionalSectionHeading, setExceptionalSectionHeading] = useState<string>();
-  const [exceptionalSectionListItems, setExceptionalSectionListItems] = useState<ListItems>();
+  const [exceptionalSectionListItems, setExceptionalSectionListItems] = useState<[string, string][]>([]);
 
   const mainPageContent = useContext(WebpageContext).pages['Main page'];
   const aboutUsPageContent = useContext(WebpageContext).pages['About us'];
@@ -43,33 +43,12 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean, setFaci
         setValuesSectionHeading(mainPageContent.heading_3);
         setValuesSectionDescription(mainPageContent.text_3);
       }
-
-      const listItems: ListItems = {
-        firstItem: {
-          heading: mainPageContent.list_item_heading_1,
-          description: mainPageContent.list_item_description_1
-        },
-        secondItem: {
-          heading: mainPageContent.list_item_heading_2,
-          description: mainPageContent.list_item_description_2
-        },
-        thirdItem: {
-          heading: mainPageContent.list_item_heading_3,
-          description: mainPageContent.list_item_description_3
-        },
-        fourthItem: {
-          heading: mainPageContent.list_item_heading_4,
-          description: mainPageContent.list_item_description_4
-        }
-      };
-      
       if (mainPageContent.heading_4) {
-        const filteredListItems = Object.entries(listItems).filter(item => item[1].heading && item[1].description);
-        const updatedListItems = Object.fromEntries(filteredListItems);
+        const listItems = getListItems(mainPageContent);
         
-        if (Object.keys(updatedListItems).length) {
+        if (listItems.length) {
           setExceptionalSectionHeading(mainPageContent.heading_4);
-          setExceptionalSectionListItems(updatedListItems as ListItems);
+          setExceptionalSectionListItems(listItems);
         }
       }
     }

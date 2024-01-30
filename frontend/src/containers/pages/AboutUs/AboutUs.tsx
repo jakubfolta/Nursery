@@ -7,18 +7,22 @@ import { StyledImage, StyledImageContainer, SuccessSection } from "./styles";
 import { Scrollbar } from "smooth-scrollbar/scrollbar";
 import { CONSTANTS } from "../../../styles/global";
 import { NurserySection } from "./NurserySection/NurserySection";
+import { getListItems } from "../../../utilities/getListItems";
+import { CurriculumSection } from "./CurriculumSection/CurriculumSection";
 
 const waveHeight = CONSTANTS.waveHeight;
 
 const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
-  const [successHeading, setSuccessHeading] = useState('');
-  const [successDescription, setSuccessDescription] = useState('');
-  const [maluszkowoHeading, setMaluszkowoHeading] = useState('');
-  const [maluszkowoDescription, setMaluszkowoDescription] = useState('');
-  const [starszakowoHeading, setStarszakowoHeading] = useState('');
-  const [starszakowoDescription, setStarszakowoDescription] = useState('');
+  const [successSectionHeading, setSuccessSectionHeading] = useState('');
+  const [successSectionDescription, setSuccessSectionDescription] = useState('');
+  const [maluszkowoSectionHeading, setMaluszkowoSectionHeading] = useState('');
+  const [maluszkowoSectionDescription, setMaluszkowoSectionDescription] = useState('');
+  const [starszakowoSectionHeading, setStarszakowoSectionHeading] = useState('');
+  const [starszakowoSectionDescription, setStarszakowoSectionDescription] = useState('');
+  const [curriculumSectionHeading, setCurriculumSectionHeading] = useState('');
+  const [curriculumSectionListItems, setCurriculumSectionListItems] = useState<[string, string][]>([]);
   
   const aboutUsPageContent = useContext(WebpageContext).pages['About us'];
   const hash = window.location.hash.replace('#', '');
@@ -28,30 +32,35 @@ const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
       setHeroHeading(aboutUsPageContent.heading_1);
       setHeroDescription(aboutUsPageContent.text_1);
       if (aboutUsPageContent.heading_2 && aboutUsPageContent.text_2) {
-        setSuccessHeading(aboutUsPageContent.heading_2);
-        setSuccessDescription(aboutUsPageContent.text_2);
+        setSuccessSectionHeading(aboutUsPageContent.heading_2);
+        setSuccessSectionDescription(aboutUsPageContent.text_2);
       }
       if (aboutUsPageContent.heading_3 && aboutUsPageContent.text_3) {
-        setMaluszkowoHeading(aboutUsPageContent.heading_3);
-        setMaluszkowoDescription(aboutUsPageContent.text_3);
+        setMaluszkowoSectionHeading(aboutUsPageContent.heading_3);
+        setMaluszkowoSectionDescription(aboutUsPageContent.text_3);
       }
       if (aboutUsPageContent.heading_4 && aboutUsPageContent.text_4) {
-        setStarszakowoHeading(aboutUsPageContent.heading_4);
-        setStarszakowoDescription(aboutUsPageContent.text_4);
+        setStarszakowoSectionHeading(aboutUsPageContent.heading_4);
+        setStarszakowoSectionDescription(aboutUsPageContent.text_4);
       }
-      // if (aboutUsPageContent.heading_5) {
+      if (aboutUsPageContent.heading_5) {
+        const listItems = getListItems(aboutUsPageContent);
         
-      // }
+        if (listItems.length) {
+          setCurriculumSectionHeading(aboutUsPageContent.heading_5);
+          setCurriculumSectionListItems(listItems);
+        }
+      }
     }
   }, [aboutUsPageContent]);
 
   useEffect(() => {
-    if ((hash === 'maluszkowo' && maluszkowoHeading) || (hash === 'starszakowo' && starszakowoHeading)) {
+    if ((hash === 'maluszkowo' && maluszkowoSectionHeading) || (hash === 'starszakowo' && starszakowoSectionHeading)) {
       setTimeout(() => {
         scrollToSection(hash);
       }, 100);
     }
-  }, [hash, maluszkowoHeading, starszakowoHeading]);
+  }, [hash, maluszkowoSectionHeading, starszakowoSectionHeading]);
 
   const scrollToSection = ((sectionId: string) => {
     const sectionElement = document.getElementById(sectionId);
@@ -75,30 +84,42 @@ const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
         </StyledImageContainer>
       </Hero>
 
-      {successHeading &&
-        <SuccessSection>
+      {successSectionHeading &&
+        <SuccessSection
+          isMaluszkowo={!!maluszkowoSectionHeading}
+          isStarszakowo={!!starszakowoSectionHeading}>
           <div>
-            <h2>{successHeading}</h2>
-            <p>{successDescription}</p>
+            <h2>{successSectionHeading}</h2>
+            <p>{successSectionDescription}</p>
           </div>
         </SuccessSection>
       }
 
-      {maluszkowoHeading &&
+      {maluszkowoSectionHeading &&
         <NurserySection
           id="maluszkowo"
-          sectionHeading={maluszkowoHeading}
-          sectionDescription={maluszkowoDescription}
+          sectionHeading={maluszkowoSectionHeading}
+          sectionDescription={maluszkowoSectionDescription}
+          isStarszakowo={!!starszakowoSectionHeading}
+          isCharacteristic={!!curriculumSectionHeading}
         />
       }
-
-      {starszakowoHeading &&
+      
+      {starszakowoSectionHeading &&
         <NurserySection
           id="starszakowo"
           starszakowo
-          sectionHeading={starszakowoHeading}
-          sectionDescription={starszakowoDescription}
-          isMaluszkowo={!!maluszkowoHeading}
+          sectionHeading={starszakowoSectionHeading}
+          sectionDescription={starszakowoSectionDescription}
+          isMaluszkowo={!!maluszkowoSectionHeading}
+          isCharacteristic={!!curriculumSectionHeading}
+        />
+      }
+
+      {curriculumSectionHeading &&
+        <CurriculumSection
+          sectionHeading={curriculumSectionHeading}
+          listItems={curriculumSectionListItems}
         />
       }
     </>

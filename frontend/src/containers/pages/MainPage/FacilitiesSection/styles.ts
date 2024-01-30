@@ -33,6 +33,11 @@ export const FacilitiesImagesContainer = styled.div`
     flex-direction: initial;
     margin-top: 8rem;
   }
+  
+  @media only screen and (min-width: 1700px) {
+    width: 100%;
+    justify-content: space-evenly;
+  }
 `
 
 export const FacilitiesImageBox = styled(NavLink)`

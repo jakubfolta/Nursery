@@ -14,6 +14,7 @@ export const ValuesDescriptionContainer = styled.div`
 `
 
 export const ValuesImageContainer = styled.div`
+  display: flex;
   flex: 0 1 50%;
   overflow: hidden;
   border-radius: 13% 87% 12% 88% / 88% 20% 80% 12%;

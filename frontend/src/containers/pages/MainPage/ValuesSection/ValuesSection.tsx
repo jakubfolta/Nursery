@@ -4,22 +4,21 @@ import desktopRainbowHands from "../../../../assets/images/rainbow-hands-desktop
 import { Props } from "./interface";
 import { ValuesDescriptionContainer, ValuesImage, ValuesImageContainer, ValuesStyledSection } from "./styles";
 
-export const ValuesSection: React.FC<Props> = props => {
-  return (
-    <ValuesStyledSection>
-      <ValuesDescriptionContainer>
-        <h2>{props.sectionHeading}</h2>
-        <p>{props.sectionDescription}</p>
-      </ValuesDescriptionContainer>
-      
-      <ValuesImageContainer>
-        <ValuesImage 
-          srcSet={`${mobileRainbowHands} 520w, ${desktopRainbowHands} 700w`}
-          sizes="(max-width: 767px) 520px, 700px"
-          src={desktopRainbowHands}
-          alt="Kolorowe rece"
-        />
-      </ValuesImageContainer>
-    </ValuesStyledSection>
-  );
-};
+export const ValuesSection: React.FC<Props> = props => (
+  <ValuesStyledSection>
+    <ValuesDescriptionContainer>
+      <h2>{props.sectionHeading}</h2>
+      <p>{props.sectionDescription}</p>
+    </ValuesDescriptionContainer>
+    
+    <ValuesImageContainer>
+      <ValuesImage 
+        srcSet={`${mobileRainbowHands} 520w, ${desktopRainbowHands} 700w`}
+        sizes="(max-width: 767px) 520px, 700px"
+        src={desktopRainbowHands}
+        alt="Kolorowe rece"
+      />
+    </ValuesImageContainer>
+  </ValuesStyledSection>
+);
+  
