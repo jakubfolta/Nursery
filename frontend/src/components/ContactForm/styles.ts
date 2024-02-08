@@ -4,8 +4,6 @@ export const ContactFormContainer = styled.div`
   align-self: stretch;
   display: flex;
   justify-content: center;
-  background-color: var(--color-accent-4);
-  padding: 3rem 0;
 `
 
 export const FormWrapper = styled.div`
@@ -57,7 +55,7 @@ const textEmailInput = css`
 
 const input = css`
   width: 100%;
-  background-color: var(--color-accent-4);
+  background-color: transparent;
   font-family: inherit;
   font-size: var(--big-font-size);
   font-weight: 600;

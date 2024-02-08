@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.template import loader
 from rest_framework import viewsets, status
-from .serializers import PageSerializer, NavigationItemSerializer, ReviewSerializer, NurseryDetailSerializer
-from .models import Page, NavigationItem, Review, NurseryDetail
+from .serializers import PageSerializer, NavigationItemSerializer, ReviewSerializer, NurseryDetailSerializer, ScheduleSerializer
+from .models import Page, NavigationItem, Review, NurseryDetail, Schedule
 from drf_multiple_model.views import ObjectMultipleModelAPIView
 from rest_framework.views import APIView
 from django.conf import settings
@@ -34,6 +34,11 @@ class PageView(ObjectMultipleModelAPIView, viewsets.ModelViewSet):
             'queryset': NurseryDetail.objects.all(),
             'serializer_class': NurseryDetailSerializer,
             'label': 'nursery_details'
+        },
+        {
+            'queryset': Schedule.objects.all(),
+            'serializer_class': ScheduleSerializer,
+            'label': 'schedules'
         },
     ]
 

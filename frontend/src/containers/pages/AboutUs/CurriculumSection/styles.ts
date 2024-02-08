@@ -217,7 +217,7 @@ export const CurriculumFullImageContainer = styled.div`
 export const CurriculumImageContainer = styled.div`
   ${imageContainer}
   width: 50%;
-  border-radius: 10%;
+  border-radius: 50px;
   overflow: hidden;
   
   @media only screen and (min-width: 992px) { width: 50rem; }

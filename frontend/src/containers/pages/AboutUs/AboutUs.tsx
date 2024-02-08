@@ -75,12 +75,12 @@ const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
         heading={heroHeading}
         description={heroDescription}>
         <StyledImageContainer>
-            <StyledImage 
-              srcSet={`${mobilePlayingBoy} 520w, ${desktopPlayingBoy} 630w`}
-              sizes="(max-width: 767px) 520px, 630px"
-              src={desktopPlayingBoy}
-              alt="Bawiacy sie chlopiec"
-            />
+          <StyledImage 
+            srcSet={`${mobilePlayingBoy} 520w, ${desktopPlayingBoy} 630w`}
+            sizes="(max-width: 767px) 520px, 630px"
+            src={desktopPlayingBoy}
+            alt="Bawiacy sie chlopiec"
+          />
         </StyledImageContainer>
       </Hero>
 

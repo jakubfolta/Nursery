@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator, MinLeng
 from django.utils.text import slugify
 
 class Page(models.Model):
-  description = models.CharField(max_length=500)
+  description = models.CharField(max_length=50)
   heading_1 = models.CharField(max_length=50, blank=False)
   text_1 = models.TextField(max_length=210, blank=False)
   heading_2 = models.CharField(max_length=50, blank=True)
@@ -12,7 +12,8 @@ class Page(models.Model):
   text_3 = models.TextField(blank=True)
   heading_4 = models.CharField(max_length=50, blank=True)
   text_4 = models.TextField(blank=True)
-  heading_5 = models.CharField(max_length=50, blank=True)
+  heading_5 = models.CharField(max_length=150, blank=True)
+  text_5 = models.TextField(blank=True)
   list_item_heading_1 = models.TextField(blank=True)
   list_item_description_1 = models.TextField(blank=True)
   list_item_heading_2 = models.TextField(blank=True)
@@ -75,4 +76,40 @@ class NurseryDetail(models.Model):
 
   def __str__(self):
     return self.address
-    
+  
+
+class Schedule(models.Model):
+  facility = models.CharField(max_length=50, blank=False)
+  list_item_heading_1 = models.TextField(blank=True)
+  list_item_description_1 = models.TextField(blank=True)
+  list_item_heading_2 = models.TextField(blank=True)
+  list_item_description_2 = models.TextField(blank=True)
+  list_item_heading_3 = models.TextField(blank=True)
+  list_item_description_3 = models.TextField(blank=True)
+  list_item_heading_4 = models.TextField(blank=True)
+  list_item_description_4 = models.TextField(blank=True)
+  list_item_heading_5 = models.TextField(blank=True)
+  list_item_description_5 = models.TextField(blank=True)
+  list_item_heading_6 = models.TextField(blank=True)
+  list_item_description_6 = models.TextField(blank=True)
+  list_item_heading_7 = models.TextField(blank=True)
+  list_item_description_7 = models.TextField(blank=True)
+  list_item_heading_8 = models.TextField(blank=True)
+  list_item_description_8 = models.TextField(blank=True)
+  list_item_heading_9 = models.TextField(blank=True)
+  list_item_description_9 = models.TextField(blank=True)
+  list_item_heading_10 = models.TextField(blank=True)
+  list_item_description_10 = models.TextField(blank=True)
+  list_item_heading_11 = models.TextField(blank=True)
+  list_item_description_11 = models.TextField(blank=True)
+  list_item_heading_12 = models.TextField(blank=True)
+  list_item_description_12 = models.TextField(blank=True)
+  list_item_heading_13 = models.TextField(blank=True)
+  list_item_description_13 = models.TextField(blank=True)
+  list_item_heading_14 = models.TextField(blank=True)
+  list_item_description_14 = models.TextField(blank=True)
+  list_item_heading_15 = models.TextField(blank=True)
+  list_item_description_15 = models.TextField(blank=True)
+
+  def __str__(self):
+    return self.facility

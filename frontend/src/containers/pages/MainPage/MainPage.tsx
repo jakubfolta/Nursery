@@ -16,11 +16,11 @@ import { getListItems } from "../../../utilities/getListItems";
 export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean, setFacilitiesSectionAvailability?: () => void}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
-  const [facilitiesSectionHeading, setFacilitiesSectionHeading] = useState<string>();
-  const [facilitiesSectionDescription, setFacilitiesSectionDescription] = useState<string>();
-  const [valuesSectionHeading, setValuesSectionHeading] = useState<string>();
-  const [valuesSectionDescription, setValuesSectionDescription] = useState<string>();
-  const [exceptionalSectionHeading, setExceptionalSectionHeading] = useState<string>();
+  const [facilitiesSectionHeading, setFacilitiesSectionHeading] = useState('');
+  const [facilitiesSectionDescription, setFacilitiesSectionDescription] = useState('');
+  const [valuesSectionHeading, setValuesSectionHeading] = useState('');
+  const [valuesSectionDescription, setValuesSectionDescription] = useState('');
+  const [exceptionalSectionHeading, setExceptionalSectionHeading] = useState('');
   const [exceptionalSectionListItems, setExceptionalSectionListItems] = useState<[string, string][]>([]);
 
   const mainPageContent = useContext(WebpageContext).pages['Main page'];

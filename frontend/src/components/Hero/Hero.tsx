@@ -18,7 +18,6 @@ const Hero: React.FC<Props> = props => {
             {props.description}
             {props.isMainPage && props.isDesktopSize && <StyledUnderline id="underline" />}
           </StyledDescription>
-          
         </StyledContainer>
 
         {props.children && 
