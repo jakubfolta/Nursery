@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Page, Review, NavigationItem, NurseryDetail
+from .models import Page, Review, NavigationItem, NurseryDetail, Schedule
 from website import custom_admin
 
 def check_limit(actual_count, limit):
@@ -37,7 +37,15 @@ class NurseryDetailAdmin(custom_admin.BaseAdmin):
   def has_add_permission(self, request):
     return False
 
+class ScheduleAdmin(custom_admin.BaseAdmin):
+  list_display = ('facility',)
+  readonly_fields = ('facility',)
+
+  def has_add_permission(self, request):
+    return False
+
 admin.site.register(Page, PageAdmin)
 admin.site.register(Review, ReviewAdmin)
 admin.site.register(NavigationItem, NavigationItemAdmin)
 admin.site.register(NurseryDetail, NurseryDetailAdmin)
+admin.site.register(Schedule, ScheduleAdmin)

@@ -1,4 +1,4 @@
-import { PagesProps, NavigationItemProps, NurseryDetailsProps } from "../shared/api.interfaces";
+import { PagesProps, NavigationItemProps, NurseryDetailsProps, SchedulesProps } from "../shared/api.interfaces";
 
 export interface Context {
   pages: PagesProps;
@@ -7,4 +7,5 @@ export interface Context {
   isFetchingError: boolean;
   headerHeight: number;
   isNurseriesContentAvailable: boolean;
+  schedules: SchedulesProps;
 }

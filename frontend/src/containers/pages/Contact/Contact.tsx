@@ -3,7 +3,11 @@ import { ContactForm } from "../../../components";
 import { Form } from "./interface";
 import axios from "axios";
 import Hero from "../../../components/Hero/Hero";
+import mobileMonkey from "../../../assets/images/monkey-mobile.png";
+import desktopMonkey from "../../../assets/images/monkey-desktop.png";
 import { WebpageContext } from "../../../store/webpage-context";
+import { ContactFormContainer, ContactFormSection, ContactFormWaveTop, StyledImage, StyledImageContainer } from "./styles";
+import { ContactSection } from "./ContactSection/ContactSection";
 
 const defaultFormState = {
   name: {
@@ -38,15 +42,35 @@ const Contact: React.FC<{theme: string}> = props => {
   const [message, setMessage] = useState('');
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
+  const [officeSectionHeading, setOfficeSectionHeading] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [contactFormSectionHeading, setContactFormSectionHeading] = useState('');
 
   const contactPageContent = useContext(WebpageContext).pages['Contact'];
+  const contactDetails = useContext(WebpageContext).nurseryDetails;
 
   useEffect(() => {
     if (contactPageContent) {
       setHeroHeading(contactPageContent.heading_1);
       setHeroDescription(contactPageContent.text_1);
+      if (contactPageContent.heading_2) {
+        setOfficeSectionHeading(contactPageContent.heading_2);
+      }
+      if (contactPageContent.heading_3) {
+        setContactFormSectionHeading(contactPageContent.heading_3);
+      }
     }
   }, [contactPageContent]);
+
+  useEffect(() => {
+    if (Object.keys(contactDetails).length) {
+      setPhone(contactDetails.phone);
+      setAddress(contactDetails.address);
+      setEmail(contactDetails.email);
+    }
+  }, [contactDetails]);
   
   const checkValidity = (value: string, rules: {isEmail: boolean} | {minLength: number} | {}) => {
     let isValid = false;
@@ -125,23 +149,50 @@ const Contact: React.FC<{theme: string}> = props => {
       <Hero 
         theme={props.theme}
         heading={heroHeading}
-        description={heroDescription}
-      />
-      <ContactForm 
-        onFieldChange={onChangeHandler}
-        onFormSubmit={onSubmitFormHandler}
-        nameValue={formState.formFields.name.value}
-        emailValue={formState.formFields.email.value}
-        messageValue={formState.formFields.message.value}
-        isNameValid={formState.formFields.name.isValid}
-        isNameTouched={formState.formFields.name.isTouched}
-        isEmailValid={formState.formFields.email.isValid}
-        isEmailTouched={formState.formFields.email.isTouched}
-        isFormValid={isValidForm}
-        isLoading={isLoading}
-        showMessage={showMessage}
-        isMessageSent={isMessageSent}
-        message={message} />
+        description={heroDescription}>
+        <StyledImageContainer>
+          <StyledImage 
+            srcSet={`${mobileMonkey} 520w, ${desktopMonkey} 700w`}
+            sizes="(max-width: 767px) 520px, 700px"
+            src={desktopMonkey}
+            alt="Malpka"
+          />
+        </StyledImageContainer>
+      </Hero>
+
+      {officeSectionHeading &&
+        <ContactSection 
+          sectionHeading={officeSectionHeading}
+          phone={phone}
+          address={address}
+          email={email}
+        />
+      }
+
+      {contactFormSectionHeading &&
+        <ContactFormSection data-full>
+          <ContactFormWaveTop />
+          <ContactFormContainer>
+            <h2>{contactFormSectionHeading}</h2>
+            <ContactForm 
+              onFieldChange={onChangeHandler}
+              onFormSubmit={onSubmitFormHandler}
+              nameValue={formState.formFields.name.value}
+              emailValue={formState.formFields.email.value}
+              messageValue={formState.formFields.message.value}
+              isNameValid={formState.formFields.name.isValid}
+              isNameTouched={formState.formFields.name.isTouched}
+              isEmailValid={formState.formFields.email.isValid}
+              isEmailTouched={formState.formFields.email.isTouched}
+              isFormValid={isValidForm}
+              isLoading={isLoading}
+              showMessage={showMessage}
+              isMessageSent={isMessageSent}
+              message={message} 
+            />
+          </ContactFormContainer>
+        </ContactFormSection>
+      }
     </>
   );
 }

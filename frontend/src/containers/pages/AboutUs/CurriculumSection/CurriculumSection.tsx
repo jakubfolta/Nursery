@@ -1,6 +1,6 @@
 import React from "react";
-import mobilePlay from "../../../../assets/images/play-mobile.jpg";
-import desktopPlay from "../../../../assets/images/play-desktop.jpg";
+import mobileChildBricks from "../../../../assets/images/child-bricks-mobile.jpg";
+import desktopChildBricks from "../../../../assets/images/child-bricks-desktop.jpg";
 import mobileSmilingBoy from "../../../../assets/images/smiling-boy-mobile.jpg";
 import desktopSmilingBoy from "../../../../assets/images/smiling-boy-desktop.jpg";
 import { Props } from "./interface";
@@ -27,9 +27,9 @@ export const CurriculumSection: React.FC<Props> = props => (
 
     <CurriculumFullImageContainer>
       <CurriculumImage 
-        srcSet={`${mobilePlay} 767w, ${desktopPlay} 1920w`}
+        srcSet={`${mobileChildBricks} 767w, ${desktopChildBricks} 1920w`}
         sizes="(max-width: 767px) 767px, 1920px"
-        src={desktopPlay}
+        src={desktopChildBricks}
         alt="Drewniane klocki"
       />
     </CurriculumFullImageContainer>

@@ -93,11 +93,7 @@ export const GlobalStyle = createGlobalStyle`
     white-space: pre-wrap;
     
     @media only screen and (min-width: 768px) { max-width: 720px; }
-    @media only screen and (min-width: 992px) {
-      max-width: 960px;
-      margin-bottom: 7rem;
-    }
-
+    @media only screen and (min-width: 992px) { max-width: 960px; }
     @media only screen and (min-width: 1200px) { max-width: 1140px; }
     @media only screen and (min-width: 1400px) { max-width: 1320px; }
     @media only screen and (min-width: 1700px) { max-width: 1608px; }
@@ -110,8 +106,6 @@ export const GlobalStyle = createGlobalStyle`
       margin-bottom: 2rem;
 
       @media only screen and (min-width: 992px) { margin-bottom: 4rem; }
-      @media only screen and (min-width: 1200px) { margin-bottom: 7rem; }
-      @media only screen and (min-width: 1280px) { margin-bottom: 4rem; }
       @media only screen and (min-width: 1400px) { margin-bottom: 5rem; }
     }
   }
@@ -119,6 +113,7 @@ export const GlobalStyle = createGlobalStyle`
   section > div { overflow-wrap: anywhere; }
   section div > p { line-height: 1.7; }
   section div h2 + p,
+  section div h2 + div,
   section div h2 + ul { margin-top: 2rem; }
 
   h1, h2 {

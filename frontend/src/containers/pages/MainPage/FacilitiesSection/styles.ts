@@ -31,7 +31,7 @@ export const FacilitiesImagesContainer = styled.div`
   @media only screen and (min-width: 768px) { width: 80%; }
   @media only screen and (min-width: 992px) {
     flex-direction: initial;
-    margin-top: 8rem;
+    margin-top: 6rem;
   }
   
   @media only screen and (min-width: 1700px) {

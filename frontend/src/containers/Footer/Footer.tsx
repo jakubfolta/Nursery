@@ -16,8 +16,6 @@ export const Footer: React.FC = () => {
   
   useEffect(() => {
     if (Object.keys(footerData).length) {
-      // console.log('FOOTER DATA', footerData);
-
       setFooterDescription(footerData.description);
       setAddress(footerData.address);
       setPhone(footerData.phone);

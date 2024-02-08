@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps, UpdatedPageProps } from "../shared/api.interfaces";
+import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps, UpdatedPageProps, SchedulesProps, FetchedScheduleProps, UpdatedScheduleProps } from "../shared/api.interfaces";
 import { Context } from "./interfaces";
 import { debounce } from "lodash-es";
 
@@ -10,7 +10,8 @@ export const WebpageContext = React.createContext<Context>({
   nurseryDetails: {} as NurseryDetailsProps,
   isFetchingError: false,
   headerHeight: -1,
-  isNurseriesContentAvailable: false
+  isNurseriesContentAvailable: false,
+  schedules: {} as SchedulesProps
 });
 
 const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
@@ -20,6 +21,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
   const [isFetchingError, setIsFetchingError] = useState(Boolean);
   const [headerHeight, setHeaderHeight] = useState(-1);
   const [isNurseriesContentAvailable, setIsNurseriesContentAvailable] = useState(false);
+  const [schedules, setSchedules] = useState<SchedulesProps>({} as SchedulesProps)
 
   useEffect(() => {
     getHeaderHeight();
@@ -29,6 +31,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
       .then(result => {
         const data = result.data;
 
+        // NAVIGATION ITEMS
         const orderedNavigationItems = data.navigation_items.sort((a: NavigationItemProps, b: NavigationItemProps) => a.order - b.order);
         const updatedNavigationItems = orderedNavigationItems.map((item: NavigationItemProps) => {
           return {
@@ -38,6 +41,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
           };
         });
         
+        // PAGES CONTENT
         const updatedPagesContent: PagesProps = {};
         
         data.pages.forEach((page: FetchedPageProps) => {
@@ -46,23 +50,37 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
           const filteredRest = Object.entries(rest).filter(value => value[1]);
           const updatedRest: unknown = Object.fromEntries(filteredRest);
 
-          updatedPagesContent[page.description] = updatedRest as UpdatedPageProps;
+          updatedPagesContent[description] = updatedRest as UpdatedPageProps;
         });
         
+        // NURSERIES CONTENT AVAILABILITY
         const aboutUsPageContent = updatedPagesContent['About us'];
         const isNurseriesContentAvailable = !!(aboutUsPageContent.heading_3 && aboutUsPageContent.text_3 && aboutUsPageContent.heading_4 && aboutUsPageContent.text_4);
 
-        // console.log('NURSERY DETAILS', isNurseriesContentAvailable);
+        // NURSERY DETAILS
         const nurseryDetails: NurseryDetailsProps = data.nursery_details[0];
-        nurseryDetails['description'] = data.pages[0].text_1;
-        // console.log('DATA', result.data);
-        
+        nurseryDetails['description'] = updatedPagesContent['Main page'].text_1;
+
+        // NURSERIES SCHEDULES
+        const updatedSchedulesContent: SchedulesProps = {};
+
+        data.schedules.forEach((schedule: FetchedScheduleProps) => {
+          const {facility, ...rest} = schedule;
+
+          const filteredRest = Object.entries(rest).filter(value => value[1]);
+          const updatedRest: unknown = Object.fromEntries(filteredRest);
+
+          updatedSchedulesContent[facility] = updatedRest as UpdatedScheduleProps;
+        })
+
         console.log('UPDATED PAGES', updatedPagesContent);
+        console.log('UPDATED SCHEDULES', updatedSchedulesContent);
         // console.log('NAVIGATION ITEMS', updatedNavigationItems);
         setNavigationItems(updatedNavigationItems);
         setPagesContent(updatedPagesContent);
         setIsNurseriesContentAvailable(isNurseriesContentAvailable);
         setNurseryDetails(nurseryDetails);
+        setSchedules(updatedSchedulesContent);
       })
       .catch(error => {
         const errorMessage = error.response.data.error;
@@ -82,7 +100,8 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
     nurseryDetails: nurseryDetails,
     isFetchingError: isFetchingError,
     headerHeight: headerHeight,
-    isNurseriesContentAvailable: isNurseriesContentAvailable
+    isNurseriesContentAvailable: isNurseriesContentAvailable,
+    schedules: schedules
   };
 
   return (
