@@ -108,6 +108,8 @@ export const GlobalStyle = createGlobalStyle`
       @media only screen and (min-width: 992px) { margin-bottom: 4rem; }
       @media only screen and (min-width: 1400px) { margin-bottom: 5rem; }
     }
+
+    & > div { align-self: stretch; }
   }
 
   section > div { overflow-wrap: anywhere; }
