@@ -14,6 +14,7 @@ export const StyledHeader = styled.header<{theme: string, isMainPage: boolean}>`
   padding: var(--padding-small);
   background: var(--color-white);
   border-top: var(--header-border) solid transparent;
+  box-shadow: 10px 10px 40px -10px rgba(0, 0, 0, .5);
   z-index: 10;
 
   &::before {
