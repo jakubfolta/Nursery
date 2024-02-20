@@ -1,15 +1,15 @@
 import React from "react";
-import { FacilitiesDescriptionContainer, FacilitiesImage, FacilitiesImageBox, FacilitiesImageHeading, FacilitiesImagesContainer } from "./styles";
+import { FacilitiesImage, FacilitiesImageBox, FacilitiesImageHeading, FacilitiesImagesContainer } from "./styles";
 import funnyMonkey from "../../../../assets/images/funny-monkey.png";
 import funnyDog from "../../../../assets/images/funny-dog.png";
 import { Props } from "./interface";
 
 export const FacilitiesSection: React.FC<Props> = props => (
   <section>
-    <FacilitiesDescriptionContainer>
+    <div>
       <h2>{props.sectionHeading}</h2>
       <p>{props.sectionDescription}</p>
-    </FacilitiesDescriptionContainer>
+    </div>
 
     {props.isNurseryContentAvailable &&
       <FacilitiesImagesContainer id="facilities-images-container">

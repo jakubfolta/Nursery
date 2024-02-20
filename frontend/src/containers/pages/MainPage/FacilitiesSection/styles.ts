@@ -15,11 +15,9 @@ const shake = keyframes`
   100% { transform: rotate(0deg); }
 `
 
-export const FacilitiesDescriptionContainer = styled.div`
-  align-self: stretch;
-`
-
 export const FacilitiesImagesContainer = styled.div`
+  && { align-self: center; }
+
   display: flex;
   flex-direction: column;
   justify-content: center;
