@@ -45,46 +45,46 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
           };
         });
         setNavigationItems(updatedNavigationItems);
-        // // PAGES CONTENT
-        // const updatedPagesContent: PagesProps = {};
+        // PAGES CONTENT
+        const updatedPagesContent: PagesProps = {};
         
-        // data.pages.forEach((page: FetchedPageProps) => {
-        //   const {description, ...rest} = page;
+        data.pages.forEach((page: FetchedPageProps) => {
+          const {description, ...rest} = page;
           
-        //   const filteredRest = Object.entries(rest).filter(value => value[1]);
-        //   const updatedRest: unknown = Object.fromEntries(filteredRest);
+          const filteredRest = Object.entries(rest).filter(value => value[1]);
+          const updatedRest: unknown = Object.fromEntries(filteredRest);
 
-        //   updatedPagesContent[description] = updatedRest as UpdatedPageProps;
-        // });
+          updatedPagesContent[description] = updatedRest as UpdatedPageProps;
+        });
         
-        // // NURSERIES CONTENT AVAILABILITY
-        // const aboutUsPageContent = updatedPagesContent['About us'];
-        // const isNurseriesContentAvailable = !!(aboutUsPageContent.heading_3 && aboutUsPageContent.text_3 && aboutUsPageContent.heading_4 && aboutUsPageContent.text_4);
+        // NURSERIES CONTENT AVAILABILITY
+        const aboutUsPageContent = updatedPagesContent['About us'];
+        const isNurseriesContentAvailable = !!(aboutUsPageContent.heading_3 && aboutUsPageContent.text_3 && aboutUsPageContent.heading_4 && aboutUsPageContent.text_4);
 
-        // // NURSERY DETAILS
-        // const nurseryDetails: NurseryDetailsProps = data.nursery_details[0];
-        // nurseryDetails['description'] = updatedPagesContent['Main page'].text_1;
+        // NURSERY DETAILS
+        const nurseryDetails: NurseryDetailsProps = data.nursery_details[0];
+        nurseryDetails['description'] = updatedPagesContent['Main page'].text_1;
 
-        // // NURSERIES SCHEDULES
-        // const updatedSchedulesContent: SchedulesProps = {};
+        // NURSERIES SCHEDULES
+        const updatedSchedulesContent: SchedulesProps = {};
 
-        // data.schedules.forEach((schedule: FetchedScheduleProps) => {
-        //   const {facility, ...rest} = schedule;
+        data.schedules.forEach((schedule: FetchedScheduleProps) => {
+          const {facility, ...rest} = schedule;
 
-        //   const filteredRest = Object.entries(rest).filter(value => value[1]);
-        //   const updatedRest: unknown = Object.fromEntries(filteredRest);
+          const filteredRest = Object.entries(rest).filter(value => value[1]);
+          const updatedRest: unknown = Object.fromEntries(filteredRest);
 
-        //   updatedSchedulesContent[facility] = updatedRest as UpdatedScheduleProps;
-        // })
+          updatedSchedulesContent[facility] = updatedRest as UpdatedScheduleProps;
+        })
 
-        // console.log('UPDATED PAGES', updatedPagesContent);
-        // console.log('UPDATED SCHEDULES', updatedSchedulesContent);
-        // // console.log('NAVIGATION ITEMS', updatedNavigationItems);
-        // setNavigationItems(updatedNavigationItems);
-        // setPagesContent(updatedPagesContent);
-        // setIsNurseriesContentAvailable(isNurseriesContentAvailable);
-        // setNurseryDetails(nurseryDetails);
-        // setSchedules(updatedSchedulesContent);
+        console.log('UPDATED PAGES', updatedPagesContent);
+        console.log('UPDATED SCHEDULES', updatedSchedulesContent);
+        // console.log('NAVIGATION ITEMS', updatedNavigationItems);
+        setNavigationItems(updatedNavigationItems);
+        setPagesContent(updatedPagesContent);
+        setIsNurseriesContentAvailable(isNurseriesContentAvailable);
+        setNurseryDetails(nurseryDetails);
+        setSchedules(updatedSchedulesContent);
       })
       .catch(error => {
         const errorMessage = error.response.data.error;

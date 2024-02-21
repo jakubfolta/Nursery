@@ -50,6 +50,7 @@ export const App: React.FC = () => {
   
   const maluszkowoImage = document.getElementById('funny-maluszkowo-image');
   const starszakowoImage = document.getElementById('funny-starszakowo-image');
+  console.log('HEREREEEE');
 
   const observer = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {

@@ -24,10 +24,15 @@ from django.urls import re_path
 router = routers.DefaultRouter()
 router.register(r'website', views.PageView, 'website')
 
+frontendurls = [
+  re_path(r".*", index),
+  # path('o-nas', index)
+]
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('send-message', EmailAPI.as_view()),
-    path('', index, name='index'),
-    re_path(r".*", index)
+    path('', include(frontendurls)),
+    
 ]
