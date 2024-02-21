@@ -34,5 +34,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('send-message', EmailAPI.as_view()),
     path('', include(frontendurls)),
+    path('*', include(frontendurls)),
     
 ]
