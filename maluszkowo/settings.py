@@ -158,6 +158,8 @@ django_on_heroku.settings(locals())
 
 CORS_ALLOWED_ORIGINS = [
     'https://localhost:3000',
+    'https://maluszkowo-438432782-ea148edbd2ec.herokuapp.com',
+    'http://maluszkowo-438432782-ea148edbd2ec.herokuapp.com',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
