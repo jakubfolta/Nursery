@@ -127,6 +127,7 @@ export const App: React.FC = () => {
   }, [isIntersecting, intersectionOffsetTop]);
   
   useEffect(() => {
+    console.log('LOCATION', location)
     if (displayLocation !== location.pathname) {
       setShowTransitionPage(true);
 
