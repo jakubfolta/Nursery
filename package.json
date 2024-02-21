@@ -4,6 +4,11 @@
   "private": true,
   "homepage": ".",
   "proxy": "http://127.0.0.1:8000",
+  "root": "build/",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
