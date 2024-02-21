@@ -24,8 +24,8 @@ router = routers.DefaultRouter()
 router.register(r'website', views.PageView, 'website')
 
 urlpatterns = [
-    path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('send-message', EmailAPI.as_view())
+    path('send-message', EmailAPI.as_view()),
+    path('', index, name='index'),
 ]
