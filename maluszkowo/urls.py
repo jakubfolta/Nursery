@@ -19,6 +19,7 @@ from rest_framework import routers
 from website import views
 from website.views import *
 from .views import index
+from django.urls import re_path
 
 router = routers.DefaultRouter()
 router.register(r'website', views.PageView, 'website')
@@ -28,4 +29,5 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('send-message', EmailAPI.as_view()),
     path('', index, name='index'),
+    re_path(r".*", index)
 ]
