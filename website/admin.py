@@ -10,7 +10,7 @@ def check_limit(actual_count, limit):
 
 class PageAdmin(custom_admin.BaseAdmin):
   list_display = ('description', 'heading_1')
-  readonly_fields = ('description',)
+  # readonly_fields = ('description',)
 
   def has_add_permission(self, request):
     num_objects = self.model.objects.count()
@@ -39,10 +39,10 @@ class NurseryDetailAdmin(custom_admin.BaseAdmin):
 
 class ScheduleAdmin(custom_admin.BaseAdmin):
   list_display = ('facility',)
-  readonly_fields = ('facility',)
+  # readonly_fields = ('facility',)
 
-  def has_add_permission(self, request):
-    return False
+  # def has_add_permission(self, request):
+    # return False
 
 admin.site.register(Page, PageAdmin)
 admin.site.register(Review, ReviewAdmin)
