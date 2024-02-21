@@ -25,7 +25,7 @@ class NavigationItemAdmin(custom_admin.BaseAdmin):
   list_display = ('title', 'order', 'slug')
   exclude = ('slug',)
   ordering = ('order',)
-  readonly_fields = ('title',)
+  # readonly_fields = ('title',)
 
   def has_add_permission(self, request):
     num_objects = self.model.objects.count()
