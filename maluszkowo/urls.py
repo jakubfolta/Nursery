@@ -31,11 +31,16 @@ frontendurls = [
 ]
 
 urlpatterns = [
+    # path('o-nas/', TemplateView.as_view(template_name='index.html')),
     path('admin/', admin.site.urls),
+    # path('o-nas', TemplateView.as_view(template_name='index.html')),
+    # path('dla-rodzicow', TemplateView.as_view(template_name='index.html')),
     path('api/', include(router.urls)),
+    # path('', TemplateView.as_view(template_name='index.html')),
+    re_path(r'.*', TemplateView.as_view(template_name='index.html')),
     # path('send-message', EmailAPI.as_view()),
     # path('', include(frontendurls)),
-    re_path('.*', TemplateView.as_view(template_name='index.html')),
+    # re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
     # path('*', include(frontendurls)),
     
 ]

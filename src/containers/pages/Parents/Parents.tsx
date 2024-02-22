@@ -7,7 +7,7 @@ import { StyledImage, StyledImageContainer } from "./styles";
 import { AdmissionSection } from "./AdmissionSection/AdmissionSection";
 import { PaymentSection } from "./PaymentSection/PaymentSection";
 
-export const Parents: React.FC<{theme: string}> = props => {
+const Parents: React.FC<{theme: string}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
   const [rulesSectionHeading, setRulesSectionHeading] = useState('');
@@ -107,4 +107,4 @@ export const Parents: React.FC<{theme: string}> = props => {
   );
 };
 
-// export default Parents;
+export default Parents;

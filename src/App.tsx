@@ -1,6 +1,6 @@
 import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
-import { Navigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { CONSTANTS, GlobalStyle } from './styles/global';
 import { Layout } from './components';
 import WebpageContextProvider from './store/webpage-context';
@@ -9,10 +9,6 @@ import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 import { debounce } from 'lodash-es';
 import { websiteRoutes } from './routes/Routes';
-
-import { MainPage } from "../src/containers/pages/MainPage/MainPage";
-import { AboutUs } from "../src/containers/pages/AboutUs/AboutUs";
-import { Parents } from "../src/containers/pages/Parents/Parents";
 
 type ScrollStatus = {
   offset: {
@@ -231,14 +227,14 @@ export const App: React.FC = () => {
         displayLocation={displayLocation}>
         {/* displayLocation='o-nas'> */}
         <Suspense fallback={<div>Loading...</div>}>
-          {/* <Routes location={displayLocation}> */}
-          <Routes>
+          <Routes location={displayLocation}>
+          {/* <Routes> */}
           {/* <Routes > */}
-            {/* {routes} */}
-            <Route path="/" element={<MainPage theme={getThemeColor('mainPageTheme')} isDesktopSize={isDesktopSize} setFacilitiesSectionAvailability={setFacilitiesSectionAvailability} />} />
+            {routes}
+            {/* <Route path="/" element={<MainPage theme={getThemeColor('mainPageTheme')} isDesktopSize={isDesktopSize} setFacilitiesSectionAvailability={setFacilitiesSectionAvailability} />} />
             <Route path="/o-nas" element={<AboutUs theme={getThemeColor('aboutUsPageTheme')} scrollbar={scrollbar} />} />
             <Route path="/dla-rodzicow" element={<Parents theme={getThemeColor('mainPageTheme')}/>} />
-            <Route path="/*" element={<Navigate to="/" />} />
+            <Route path="/*" element={<Navigate to="/" />} /> */}
           </Routes>
         </Suspense>
       </Layout>
