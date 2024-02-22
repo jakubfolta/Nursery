@@ -34,8 +34,8 @@ class NavigationItemAdmin(custom_admin.BaseAdmin):
 class NurseryDetailAdmin(custom_admin.BaseAdmin):
   list_display = ('address', 'phone', 'email', 'facebook_link', 'year')
 
-  def has_add_permission(self, request):
-    return False
+  # def has_add_permission(self, request):
+    # return False
 
 class ScheduleAdmin(custom_admin.BaseAdmin):
   list_display = ('facility',)
