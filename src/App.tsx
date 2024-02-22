@@ -50,7 +50,6 @@ export const App: React.FC = () => {
   
   const maluszkowoImage = document.getElementById('funny-maluszkowo-image');
   const starszakowoImage = document.getElementById('funny-starszakowo-image');
-  console.log('HEREREEEE');
 
   const observer = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
@@ -128,7 +127,6 @@ export const App: React.FC = () => {
   }, [isIntersecting, intersectionOffsetTop]);
   
   useEffect(() => {
-    console.log('LOCATION', location)
     if (displayLocation !== location.pathname) {
       setShowTransitionPage(true);
 
@@ -225,16 +223,9 @@ export const App: React.FC = () => {
         isFirstVisit={isFirstVisit}
         theme={pageTheme}
         displayLocation={displayLocation}>
-        {/* displayLocation='o-nas'> */}
         <Suspense fallback={<div>Loading...</div>}>
           <Routes location={displayLocation}>
-          {/* <Routes> */}
-          {/* <Routes > */}
             {routes}
-            {/* <Route path="/" element={<MainPage theme={getThemeColor('mainPageTheme')} isDesktopSize={isDesktopSize} setFacilitiesSectionAvailability={setFacilitiesSectionAvailability} />} />
-            <Route path="/o-nas" element={<AboutUs theme={getThemeColor('aboutUsPageTheme')} scrollbar={scrollbar} />} />
-            <Route path="/dla-rodzicow" element={<Parents theme={getThemeColor('mainPageTheme')}/>} />
-            <Route path="/*" element={<Navigate to="/" />} /> */}
           </Routes>
         </Suspense>
       </Layout>
