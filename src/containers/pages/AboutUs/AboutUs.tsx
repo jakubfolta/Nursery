@@ -12,7 +12,7 @@ import { CurriculumSection } from "./CurriculumSection/CurriculumSection";
 
 const waveHeight = CONSTANTS.waveHeight;
 
-const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
+export const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
   const [successSectionHeading, setSuccessSectionHeading] = useState('');
@@ -126,4 +126,4 @@ const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   );
 };
 
-export default AboutUs;
+// export default AboutUs;

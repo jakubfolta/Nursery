@@ -20,6 +20,7 @@ from website import views
 from website.views import *
 from .views import index
 from django.urls import re_path
+from django.views.generic import TemplateView
 
 router = routers.DefaultRouter()
 router.register(r'website', views.PageView, 'website')
@@ -32,8 +33,9 @@ frontendurls = [
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('send-message', EmailAPI.as_view()),
-    path('', include(frontendurls)),
-    path('*', include(frontendurls)),
+    # path('send-message', EmailAPI.as_view()),
+    # path('', include(frontendurls)),
+    re_path('.*', TemplateView.as_view(template_name='index.html')),
+    # path('*', include(frontendurls)),
     
 ]
