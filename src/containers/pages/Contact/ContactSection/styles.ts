@@ -39,5 +39,6 @@ export const ContactImage = styled.img`
 `
 
 export const ContactDescription = styled.p`
+  margin-top: 1.5rem;
   font-size: var(--big-font-size);
 `

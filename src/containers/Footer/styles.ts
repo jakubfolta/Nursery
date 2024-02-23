@@ -18,7 +18,7 @@ export const FooterContainer = styled.footer`
 export const SectionsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.5rem;
+  padding: 3rem 1.5rem;
   max-width: 540px;
 
   & > *:not(:first-child) { margin-top: 2rem; }
@@ -29,7 +29,7 @@ export const SectionsWrapper = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 2.5rem;
+    padding: 3rem 2.5rem;
     max-width: 1024px;
 
     & > *:not(:first-child) { margin-top: 0; }

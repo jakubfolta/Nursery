@@ -26,6 +26,7 @@ export const NurseryStyledSection = styled.section<{starszakowo?: boolean, isMal
   @media only screen and (min-width: 992px) { padding-bottom: 6rem; }
 
   ${props => props.starszakowo && css<{isMaluszkowo?: boolean}>`
+    top: -1px;
     padding-top: ${props => props.isMaluszkowo ? '5rem' : '0'};
 
     @media only screen and (min-width: 768px) {
@@ -61,6 +62,7 @@ export const NurseryContentHeading = styled.h2<{starszakowo?: boolean}>`
 `
 
 const wave = css`
+  position: relative;
   width: 100%;
   height: var(--wave-height);
   background-image: url(${Background});
@@ -68,11 +70,11 @@ const wave = css`
 
 export const NurseryWaveTop = styled.div`
   ${wave}
+  top: -1px;
 `
 
 export const NurseryWaveBottom = styled.div`
-  position: relative;
-  bottom: -4rem;
+  bottom: -4.1rem;
   ${wave}
   transform: rotate(180deg);
   margin-top: -10rem;
