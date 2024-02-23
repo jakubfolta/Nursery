@@ -28,7 +28,7 @@ export const ScheduleContentContainer = styled.div<{isPickupSection: boolean}>`
   margin-bottom: ${props => props.isPickupSection ? '3rem' : '0'};
   max-width: 540px;
   color: var(--color-white);
-  padding: 2px 1rem;
+  padding: 1rem 1rem;
   
   @media only screen and (min-width: 768px) {
     margin-top: 0;
@@ -82,6 +82,7 @@ const wave = css`
 export const ScheduleWaveTop = styled.div`
   ${wave}
   top: -1px;
+  margin-bottom: -7px;
 `
 
 export const ScheduleWaveBottom = styled.div`
