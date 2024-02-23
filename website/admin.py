@@ -10,22 +10,22 @@ def check_limit(actual_count, limit):
 
 class PageAdmin(custom_admin.BaseAdmin):
   list_display = ('description', 'heading_1')
-  # readonly_fields = ('description',)
+  readonly_fields = ('description',)
 
   def has_add_permission(self, request):
     num_objects = self.model.objects.count()
     return check_limit(num_objects, 5)
 
-class ReviewAdmin(admin.ModelAdmin):
-  list_display = ('author', 'rating', 'date', 'is_main_page_review')
-  readonly_fields = ('date',)
-  list_filter = ('rating',)
+# class ReviewAdmin(admin.ModelAdmin):
+#   list_display = ('author', 'rating', 'date', 'is_main_page_review')
+#   readonly_fields = ('date',)
+#   list_filter = ('rating',)
 
 class NavigationItemAdmin(custom_admin.BaseAdmin):
   list_display = ('title', 'order', 'slug')
   exclude = ('slug',)
   ordering = ('order',)
-  # readonly_fields = ('title',)
+  readonly_fields = ('title',)
 
   def has_add_permission(self, request):
     num_objects = self.model.objects.count()
@@ -34,18 +34,18 @@ class NavigationItemAdmin(custom_admin.BaseAdmin):
 class NurseryDetailAdmin(custom_admin.BaseAdmin):
   list_display = ('address', 'phone', 'email', 'facebook_link', 'year')
 
-  # def has_add_permission(self, request):
-    # return False
+  def has_add_permission(self, request):
+    return False
 
 class ScheduleAdmin(custom_admin.BaseAdmin):
   list_display = ('facility',)
-  # readonly_fields = ('facility',)
+  readonly_fields = ('facility',)
 
-  # def has_add_permission(self, request):
-    # return False
+  def has_add_permission(self, request):
+    return False
 
 admin.site.register(Page, PageAdmin)
-admin.site.register(Review, ReviewAdmin)
+# admin.site.register(Review, ReviewAdmin)
 admin.site.register(NavigationItem, NavigationItemAdmin)
 admin.site.register(NurseryDetail, NurseryDetailAdmin)
 admin.site.register(Schedule, ScheduleAdmin)
