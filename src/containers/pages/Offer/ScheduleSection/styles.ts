@@ -73,6 +73,8 @@ export const StyledScheduleImage = styled.img`
 `
 
 const wave = css`
+  position: relative;
+  top: -1px;
   width: 100%;
   height: var(--wave-height);
   background-image: url(${Background});
