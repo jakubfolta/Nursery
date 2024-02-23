@@ -1,10 +1,10 @@
 import React from "react";
 import { MainPage } from "../containers/pages/MainPage/MainPage";
 
-const AboutUsComponent = React.lazy(() => import('./../containers/pages/AboutUs/AboutUs'));
-const ParentsComponent = React.lazy(() => import('./../containers/pages/Parents/Parents'));
-const OfferComponent = React.lazy(() => import('./../containers/pages/Offer/Offer'));
-const ContactComponent = React.lazy(() => import('./../containers/pages/Contact/Contact'));
+const AboutUsComponent = React.lazy(() => import('../containers/pages/AboutUs/AboutUs'));
+const ParentsComponent = React.lazy(() => import('../containers/pages/Parents/Parents'));
+const OfferComponent = React.lazy(() => import('../containers/pages/Offer/Offer'));
+const ContactComponent = React.lazy(() => import('../containers/pages/Contact/Contact'));
 
 export const websiteRoutes = [
   { path: '/', component: MainPage, themeLabel: 'mainPageTheme'},

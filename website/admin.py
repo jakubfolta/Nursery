@@ -16,10 +16,10 @@ class PageAdmin(custom_admin.BaseAdmin):
     num_objects = self.model.objects.count()
     return check_limit(num_objects, 5)
 
-class ReviewAdmin(admin.ModelAdmin):
-  list_display = ('author', 'rating', 'date', 'is_main_page_review')
-  readonly_fields = ('date',)
-  list_filter = ('rating',)
+# class ReviewAdmin(admin.ModelAdmin):
+#   list_display = ('author', 'rating', 'date', 'is_main_page_review')
+#   readonly_fields = ('date',)
+#   list_filter = ('rating',)
 
 class NavigationItemAdmin(custom_admin.BaseAdmin):
   list_display = ('title', 'order', 'slug')
@@ -45,7 +45,7 @@ class ScheduleAdmin(custom_admin.BaseAdmin):
     return False
 
 admin.site.register(Page, PageAdmin)
-admin.site.register(Review, ReviewAdmin)
+# admin.site.register(Review, ReviewAdmin)
 admin.site.register(NavigationItem, NavigationItemAdmin)
 admin.site.register(NurseryDetail, NurseryDetailAdmin)
 admin.site.register(Schedule, ScheduleAdmin)

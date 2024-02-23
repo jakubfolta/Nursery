@@ -4,6 +4,9 @@ import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps,
 import { Context } from "./interfaces";
 import { debounce } from "lodash-es";
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
 export const WebpageContext = React.createContext<Context>({
   pages: {},
   navigationItems: [],
@@ -29,6 +32,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
 
     axios.get("/api/website/")
       .then(result => {
+        console.log('RESPONSE', result);
         const data = result.data;
 
         // NAVIGATION ITEMS
@@ -40,7 +44,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
             slug: item.slug
           };
         });
-        
+        setNavigationItems(updatedNavigationItems);
         // PAGES CONTENT
         const updatedPagesContent: PagesProps = {};
         
