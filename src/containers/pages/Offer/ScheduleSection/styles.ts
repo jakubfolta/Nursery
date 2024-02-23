@@ -23,6 +23,8 @@ export const ScheduleStyledSection = styled.section`
 `
 
 export const ScheduleContentContainer = styled.div<{isPickupSection: boolean}>`
+  position: relative;
+  top: -1px;
   width: 100%;
   margin-top: -2rem;
   margin-bottom: ${props => props.isPickupSection ? '3rem' : '0'};
@@ -81,7 +83,7 @@ const wave = css`
 
 export const ScheduleWaveTop = styled.div`
   ${wave}
-  top: -2px;
+  top: -1px;
 `
 
 export const ScheduleWaveBottom = styled.div`
