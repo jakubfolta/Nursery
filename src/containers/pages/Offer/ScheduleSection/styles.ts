@@ -23,8 +23,6 @@ export const ScheduleStyledSection = styled.section`
 `
 
 export const ScheduleContentContainer = styled.div<{isPickupSection: boolean}>`
-  position: relative;
-  top: -1px;
   width: 100%;
   margin-top: -2rem;
   margin-bottom: ${props => props.isPickupSection ? '3rem' : '0'};
