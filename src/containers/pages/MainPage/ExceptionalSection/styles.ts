@@ -91,6 +91,7 @@ export const ExceptionalListItemHeading = styled.h3`
 `
 
 export const ExceptionalImageContainer = styled.div`
+  && { align-self: center; }
   width: 40%;
   margin-top: 2rem;
 
