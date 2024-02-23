@@ -90,6 +90,15 @@ export const ScheduleWaveTop = styled.div`
   top: -1px;
 `
 
+
+export const ScheduleWaveContainer = styled.div`
+  
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 90px;
+`
+
 export const ScheduleWaveBottom = styled.div`
   ${wave}
   top: 1px;
