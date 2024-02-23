@@ -74,7 +74,6 @@ export const StyledScheduleImage = styled.img`
 
 const wave = css`
   position: relative;
-  top: -1px;
   width: 100%;
   height: var(--wave-height);
   background-image: url(${Background});
@@ -82,10 +81,12 @@ const wave = css`
 
 export const ScheduleWaveTop = styled.div`
   ${wave}
+  top: -1px;
 `
 
 export const ScheduleWaveBottom = styled.div`
   ${wave}
+  top: 1px;
   transform: rotate(180deg);
   margin-top: -6rem;
 
