@@ -28,7 +28,7 @@ export const ScheduleContentContainer = styled.div<{isPickupSection: boolean}>`
   margin-bottom: ${props => props.isPickupSection ? '3rem' : '0'};
   max-width: 540px;
   color: var(--color-white);
-  padding: 0 1rem;
+  padding: 2px 1rem;
   
   @media only screen and (min-width: 768px) {
     margin-top: 0;
