@@ -81,7 +81,7 @@ const wave = css`
 
 export const ScheduleWaveTop = styled.div`
   ${wave}
-  top: -1px;
+  top: -2px;
 `
 
 export const ScheduleWaveBottom = styled.div`
