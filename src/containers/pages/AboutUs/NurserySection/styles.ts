@@ -70,7 +70,7 @@ const wave = css`
 
 export const NurseryWaveTop = styled.div`
   ${wave}
-  top: -1px;
+  top: -2px;
 `
 
 export const NurseryWaveBottom = styled.div`
