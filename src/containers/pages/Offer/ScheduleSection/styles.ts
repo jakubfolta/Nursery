@@ -28,7 +28,7 @@ export const ScheduleContentContainer = styled.div<{isPickupSection: boolean}>`
   margin-bottom: ${props => props.isPickupSection ? '3rem' : '0'};
   max-width: 540px;
   color: var(--color-white);
-  padding: 1rem 1rem;
+  padding: 0 1rem;
   
   @media only screen and (min-width: 768px) {
     margin-top: 0;
@@ -71,17 +71,9 @@ export const StyledScheduleImage = styled.img`
   border-radius: 50px;
   object-fit: cover;
 `
-export const ScheduleWaveContainer = styled.div`
-  width: 100%;
-  height: 100px;
-  position: relative;
-  top: -1px;
-  overflow: hidden;
-  /* top: -1px; */
-`
 
 const wave = css`
-  /* position: relative; */
+  position: relative;
   width: 100%;
   height: var(--wave-height);
   background-image: url(${Background});
@@ -89,7 +81,8 @@ const wave = css`
 
 export const ScheduleWaveTop = styled.div`
   ${wave}
-  /* top: -1px; */
+  position: absolute;
+  top: -1px;
 `
 
 export const ScheduleWaveBottom = styled.div`
