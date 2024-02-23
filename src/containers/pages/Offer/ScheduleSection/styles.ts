@@ -24,7 +24,8 @@ export const ScheduleStyledSection = styled.section`
 
 export const ScheduleContentContainer = styled.div<{isPickupSection: boolean}>`
   width: 100%;
-  margin-top: -2rem;
+  /* margin-top: -2rem; */
+  margin-top: 3rem;
   margin-bottom: ${props => props.isPickupSection ? '3rem' : '0'};
   max-width: 540px;
   color: var(--color-white);
