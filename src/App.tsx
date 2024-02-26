@@ -32,7 +32,7 @@ const scrollbarOptions = {
 };
 
 // Scrollbar.use(OverscrollPlugin);
-const scrollbar = Scrollbar.init(document.querySelector('#my-scrollbar') as HTMLElement, scrollbarOptions);
+// const scrollbar = Scrollbar.init(document.querySelector('#my-scrollbar') as HTMLElement, scrollbarOptions);
 window.history.scrollRestoration = 'manual';
 
 const pageTransitionDuration = CONSTANTS.pageTransitionDuration * 1000;
@@ -58,7 +58,7 @@ export const App: React.FC = () => {
   const observer = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
       setIsIntersecting(true);
-      setIntersectionOffsetTop(scrollbar.scrollTop);
+      // setIntersectionOffsetTop(scrollbar.scrollTop);
     } else {
       setIsIntersecting(false);
       const maluszkowoImage = document.getElementById('funny-maluszkowo-image');
@@ -86,13 +86,13 @@ export const App: React.FC = () => {
     getScreenWidth();
     window.addEventListener('resize', getScreenWidth);
 
-    scrollbar.addListener(function(status) {
-      let offset = status.offset;
+    // scrollbar.addListener(function(status) {
+    //   let offset = status.offset;
       
-      if (header) {
-        (header as HTMLElement).style.top = offset.y + 'px';
-      }
-    });
+    //   if (header) {
+    //     (header as HTMLElement).style.top = offset.y + 'px';
+    //   }
+    // });
     
     setTimeout(() => {
       setIsFirstVisit(false);
@@ -102,18 +102,18 @@ export const App: React.FC = () => {
   
   useEffect(() => {
     if (displayLocation !== '/' && isUnderlineListener) {
-      scrollbar.removeListener(underlineListener);
+      // scrollbar.removeListener(underlineListener);
       setIsUnderlineListener(false);
     }
     if (displayLocation !== '/' && isFacilitiesSectionAvailable) {
       setIsFacilitiesSectionAvailable(false);
     }
     if (isDesktopSize && displayLocation === '/') {
-      scrollbar.addListener(underlineListener);
+      // scrollbar.addListener(underlineListener);
       setIsUnderlineListener(true);
     }
     if (!isDesktopSize && isUnderlineListener) {
-      scrollbar.removeListener(underlineListener);
+      // scrollbar.removeListener(underlineListener);
     }
     if (displayLocation === '/' && isFacilitiesSectionAvailable) {
       const facilitiesImagesContainer = document.getElementById('facilities-images-container');
@@ -123,10 +123,10 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     if (!isIntersecting && intersectionOffsetTop !== -1) {
-      scrollbar.removeListener(imagesListener);
+      // scrollbar.removeListener(imagesListener);
     }
     if (isIntersecting) {
-      scrollbar.addListener(imagesListener);
+      // scrollbar.addListener(imagesListener);
     }
   }, [isIntersecting, intersectionOffsetTop]);
   
@@ -181,7 +181,7 @@ export const App: React.FC = () => {
   };
 
   const scrollToTheTop = () => {
-    scrollbar.scrollTo(0, 0);
+    // scrollbar.scrollTo(0, 0);
   };
 
   const getScreenWidth = debounce(() => {
@@ -214,7 +214,7 @@ export const App: React.FC = () => {
           theme={getThemeColor(route.themeLabel)} 
           {...(route.path === '/'
             ? {isDesktopSize: isDesktopSize, setFacilitiesSectionAvailability: setFacilitiesSectionAvailability}
-            : route.path === '/o-nas' && {scrollbar: scrollbar})} /> }
+            : route.path === '/o-nas' && {scrollbar: ''})} /> }
       />
     );
   });

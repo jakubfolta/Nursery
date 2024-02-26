@@ -24,6 +24,7 @@ export const StyledHeroContainer = styled.div<{theme: string, isMainPage?: boole
   align-items: center;
   justify-content: center;
   width: 100%;
+  /* background: linear-gradient(90deg, blue, green); */
   background: ${props => !props.isMainPage
     ? `linear-gradient(140deg, 
       ${`hsl(from ${props.theme} h s 23%)`} 0%,
