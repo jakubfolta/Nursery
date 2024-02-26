@@ -29,7 +29,7 @@ const scrollbarOptions = {
       glowColor: '#21e004'
     }
   },
-  damping: .05
+  damping: .02
 };
 
 Scrollbar.use(OverscrollPlugin);
