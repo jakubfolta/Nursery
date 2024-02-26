@@ -30,7 +30,6 @@ const scrollbarOptions = {
     }
   },
   damping: .03,
-  continuousScrolling: false
 };
 
 Scrollbar.use(OverscrollPlugin);
@@ -77,17 +76,14 @@ export const App: React.FC = () => {
   });  
 
   useEffect(() => {
-    window.addEventListener('touchmove', function(e) {
-      e.preventDefault();
-  });
-
-
     const header = document.getElementById('header');
     const scrollContent = document.querySelector('.scroll-content');
+    const canvasElement = document.querySelector('canvas');
 
-    if (scrollContent) {
+    if (scrollContent && canvasElement) {
       (scrollContent as HTMLElement).style.position = 'relative';
       (scrollContent as HTMLElement).style.zIndex = '1';
+      (canvasElement as HTMLElement).style.zIndex = '1';
     }
     updatePageTheme(location.pathname);
     getScreenWidth();
