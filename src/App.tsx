@@ -30,7 +30,7 @@ const scrollbarOptions = {
     }
   },
   damping: .03,
-  thumbMinSize: 100,
+  continuousScrolling: false
 };
 
 Scrollbar.use(OverscrollPlugin);
