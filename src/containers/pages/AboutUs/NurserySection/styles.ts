@@ -61,21 +61,19 @@ export const NurseryContentHeading = styled.h2<{starszakowo?: boolean}>`
   text-align: ${props => props.starszakowo ? 'right' : 'left'};
 `
 
-const wave = css`
+export const NurseryWaveTop = styled.img`
   position: relative;
+  top: -1px;
   width: 100%;
   height: var(--wave-height);
-  background-image: url(${Background});
-`
-
-export const NurseryWaveTop = styled.div`
-  ${wave}
-  top: -2px;
 `
 
 export const NurseryWaveBottom = styled.div`
+  position: relative;
   bottom: -4.1rem;
-  ${wave}
+  width: 100%;
+  height: var(--wave-height);
+  background-image: url(${Background});
   transform: rotate(180deg);
   margin-top: -10rem;
 

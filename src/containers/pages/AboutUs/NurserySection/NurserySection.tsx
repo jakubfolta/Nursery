@@ -5,6 +5,7 @@ import mobileStarszakowo from "../../../../assets/images/starszakowo-mobile.jpg"
 import desktopStarszakowo from "../../../../assets/images/starszakowo-desktop.jpg";
 import { Props } from "./interface";
 import { NurseryContentContainer, NurseryContentHeading, NurseryStyledSection, NurseryWaveBottom, NurseryWaveTop, StyledNurseryImage, StyledNurseryImageContainer } from "./styles";
+import wave from "../../../../assets/images/waves.svg";
 
 export const NurserySection: React.FC<Props> = props => (
   <NurseryStyledSection
@@ -15,9 +16,15 @@ export const NurserySection: React.FC<Props> = props => (
     starszakowo={props.starszakowo}
     isCharacteristic={props.isCharacteristic}>
     {(props.starszakowo && !props.isMaluszkowo)
-      ? <NurseryWaveTop />
+      ? <NurseryWaveTop
+          src={wave}
+          alt="Fala"
+        />
       : !props.starszakowo
-      && <NurseryWaveTop />
+      && <NurseryWaveTop
+          src={wave}
+          alt="Fala"
+        />
     }
     <StyledNurseryImageContainer starszakowo={props.starszakowo}>
       <StyledNurseryImage

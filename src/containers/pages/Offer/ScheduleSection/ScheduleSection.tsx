@@ -9,7 +9,7 @@ export const ScheduleSection: React.FC<Props> = props => (
   <ScheduleStyledSection data-full>
     <ScheduleWaveTop 
       src={wave}
-      alt="Fala"  
+      alt="Fala"
     />
     <ScheduleContentContainer isPickupSection={props.isPickupSection}>
       <h2>{props.sectionHeading}</h2>
