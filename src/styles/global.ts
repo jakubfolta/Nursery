@@ -41,7 +41,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    max-height: 100svh;
     font-size: 62.5%; // 1rem = 10px
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
@@ -69,7 +68,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     height: 100dvh;
-    max-height: 100dvh;
     background-color: var(--color-white);
     box-sizing: border-box;
     /* font-family: 'Nunito', sans-serif; */
@@ -80,6 +78,11 @@ export const GlobalStyle = createGlobalStyle`
     /* &::-webkit-scrollbar { display: none; }
     -ms-overflow-style: none;
     scrollbar-width: none; */
+  }
+
+  html, body {
+    min-width: 100%;
+    min-height: 100%;
   }
 
   section:not([data-full]) {
