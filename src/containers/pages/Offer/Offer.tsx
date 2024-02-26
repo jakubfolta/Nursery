@@ -6,10 +6,6 @@ import { WebpageContext } from "../../../store/webpage-context";
 import { OfferSection, PickupSection, StyledImage, StyledImageContainer } from "./styles";
 import { getListItems } from "../../../utilities/getListItems";
 import { ScheduleSection } from "./ScheduleSection/ScheduleSection";
-import { ScheduleContentContainer, ScheduleHoursSubheading, ScheduleStyledSection, ScheduleWaveBottom, ScheduleWaveTop } from "./ScheduleSection/styles";
-import { ContactFormContainer, ContactFormSection, ContactFormWaveTop } from "../Contact/styles";
-
-import mySVG from '../../../assets/images/waves.svg';
 
 const Offer: React.FC<{theme: string}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
@@ -81,94 +77,6 @@ const Offer: React.FC<{theme: string}> = props => {
           </div>
         </OfferSection>
       }
-
-<ContactFormSection data-full>
-          <ContactFormWaveTop />
-          <ContactFormContainer>
-            <h2>Formularz kontaktowy</h2>
-            {/* <ContactForm 
-              onFieldChange={onChangeHandler}
-              onFormSubmit={onSubmitFormHandler}
-              nameValue={formState.formFields.name.value}
-              emailValue={formState.formFields.email.value}
-              messageValue={formState.formFields.message.value}
-              isNameValid={formState.formFields.name.isValid}
-              isNameTouched={formState.formFields.name.isTouched}
-              isEmailValid={formState.formFields.email.isValid}
-              isEmailTouched={formState.formFields.email.isTouched}
-              isFormValid={isValidForm}
-              isLoading={isLoading}
-              showMessage={showMessage}
-              isMessageSent={isMessageSent}
-              message={message} 
-            /> */}
-          </ContactFormContainer>
-        </ContactFormSection>
-
-
-
-
-<ScheduleStyledSection data-full>
-    <img src={mySVG} alt="hello" style={{width: "100%"}}/>
-    <ScheduleContentContainer isPickupSection={!!pickupSectionHeading}>
-      <h2>{scheduleSectionHeading}</h2>
-
-      
-        <div>
-          <ScheduleHoursSubheading>{scheduleSectionSubheading}</ScheduleHoursSubheading>
-          
-        </div>
-
-    </ScheduleContentContainer>
-    {/* <ScheduleWaveContainer> */}
-
-    {/* </ScheduleWaveContainer> */}
-    <ScheduleWaveTop />
-    <ScheduleContentContainer isPickupSection={!!pickupSectionHeading}>
-      <h2>{scheduleSectionHeading}</h2>
-
-      {scheduleSectionSubheading &&
-        <div>
-          <ScheduleHoursSubheading>{scheduleSectionSubheading}</ScheduleHoursSubheading>
-          {/* <ScheduleHoursList>
-            {props.maluszkowoSchedule!.map((item, index) => 
-              <li key={index}>
-                <ScheduleHoursSpan>{item[0]}</ScheduleHoursSpan>
-                <span>  {item[1]}</span>
-              </li>
-            )}
-          </ScheduleHoursList>
-          <StyledScheduleImageContainer>
-            <StyledScheduleImage 
-              srcSet={`${mobilePlayBricks} 525w, ${desktopPlayBricks} 1120w`}
-              sizes="(max-width: 767px) 525px, 1120px"
-              src={desktopPlayBricks}
-              alt="Klocki play"
-            />
-          </StyledScheduleImageContainer> */}
-        </div>
-      }
-
-      {/* {props.sectionSubheading2 &&
-        <div>
-          <ScheduleHoursSubheading>{props.sectionSubheading2}</ScheduleHoursSubheading>
-          <ScheduleHoursList>
-            {props.starszakowoSchedule!.map((item, index) => 
-              <li key={index}>
-                <ScheduleHoursSpan>{item[0]}</ScheduleHoursSpan>
-                <span>  {item[1]}</span>
-              </li>
-            )}
-          </ScheduleHoursList>
-        </div>
-      } */}
-    </ScheduleContentContainer>
-    {!!pickupSectionHeading &&
-      <ScheduleWaveBottom />
-    }
-  </ScheduleStyledSection>
-
-
 
       {scheduleSectionHeading &&
         <ScheduleSection 

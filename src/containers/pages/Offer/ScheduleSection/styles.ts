@@ -76,36 +76,18 @@ export const StyledScheduleImage = styled.img`
   object-fit: cover;
 `
 
-const wave = css`
-  position: relative;
-  width: 100%;
-  height: var(--wave-height);
-  background-image: url(${Background});
-`
-
-export const ScheduleWaveTop = styled.div`
+export const ScheduleWaveTop = styled.img`
   position: relative;
   top: -1px;
   width: 100%;
   height: var(--wave-height);
-  background-image: url(${Background});
-  line-height: 0;
-  
-  /* top: -1px; */
-`
-
-
-export const ScheduleWaveContainer = styled.div`
-  
-  position: relative;
-  top: -1px;
-  overflow: hidden;
-  width: 100%;
-  height: 90px;
 `
 
 export const ScheduleWaveBottom = styled.div`
-  ${wave}
+  position: relative;
+  width: 100%;
+  height: var(--wave-height);
+  background-image: url(${Background});
   top: 1px;
   transform: rotate(180deg);
   margin-top: -6rem;

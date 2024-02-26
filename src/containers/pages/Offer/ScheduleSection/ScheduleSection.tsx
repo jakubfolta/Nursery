@@ -2,21 +2,22 @@ import React from "react";
 import mobilePlayBricks from "../../../../assets/images/play-bricks-mobile.jpg";
 import desktopPlayBricks from "../../../../assets/images/play-bricks-desktop.jpg";
 import { Props } from "./interface";
-import { ScheduleContentContainer, ScheduleHoursList, ScheduleHoursSpan, ScheduleHoursSubheading, ScheduleStyledSection, ScheduleWaveBottom, ScheduleWaveContainer, ScheduleWaveTop, StyledScheduleImage, StyledScheduleImageContainer } from "./styles";
+import { ScheduleContentContainer, ScheduleHoursList, ScheduleHoursSpan, ScheduleHoursSubheading, ScheduleStyledSection, ScheduleWaveBottom, ScheduleWaveTop, StyledScheduleImage, StyledScheduleImageContainer } from "./styles";
+import wave from "../../../../assets/images/waves.svg";
 
 export const ScheduleSection: React.FC<Props> = props => (
   <ScheduleStyledSection data-full>
-    {/* <ScheduleWaveContainer> */}
-
-    {/* </ScheduleWaveContainer> */}
-    <ScheduleWaveTop />
+    <ScheduleWaveTop 
+      src={wave}
+      alt="Fala"  
+    />
     <ScheduleContentContainer isPickupSection={props.isPickupSection}>
       <h2>{props.sectionHeading}</h2>
 
       {props.sectionSubheading &&
         <div>
           <ScheduleHoursSubheading>{props.sectionSubheading}</ScheduleHoursSubheading>
-          {/* <ScheduleHoursList>
+          <ScheduleHoursList>
             {props.maluszkowoSchedule!.map((item, index) => 
               <li key={index}>
                 <ScheduleHoursSpan>{item[0]}</ScheduleHoursSpan>
@@ -31,11 +32,11 @@ export const ScheduleSection: React.FC<Props> = props => (
               src={desktopPlayBricks}
               alt="Klocki play"
             />
-          </StyledScheduleImageContainer> */}
+          </StyledScheduleImageContainer>
         </div>
       }
 
-      {/* {props.sectionSubheading2 &&
+      {props.sectionSubheading2 &&
         <div>
           <ScheduleHoursSubheading>{props.sectionSubheading2}</ScheduleHoursSubheading>
           <ScheduleHoursList>
@@ -47,7 +48,7 @@ export const ScheduleSection: React.FC<Props> = props => (
             )}
           </ScheduleHoursList>
         </div>
-      } */}
+      }
     </ScheduleContentContainer>
     {props.isPickupSection &&
       <ScheduleWaveBottom />
