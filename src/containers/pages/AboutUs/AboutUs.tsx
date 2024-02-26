@@ -12,9 +12,7 @@ import { CurriculumSection } from "./CurriculumSection/CurriculumSection";
 
 const waveHeight = CONSTANTS.waveHeight;
 
-const AboutUs: React.FC<{theme: string, 
-  // scrollbar?: Scrollbar
-}> = props => {
+const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
   const [successSectionHeading, setSuccessSectionHeading] = useState('');
@@ -67,7 +65,7 @@ const AboutUs: React.FC<{theme: string,
   const scrollToSection = ((sectionId: string) => {
     const sectionElement = document.getElementById(sectionId);
     const position = sectionElement!.offsetTop - waveHeight;
-    // props.scrollbar?.scrollTo(0, position);    
+    props.scrollbar?.scrollTo(0, position);    
   });
 
   return (
