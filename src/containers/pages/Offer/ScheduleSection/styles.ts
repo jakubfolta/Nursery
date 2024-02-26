@@ -85,8 +85,7 @@ const wave = css`
 
 export const ScheduleWaveTop = styled.div`
   ${wave}
-  position: absolute;
-  background-size: 500px;
+  
   top: -1px;
 `
 

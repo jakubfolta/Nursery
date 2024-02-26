@@ -6,10 +6,10 @@ import { ScheduleContentContainer, ScheduleHoursList, ScheduleHoursSpan, Schedul
 
 export const ScheduleSection: React.FC<Props> = props => (
   <ScheduleStyledSection data-full>
-    <ScheduleWaveContainer>
+    {/* <ScheduleWaveContainer> */}
 
       <ScheduleWaveTop />
-    </ScheduleWaveContainer>
+    {/* </ScheduleWaveContainer> */}
     <ScheduleContentContainer isPickupSection={props.isPickupSection}>
       <h2>{props.sectionHeading}</h2>
 
