@@ -23,7 +23,11 @@ type ScrollStatus = {
 
 const scrollbarOptions = {
   plugins: {
-    overscroll: { effect: 'glow' }
+    overscroll: {
+      effect: 'glow',
+      damping: .2,
+      glowColor: 'yellow'
+    }
   }
 };
 
@@ -75,8 +79,8 @@ export const App: React.FC = () => {
     const scrollContent = document.querySelector('.scroll-content');
 
     if (scrollContent) {
-      (scrollContent as HTMLElement).style.position = 'relative';
-      (scrollContent as HTMLElement).style.zIndex = '1';
+      // (scrollContent as HTMLElement).style.position = 'relative';
+      // (scrollContent as HTMLElement).style.zIndex = '1';
     }
     updatePageTheme(location.pathname);
     getScreenWidth();
