@@ -174,7 +174,7 @@ const Contact: React.FC<{theme: string}> = props => {
           <ContactFormWaveTop />
           <ContactFormContainer>
             <h2>{contactFormSectionHeading}</h2>
-            <ContactForm 
+            {/* <ContactForm 
               onFieldChange={onChangeHandler}
               onFormSubmit={onSubmitFormHandler}
               nameValue={formState.formFields.name.value}
@@ -189,7 +189,7 @@ const Contact: React.FC<{theme: string}> = props => {
               showMessage={showMessage}
               isMessageSent={isMessageSent}
               message={message} 
-            />
+            /> */}
           </ContactFormContainer>
         </ContactFormSection>
       }

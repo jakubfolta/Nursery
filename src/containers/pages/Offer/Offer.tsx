@@ -7,6 +7,7 @@ import { OfferSection, PickupSection, StyledImage, StyledImageContainer } from "
 import { getListItems } from "../../../utilities/getListItems";
 import { ScheduleSection } from "./ScheduleSection/ScheduleSection";
 import { ScheduleContentContainer, ScheduleHoursSubheading, ScheduleStyledSection, ScheduleWaveBottom, ScheduleWaveTop } from "./ScheduleSection/styles";
+import { ContactFormContainer, ContactFormSection, ContactFormWaveTop } from "../Contact/styles";
 
 const Offer: React.FC<{theme: string}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
@@ -78,6 +79,32 @@ const Offer: React.FC<{theme: string}> = props => {
           </div>
         </OfferSection>
       }
+
+<ContactFormSection data-full>
+          <ContactFormWaveTop />
+          <ContactFormContainer>
+            <h2>Formularz kontaktowy</h2>
+            {/* <ContactForm 
+              onFieldChange={onChangeHandler}
+              onFormSubmit={onSubmitFormHandler}
+              nameValue={formState.formFields.name.value}
+              emailValue={formState.formFields.email.value}
+              messageValue={formState.formFields.message.value}
+              isNameValid={formState.formFields.name.isValid}
+              isNameTouched={formState.formFields.name.isTouched}
+              isEmailValid={formState.formFields.email.isValid}
+              isEmailTouched={formState.formFields.email.isTouched}
+              isFormValid={isValidForm}
+              isLoading={isLoading}
+              showMessage={showMessage}
+              isMessageSent={isMessageSent}
+              message={message} 
+            /> */}
+          </ContactFormContainer>
+        </ContactFormSection>
+
+
+
 
 <ScheduleStyledSection data-full>
     {/* <ScheduleWaveContainer> */}
