@@ -9,6 +9,8 @@ import { ScheduleSection } from "./ScheduleSection/ScheduleSection";
 import { ScheduleContentContainer, ScheduleHoursSubheading, ScheduleStyledSection, ScheduleWaveBottom, ScheduleWaveTop } from "./ScheduleSection/styles";
 import { ContactFormContainer, ContactFormSection, ContactFormWaveTop } from "../Contact/styles";
 
+import mySVG from '../../../assets/images/waves.svg';
+
 const Offer: React.FC<{theme: string}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
   const [heroDescription, setHeroDescription] = useState('');
@@ -107,6 +109,17 @@ const Offer: React.FC<{theme: string}> = props => {
 
 
 <ScheduleStyledSection data-full>
+    <img src={mySVG} alt="hello" style={{width: "100%"}}/>
+    <ScheduleContentContainer isPickupSection={!!pickupSectionHeading}>
+      <h2>{scheduleSectionHeading}</h2>
+
+      
+        <div>
+          <ScheduleHoursSubheading>{scheduleSectionSubheading}</ScheduleHoursSubheading>
+          
+        </div>
+
+    </ScheduleContentContainer>
     {/* <ScheduleWaveContainer> */}
 
     {/* </ScheduleWaveContainer> */}
