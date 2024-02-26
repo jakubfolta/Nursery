@@ -6,6 +6,7 @@ import { WebpageContext } from "../../../store/webpage-context";
 import { OfferSection, PickupSection, StyledImage, StyledImageContainer } from "./styles";
 import { getListItems } from "../../../utilities/getListItems";
 import { ScheduleSection } from "./ScheduleSection/ScheduleSection";
+import { ScheduleContentContainer, ScheduleHoursSubheading, ScheduleStyledSection, ScheduleWaveBottom, ScheduleWaveTop } from "./ScheduleSection/styles";
 
 const Offer: React.FC<{theme: string}> = props => {
   const [heroHeading, setHeroHeading] = useState('');
@@ -77,6 +78,57 @@ const Offer: React.FC<{theme: string}> = props => {
           </div>
         </OfferSection>
       }
+
+<ScheduleStyledSection data-full>
+    {/* <ScheduleWaveContainer> */}
+
+    {/* </ScheduleWaveContainer> */}
+    <ScheduleWaveTop />
+    <ScheduleContentContainer isPickupSection={!!pickupSectionHeading}>
+      <h2>{scheduleSectionHeading}</h2>
+
+      {scheduleSectionSubheading &&
+        <div>
+          <ScheduleHoursSubheading>{scheduleSectionSubheading}</ScheduleHoursSubheading>
+          {/* <ScheduleHoursList>
+            {props.maluszkowoSchedule!.map((item, index) => 
+              <li key={index}>
+                <ScheduleHoursSpan>{item[0]}</ScheduleHoursSpan>
+                <span>  {item[1]}</span>
+              </li>
+            )}
+          </ScheduleHoursList>
+          <StyledScheduleImageContainer>
+            <StyledScheduleImage 
+              srcSet={`${mobilePlayBricks} 525w, ${desktopPlayBricks} 1120w`}
+              sizes="(max-width: 767px) 525px, 1120px"
+              src={desktopPlayBricks}
+              alt="Klocki play"
+            />
+          </StyledScheduleImageContainer> */}
+        </div>
+      }
+
+      {/* {props.sectionSubheading2 &&
+        <div>
+          <ScheduleHoursSubheading>{props.sectionSubheading2}</ScheduleHoursSubheading>
+          <ScheduleHoursList>
+            {props.starszakowoSchedule!.map((item, index) => 
+              <li key={index}>
+                <ScheduleHoursSpan>{item[0]}</ScheduleHoursSpan>
+                <span>  {item[1]}</span>
+              </li>
+            )}
+          </ScheduleHoursList>
+        </div>
+      } */}
+    </ScheduleContentContainer>
+    {!!pickupSectionHeading &&
+      <ScheduleWaveBottom />
+    }
+  </ScheduleStyledSection>
+
+
 
       {scheduleSectionHeading &&
         <ScheduleSection 
