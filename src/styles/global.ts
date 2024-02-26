@@ -80,11 +80,6 @@ export const GlobalStyle = createGlobalStyle`
     scrollbar-width: none; */
   }
 
-  html, body {
-    min-width: 100%;
-    min-height: 100%;
-  }
-
   section:not([data-full]) {
     display: flex;
     flex-direction: column;
