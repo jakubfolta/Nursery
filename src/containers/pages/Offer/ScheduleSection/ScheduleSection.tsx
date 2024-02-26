@@ -8,15 +8,15 @@ export const ScheduleSection: React.FC<Props> = props => (
   <ScheduleStyledSection data-full>
     {/* <ScheduleWaveContainer> */}
 
-      <ScheduleWaveTop />
     {/* </ScheduleWaveContainer> */}
+    <ScheduleWaveTop />
     <ScheduleContentContainer isPickupSection={props.isPickupSection}>
       <h2>{props.sectionHeading}</h2>
 
       {props.sectionSubheading &&
         <div>
           <ScheduleHoursSubheading>{props.sectionSubheading}</ScheduleHoursSubheading>
-          <ScheduleHoursList>
+          {/* <ScheduleHoursList>
             {props.maluszkowoSchedule!.map((item, index) => 
               <li key={index}>
                 <ScheduleHoursSpan>{item[0]}</ScheduleHoursSpan>
@@ -31,11 +31,11 @@ export const ScheduleSection: React.FC<Props> = props => (
               src={desktopPlayBricks}
               alt="Klocki play"
             />
-          </StyledScheduleImageContainer>
+          </StyledScheduleImageContainer> */}
         </div>
       }
 
-      {props.sectionSubheading2 &&
+      {/* {props.sectionSubheading2 &&
         <div>
           <ScheduleHoursSubheading>{props.sectionSubheading2}</ScheduleHoursSubheading>
           <ScheduleHoursList>
@@ -47,7 +47,7 @@ export const ScheduleSection: React.FC<Props> = props => (
             )}
           </ScheduleHoursList>
         </div>
-      }
+      } */}
     </ScheduleContentContainer>
     {props.isPickupSection &&
       <ScheduleWaveBottom />
