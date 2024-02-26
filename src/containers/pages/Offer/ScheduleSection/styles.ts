@@ -84,9 +84,14 @@ const wave = css`
 `
 
 export const ScheduleWaveTop = styled.div`
-  ${wave}
-  
+  position: relative;
   top: -1px;
+  width: 100%;
+  height: var(--wave-height);
+  background-image: url(${Background});
+  line-height: 0;
+  
+  /* top: -1px; */
 `
 
 
