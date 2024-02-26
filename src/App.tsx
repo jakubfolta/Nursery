@@ -22,16 +22,16 @@ type ScrollStatus = {
 };
 
 const scrollbarOptions = {
-  plugins: {
-    overscroll: {
-      effect: 'glow',
-      damping: .2,
-      glowColor: 'yellow'
-    }
-  }
+  // plugins: {
+  //   overscroll: {
+  //     effect: 'glow',
+  //     damping: .2,
+  //     glowColor: 'yellow'
+  //   }
+  // }
 };
 
-Scrollbar.use(OverscrollPlugin);
+// Scrollbar.use(OverscrollPlugin);
 const scrollbar = Scrollbar.init(document.querySelector('#my-scrollbar') as HTMLElement, scrollbarOptions);
 window.history.scrollRestoration = 'manual';
 
