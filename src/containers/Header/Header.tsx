@@ -10,6 +10,7 @@ const halfPageTransitionDuration = CONSTANTS.pageTransitionDuration * 1000 / 2;
 
 export const Header: React.FC<{children: React.ReactNode, theme: string, isMainPage: boolean}> = props => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [isBackdropAnimationFinished, setIsBackdropAnimationFinished] = useState(true);
   const [isMenuReady, setIsMenuReady] = useState(true);
   const [isMenuDesktop, setIsMenuDesktop] = useState(false);
   const [menuButtonClass, setMenuButtonClass] = useState('');
@@ -45,7 +46,11 @@ export const Header: React.FC<{children: React.ReactNode, theme: string, isMainP
   const toggleNavigation = () => {
     setIsMenuReady(false);
     setIsMenuVisible(prevState => !prevState);
+
     isMenuVisible ? setMenuButtonClass('closed') : setMenuButtonClass('opened');
+    !isMenuVisible 
+      ? setIsBackdropAnimationFinished(false)
+      : setTimeout(() => { setIsBackdropAnimationFinished(true) }, menuAnimationDuration);
   };
 
   const onClickHandler = () => {  
@@ -59,6 +64,7 @@ export const Header: React.FC<{children: React.ReactNode, theme: string, isMainP
     
     setTimeout(() => {
       setIsMenuVisible(prevState => !prevState);
+      setIsBackdropAnimationFinished(true);
       setMenuButtonClass('');
     }, halfPageTransitionDuration);
   };
@@ -82,7 +88,7 @@ export const Header: React.FC<{children: React.ReactNode, theme: string, isMainP
           isClicked={!isMenuReady}
           isDesktop={isMenuDesktop} />
       </StyledContainer>
-      {!isMenuDesktop && 
+      {!isBackdropAnimationFinished &&
         <Backdrop
           onBackdropClick={onClickHandler} 
           isVisible={isMenuVisible}

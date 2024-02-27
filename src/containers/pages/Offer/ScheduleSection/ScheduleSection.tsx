@@ -3,10 +3,14 @@ import mobilePlayBricks from "../../../../assets/images/play-bricks-mobile.jpg";
 import desktopPlayBricks from "../../../../assets/images/play-bricks-desktop.jpg";
 import { Props } from "./interface";
 import { ScheduleContentContainer, ScheduleHoursList, ScheduleHoursSpan, ScheduleHoursSubheading, ScheduleStyledSection, ScheduleWaveBottom, ScheduleWaveTop, StyledScheduleImage, StyledScheduleImageContainer } from "./styles";
+import wave from "../../../../assets/images/waves.svg";
 
 export const ScheduleSection: React.FC<Props> = props => (
   <ScheduleStyledSection data-full>
-    <ScheduleWaveTop />
+    <ScheduleWaveTop 
+      src={wave}
+      alt="Fala"
+    />
     <ScheduleContentContainer isPickupSection={props.isPickupSection}>
       <h2>{props.sectionHeading}</h2>
 

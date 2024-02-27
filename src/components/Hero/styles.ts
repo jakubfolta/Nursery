@@ -24,6 +24,7 @@ export const StyledHeroContainer = styled.div<{theme: string, isMainPage?: boole
   align-items: center;
   justify-content: center;
   width: 100%;
+  /* background: linear-gradient(90deg, blue, green); */
   background: ${props => !props.isMainPage
     ? `linear-gradient(140deg, 
       ${`hsl(from ${props.theme} h s 23%)`} 0%,
@@ -136,7 +137,8 @@ export const StyledUnderline = styled.span`
 
 export const StyledDivider = styled.div`
   position: relative;
-  bottom: 0;
+  bottom: -1px;
+  overflow: hidden;
   width: 100%;
   height: 90px;
 `

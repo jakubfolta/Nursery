@@ -23,6 +23,10 @@ export const ScheduleStyledSection = styled.section`
 `
 
 export const ScheduleContentContainer = styled.div<{isPickupSection: boolean}>`
+  position: relative;
+  z-index: 2;
+
+
   width: 100%;
   margin-top: -2rem;
   margin-bottom: ${props => props.isPickupSection ? '3rem' : '0'};
@@ -72,18 +76,19 @@ export const StyledScheduleImage = styled.img`
   object-fit: cover;
 `
 
-const wave = css`
+export const ScheduleWaveTop = styled.img`
+  position: relative;
+  top: -1px;
   width: 100%;
   height: var(--wave-height);
-  background-image: url(${Background});
-`
-
-export const ScheduleWaveTop = styled.div`
-  ${wave}
 `
 
 export const ScheduleWaveBottom = styled.div`
-  ${wave}
+  position: relative;
+  width: 100%;
+  height: var(--wave-height);
+  background-image: url(${Background});
+  top: 1px;
   transform: rotate(180deg);
   margin-top: -6rem;
 

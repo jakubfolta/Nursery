@@ -22,12 +22,9 @@ type ScrollStatus = {
 };
 
 const scrollbarOptions = {
-  plugins: {
-    overscroll: { effect: 'glow' }
-  }
+  damping: window.screen.width >= 1200 ? .13 : .03,
 };
 
-Scrollbar.use(OverscrollPlugin);
 const scrollbar = Scrollbar.init(document.querySelector('#my-scrollbar') as HTMLElement, scrollbarOptions);
 window.history.scrollRestoration = 'manual';
 
@@ -72,12 +69,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     const header = document.getElementById('header');
-    const scrollContent = document.querySelector('.scroll-content');
 
-    if (scrollContent) {
-      (scrollContent as HTMLElement).style.position = 'relative';
-      (scrollContent as HTMLElement).style.zIndex = '1';
-    }
     updatePageTheme(location.pathname);
     getScreenWidth();
     window.addEventListener('resize', getScreenWidth);

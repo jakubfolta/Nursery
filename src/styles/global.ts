@@ -67,7 +67,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    height: 100vh;
+    height: 100dvh;
     background-color: var(--color-white);
     box-sizing: border-box;
     /* font-family: 'Nunito', sans-serif; */

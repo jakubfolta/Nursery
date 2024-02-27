@@ -10,11 +10,9 @@ export const StyledBackdrop = styled.div<StyledProps>`
 	height: 100vh;
 	background-color: var(--color-white);
 	opacity: 0;
+  animation: appear var(--menu-animation-duration) forwards;
 
-	${props => props.isVisible
-		? css`animation: appear var(--menu-animation-duration) forwards;`
-		: !props.isVisible && props.isClicked && css`animation: hide var(--menu-animation-duration);`
-	}
+	${props => !props.isVisible && props.isClicked && css`animation: hide var(--menu-animation-duration);`}
 
 	@keyframes appear {
 		100% {
