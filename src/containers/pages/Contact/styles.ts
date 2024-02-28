@@ -26,11 +26,10 @@ export const ContactFormSection = styled.section`
   align-items: center;
   width: 100%;
   padding-bottom: 2rem;
-  background: linear-gradient(90deg, 
-    hsl(from var(--color-accent-4) h s 23%) 0%,
-    hsl(from var(--color-accent-4) h s 40%) 50%,
-    var(--color-accent-4) 100%);
-  background-size: 250%;
+  background: linear-gradient(90deg,
+    #55204e 0%,
+    #6f2a66 50%,
+    var(--color-accent-4) 100%) 0% 0% / 250%;
   animation: ${gradient} 5s linear infinite alternate;
   white-space: pre-wrap;
 

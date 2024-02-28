@@ -2,13 +2,16 @@ import React, { useContext } from "react";
 import { StyledContainer, StyledDescription, StyledDivider, StyledHeading, StyledHero, StyledHeroContainer, StyledUnderline, Wave } from "./styles";
 import { Props } from "./interface";
 import { WebpageContext } from "../../store/webpage-context";
+import { getFirefoxColors } from "../../utilities/getFirefoxColors";
 
 const Hero: React.FC<Props> = props => {
   const headerHeight = useContext(WebpageContext).headerHeight;
 
   return (
     <StyledHeroContainer 
-      theme={props.theme} 
+      theme={props.theme}
+      firefoxColorOne={getFirefoxColors(props.theme)[0]}
+      firefoxColorTwo={getFirefoxColors(props.theme)[1]}
       isMainPage={props.isMainPage}
       headerHeight={headerHeight}>
       <StyledHero>

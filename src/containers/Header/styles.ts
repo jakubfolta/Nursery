@@ -5,7 +5,7 @@ const gradient = keyframes`
   100% { background-position: 100%; }
 `
 
-export const StyledHeader = styled.header<{theme: string, isMainPage: boolean}>`
+export const StyledHeader = styled.header<{theme: string, firefoxColorOne: string, firefoxColorTwo: string, isMainPage: boolean}>`
   position: fixed;
   top: 0;
   width: 100%;
@@ -24,32 +24,52 @@ export const StyledHeader = styled.header<{theme: string, isMainPage: boolean}>`
     content: '';
     width: 100%;
     height: var(--header-border);
-    background: ${props => props.theme};
+    
+    // Firefox compatibility
+    @supports(background-color: hsl(from #117302 h s 23%)) {
+      background: ${props => !props.isMainPage
+        ? `linear-gradient(to right, 
+          ${`hsl(from ${props.theme} h s 23%)`} 0%,
+          ${`hsl(from ${props.theme} h s 30%)`} 50%,
+          ${props.theme} 100%)`
+        : `linear-gradient(to right, 
+          ${`hsl(from ${props.theme} h s 23%)`} 0%,
+          ${props.theme} 11.1%,
+          
+          var(--color-accent-2) 22.2%,
+          hsl(from var(--color-accent-2) h s 23%) 33.3%,
+
+          hsl(from var(--color-accent-3) h s 23%) 44.4%,
+          var(--color-accent-3) 55.5%,
+
+          var(--color-accent-4) 66.6%,
+          hsl(from var(--color-accent-4) h s 23%) 77.7%,
+
+          hsl(from var(--color-accent-5) h s 23%) 88.8%,
+          var(--color-accent-5) 100%) 0% 0% / 1000%`
+      };
+    }
+
     background: ${props => !props.isMainPage
-      ? `linear-gradient(to right, 
-        ${`hsl(from ${props.theme} h s 23%)`} 0%,
-        ${`hsl(from ${props.theme} h s 30%)`} 50%,
-        ${props.theme} 100%)`
-      : `linear-gradient(to right, 
-        ${`hsl(from ${props.theme} h s 23%)`} 0%,
-        ${props.theme} 11.1%,
-        
-        var(--color-accent-2) 22.2%,
-        hsl(from var(--color-accent-2) h s 23%) 33.3%,
-
-        hsl(from var(--color-accent-3) h s 23%) 44.4%,
-        var(--color-accent-3) 55.5%,
-
-        var(--color-accent-4) 66.6%,
-        hsl(from var(--color-accent-4) h s 23%) 77.7%,
-
-        hsl(from var(--color-accent-5) h s 23%) 88.8%,
-        var(--color-accent-5) 100%)`
-    };
+      ? `linear-gradient(140deg,
+          ${props.firefoxColorOne} 0%,
+          ${props.firefoxColorTwo} 50%,
+          ${props.theme} 100%)`
+      : `linear-gradient(140deg, 
+          #117302 0%,
+          #21e004 11.1%,
+          #61CAFF 22.2%,
+          #004e75 33.3%,
+          #704e05 44.4%,
+          #F6BA39 55.5%,
+          #8D3682 66.6%,
+          #55204e 77.7%,
+          #232753 88.8%,
+          #303772 100%) 0% 0% / 1000%`
+      };
   
     ${props => props.isMainPage && css`
       animation: ${gradient} 60s linear infinite alternate;
-      background-size: 1000%;
     `}
   }
 `

@@ -75,47 +75,47 @@ export const CurriculumListItem = styled.li`
 
   &:nth-child(even):not([data-sequel]) div,
   &[data-sequel]:nth-child(odd) div { @media only screen and (min-width: 556px) { align-self: flex-end; } }
-  &:nth-child(1) h3 { 
-    background: linear-gradient(90deg, var(--color-accent-5) 0%, hsl(from var(--color-accent-5) h s 55%) 100%);
+  &:nth-child(1) h3 {
+    background: linear-gradient(90deg, var(--color-accent-5) 0%, #5d67bb 100%);
     ${textGradient}
   }
-  &:nth-child(2) h3 { 
-    background: linear-gradient(90deg, hsl(from var(--color-accent-4) h s 55%) 0%, var(--color-accent-4) 100%);
+  &:nth-child(2) h3 {
+    background: linear-gradient(90deg, #c059b2 0%, var(--color-accent-4) 100%);
     ${textGradient}
   }
-  &:nth-child(3) h3 { 
-    background: linear-gradient(90deg, hsl(from var(--color-accent-3) h s 50%) 0%, hsl(from var(--color-accent-3) h s 65%) 100%);
+  &:nth-child(3) h3 {
+    background: linear-gradient(90deg, #f4aa0b 0%, #f7c455 100%);
     ${textGradient}
   }
-  &[data-sequel]:nth-child(1) h3 { 
-    background: linear-gradient(90deg, hsl(from var(--color-accent-2) h s 70%) 0%, hsl(from var(--color-accent-2) h s 60%) 100%);
+  &[data-sequel]:nth-child(1) h3 {
+    background: linear-gradient(90deg, #6cf 0%, #3bf 100%);
     ${textGradient}
   }
-  &[data-sequel]:nth-child(2) h3 { 
-    background: linear-gradient(90deg, hsl(from var(--color-accent) h s 40%) 0%, hsl(from var(--color-accent) h s 55%) 100%);
+  &[data-sequel]:nth-child(2) h3 {
+    background: linear-gradient(90deg, #1ec804 0%, #3bfa1e 100%);
     ${textGradient}
   }
-  &[data-sequel]:nth-child(3) h3 { 
-    background: linear-gradient(90deg, hsl(from var(--color-accent-5) h s 55%) 0%, var(--color-accent-5) 100%);
+  &[data-sequel]:nth-child(3) h3 {
+    background: linear-gradient(90deg, #5d67bb 0%, var(--color-accent-5) 100%);
     ${textGradient}
   }
-  &[data-sequel]:nth-child(4) h3 { 
-    background: linear-gradient(90deg, var(--color-accent-4) 0%, hsl(from var(--color-accent-4) h s 55%) 100%);
+  &[data-sequel]:nth-child(4) h3 {
+    background: linear-gradient(90deg, var(--color-accent-4) 0%, #c059b2 100%);
     ${textGradient}
   }
-  &[data-sequel]:nth-child(5) h3 { 
-    background: linear-gradient(90deg, hsl(from var(--color-accent-3) h s 65%) 0%, hsl(from var(--color-accent-3) h s 50%) 100%);
+  &[data-sequel]:nth-child(5) h3 {
+    background: linear-gradient(90deg, #f7c455 0%, #f4aa0b 100%);
     ${textGradient}
   }
 
-  &:nth-child(1) div div { background: linear-gradient(90deg, var(--color-accent-5) 0%, hsl(from var(--color-accent-5) h s 55%) 100%); }
-  &:nth-child(2) div div { background: linear-gradient(90deg, hsl(from var(--color-accent-4) h s 55%) 0%, var(--color-accent-4) 100%); }
-  &:nth-child(3) div div { background: linear-gradient(90deg, hsl(from var(--color-accent-3) h s 50%) 0%, hsl(from var(--color-accent-3) h s 65%) 100%); }
-  &[data-sequel]:nth-child(1) div div { background: linear-gradient(90deg, hsl(from var(--color-accent-2) h s 70%) 0%, hsl(from var(--color-accent-2) h s 60%) 100%); }
-  &[data-sequel]:nth-child(2) div div { background: linear-gradient(90deg, hsl(from var(--color-accent) h s 40%) 0%, hsl(from var(--color-accent) h s 55%) 100%); }
-  &[data-sequel]:nth-child(3) div div { background: linear-gradient(90deg, hsl(from var(--color-accent-5) h s 55%) 0%, var(--color-accent-5) 100%); }
-  &[data-sequel]:nth-child(4) div div { background: linear-gradient(90deg, var(--color-accent-4) 0%, hsl(from var(--color-accent-4) h s 55%) 100%); }
-  &[data-sequel]:nth-child(5) div div { background: linear-gradient(90deg, hsl(from var(--color-accent-3) h s 65%) 0%, hsl(from var(--color-accent-3) h s 50%) 100%); }
+  &:nth-child(1) div div { background: linear-gradient(90deg, var(--color-accent-5) 0%, #5d67bb 100%); }
+  &:nth-child(2) div div { background: linear-gradient(90deg, #c059b2 0%, var(--color-accent-4) 100%); }
+  &:nth-child(3) div div { background: linear-gradient(90deg, #f4aa0b 0%, #f7c455 100%); }
+  &[data-sequel]:nth-child(1) div div { background: linear-gradient(90deg, #6cf 0%, #3bf 100%); }
+  &[data-sequel]:nth-child(2) div div { background: linear-gradient(90deg, #1ec804 0%, #3bfa1e 100%); }
+  &[data-sequel]:nth-child(3) div div { background: linear-gradient(90deg, #5d67bb 0%, var(--color-accent-5) 100%); }
+  &[data-sequel]:nth-child(4) div div { background: linear-gradient(90deg, var(--color-accent-4) 0%, #c059b2 100%); }
+  &[data-sequel]:nth-child(5) div div { background: linear-gradient(90deg, #f7c455 0%, #f4aa0b 100%); }
 
   &:nth-child(even):not([data-sequel]) div div,  
   &[data-sequel]:nth-child(odd) div div {  

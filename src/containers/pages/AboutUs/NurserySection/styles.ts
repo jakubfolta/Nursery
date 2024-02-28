@@ -16,10 +16,9 @@ export const NurseryStyledSection = styled.section<{starszakowo?: boolean, isMal
   margin-bottom: ${props => (props.isCharacteristic && (props.starszakowo || !props.isStarszakowo)) ? '2rem' : '0'};
   padding-bottom: 4rem;
   background: linear-gradient(90deg, 
-    hsl(from var(--color-accent-2) h s 23%) 0%,
-    hsl(from var(--color-accent-2) h s 30%) 50%,
-    var(--color-accent-2) 100%);
-  background-size: 250%;
+    #004e75 0%,
+    #069 50%,
+    var(--color-accent-2) 100%) 0% 0% / 250%;
   animation: ${gradient} 5s linear infinite alternate;
   white-space: pre-wrap;
 

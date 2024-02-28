@@ -18,38 +18,58 @@ const waveAnimation = css`
   }
 `
 
-export const StyledHeroContainer = styled.div<{theme: string, isMainPage?: boolean, headerHeight: number}>`
+export const StyledHeroContainer = styled.div<{theme: string, firefoxColorOne: string, firefoxColorTwo: string, isMainPage?: boolean, headerHeight: number}>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  /* background: linear-gradient(90deg, blue, green); */
+
+  // Firefox compatibility
+  @supports(background-color: hsl(from #117302 h s 23%)) {
+    background: ${props => !props.isMainPage
+      ? `linear-gradient(140deg, 
+        ${`hsl(from ${props.theme} h s 23%)`} 0%,
+        ${`hsl(from ${props.theme} h s 30%)`} 50%,
+        ${props.theme} 100%)`
+      : `linear-gradient(140deg, 
+        ${`hsl(from ${props.theme} h s 23%)`} 0%,
+        ${props.theme} 11.1%,
+        
+        var(--color-accent-2) 22.2%,
+        hsl(from var(--color-accent-2) h s 23%) 33.3%,
+
+        hsl(from var(--color-accent-3) h s 23%) 44.4%,
+        var(--color-accent-3) 55.5%,
+
+        var(--color-accent-4) 66.6%,
+        hsl(from var(--color-accent-4) h s 23%) 77.7%,
+
+        hsl(from var(--color-accent-5) h s 23%) 88.8%,
+        var(--color-accent-5) 100%) 0% 0% / 1000%`
+    };
+  }
+
   background: ${props => !props.isMainPage
-    ? `linear-gradient(140deg, 
-      ${`hsl(from ${props.theme} h s 23%)`} 0%,
-      ${`hsl(from ${props.theme} h s 30%)`} 50%,
-      ${props.theme} 100%)`
+    ? `linear-gradient(140deg,
+        ${props.firefoxColorOne} 0%,
+        ${props.firefoxColorTwo} 50%,
+        ${props.theme} 100%)`
     : `linear-gradient(140deg, 
-      ${`hsl(from ${props.theme} h s 23%)`} 0%,
-      ${props.theme} 11.1%,
-      
-      var(--color-accent-2) 22.2%,
-      hsl(from var(--color-accent-2) h s 23%) 33.3%,
-
-      hsl(from var(--color-accent-3) h s 23%) 44.4%,
-      var(--color-accent-3) 55.5%,
-
-      var(--color-accent-4) 66.6%,
-      hsl(from var(--color-accent-4) h s 23%) 77.7%,
-
-      hsl(from var(--color-accent-5) h s 23%) 88.8%,
-      var(--color-accent-5) 100%)`
-  };
+        #117302 0%,
+        #21e004 11.1%,
+        #61CAFF 22.2%,
+        #004e75 33.3%,
+        #704e05 44.4%,
+        #F6BA39 55.5%,
+        #8D3682 66.6%,
+        #55204e 77.7%,
+        #232753 88.8%,
+        #303772 100%) 0% 0% / 1000%`
+    };
   
   ${props => props.isMainPage && css`
     animation: ${gradient} 60s linear infinite alternate;
-    background-size: 1000%;
   `}
 
   @media only screen and (min-width: 992px) { height: calc(100vh - (${props => props.headerHeight}px + var(--header-border))); }

@@ -4,6 +4,7 @@ import { StyledContainer, StyledHeader } from "./styles";
 import { CONSTANTS } from "../../styles/global";
 import { debounce } from 'lodash-es';
 import { useLocation } from "react-router-dom";
+import { getFirefoxColors } from "../../utilities/getFirefoxColors";
 
 const menuAnimationDuration = CONSTANTS.menuAnimationDuration * 1000;
 const halfPageTransitionDuration = CONSTANTS.pageTransitionDuration * 1000 / 2;
@@ -73,6 +74,8 @@ export const Header: React.FC<{children: React.ReactNode, theme: string, isMainP
     <StyledHeader 
       id="header"
       theme={props.theme}
+      firefoxColorOne={getFirefoxColors(props.theme)[0]}
+      firefoxColorTwo={getFirefoxColors(props.theme)[1]}
       isMainPage={props.isMainPage}>
       {props.children}
       <StyledContainer>
