@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Background from "./../../../../assets/images/waves.svg";
 
 const gradient = keyframes`
@@ -87,6 +87,7 @@ export const ScheduleWaveBottom = styled.div`
   width: 100%;
   height: var(--wave-height);
   background-image: url(${Background});
+  background-size: 100% 100%;
   top: 1px;
   transform: rotate(180deg);
   margin-top: -6rem;

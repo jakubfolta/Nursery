@@ -73,6 +73,7 @@ export const NurseryWaveBottom = styled.div`
   width: 100%;
   height: var(--wave-height);
   background-image: url(${Background});
+  background-size: 100% 100%;
   transform: rotate(180deg);
   margin-top: -10rem;
 

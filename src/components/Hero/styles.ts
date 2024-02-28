@@ -8,12 +8,12 @@ const gradient = keyframes`
 
 const waveAnimation = css`
   @keyframes wave {
-    100% { background-position: 700px; }
+    100% { background-position: 700px 0px; }
   }
 
   @media only screen and (min-width: 536px) {
     @keyframes wave {
-      100% { background-position: 1000px; }
+      100% { background-position: 1000px 0px; }
     }
   }
 `
@@ -167,9 +167,9 @@ export const Wave = styled.div`
   ${waveAnimation}
   
   position: absolute;
+  bottom: 0;
   width: 100%;
   height: var(--wave-height);
-  bottom: 0;
   background-image: url(${Background});
   background-size: 700px;
   transform: rotate(180deg);
@@ -177,23 +177,38 @@ export const Wave = styled.div`
 
   @media only screen and (min-width: 536px) { background-size: 1000px; }
   
-   &:nth-child(2) {
+  &:nth-child(2) {
     opacity: .8;
     height: 120px;
     animation-duration: 15s;
     animation-direction: normal;
-   }
 
-   &:nth-child(3) {
+    // Firefox wave height issue
+    @supports not (background-color: hsl(from #117302 h s 23%)) {
+      bottom: -25px;  
+    }
+  }
+
+  &:nth-child(3) {
     opacity: .4;
     height: 150px;
     animation-duration: 8s;
     animation-direction: normal;
-   }
 
-   &:nth-child(4) {
+    // Firefox wave height issue
+    @supports not (background-color: hsl(from #117302 h s 23%)) {
+      bottom: -10px;
+    }
+  }
+
+  &:nth-child(4) {
     opacity: .2;
     height: 110px;
     animation-duration: 12s;
-   }
+
+    // Firefox wave height issue
+    @supports not (background-color: hsl(from #117302 h s 23%)) {
+      bottom: -35px;
+    }
+  }
 `

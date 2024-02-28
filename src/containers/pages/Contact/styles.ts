@@ -61,4 +61,5 @@ export const ContactFormWaveTop = styled.div`
   width: 100%;
   height: var(--wave-height);
   background-image: url(${Background});
+  background-size: 100% 100%;
 `
