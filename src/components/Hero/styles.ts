@@ -172,6 +172,7 @@ export const Wave = styled.div`
   height: var(--wave-height);
   background-image: url(${Background});
   background-size: 700px;
+  background-repeat: repeat-x;
   transform: rotate(180deg);
   animation: wave 20s reverse linear infinite;
 
