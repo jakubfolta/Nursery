@@ -6,7 +6,6 @@ import { Layout } from './components';
 import WebpageContextProvider from './store/webpage-context';
 import { pageThemes } from './constants/PageThemes';
 import Scrollbar from 'smooth-scrollbar';
-import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 import { debounce } from 'lodash-es';
 import { websiteRoutes } from './routes/Routes';
 
@@ -20,13 +19,10 @@ type ScrollStatus = {
     y: number,
   }
 };
-if (navigator.userAgent.includes('Firefox')) {
 
-  console.log('BROWSER', navigator.userAgent);
-}
-const mobileScrollingSpeed = navigator.userAgent.includes('Firefox') ? .06 : .03;
+const mobileScrollingSpeed = navigator.userAgent.includes('Firefox') ? .07 : .03;
 const scrollbarOptions = {
-  damping: window.screen.width >= 1200 ? .13 : mobileScrollingSpeed,
+  damping: window.screen.width >= 1200 ? .14 : mobileScrollingSpeed,
 };
 
 const scrollbar = Scrollbar.init(document.querySelector('#my-scrollbar') as HTMLElement, scrollbarOptions);
