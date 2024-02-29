@@ -20,9 +20,13 @@ type ScrollStatus = {
     y: number,
   }
 };
+if (navigator.userAgent.includes('Firefox')) {
 
+  console.log('BROWSER', navigator.userAgent);
+}
+const mobileScrollingSpeed = navigator.userAgent.includes('Firefox') ? .06 : .03;
 const scrollbarOptions = {
-  damping: window.screen.width >= 1200 ? .13 : .03,
+  damping: window.screen.width >= 1200 ? .13 : mobileScrollingSpeed,
 };
 
 const scrollbar = Scrollbar.init(document.querySelector('#my-scrollbar') as HTMLElement, scrollbarOptions);
