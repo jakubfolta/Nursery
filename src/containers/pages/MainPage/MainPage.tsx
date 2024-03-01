@@ -60,10 +60,6 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean, setFaci
     }
   }, [isNurseryContentAvailable]);
 
-
-  const loaded = () => {
-    console.log('LOADED IMAGE')
-  }
   return (
     <>
       <Hero
@@ -78,7 +74,6 @@ export const MainPage: React.FC<{theme: string, isDesktopSize?: boolean, setFaci
             sizes="(max-width: 767px) 420px, 560px"
             src={desktopKidsGrass}
             alt="Dzieci na trawie"
-            onLoad={loaded}
           />
           <StyledImage 
             srcSet={`${mobilePaintingGirl} 420w, ${desktopPaintingGirl} 560w`}

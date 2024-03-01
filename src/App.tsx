@@ -199,7 +199,7 @@ export const App: React.FC = () => {
         key={index} 
         path={route.path} 
         element={<Component 
-          theme={getThemeColor(route.themeLabel)} 
+          theme={getThemeColor(route.themeLabel)}
           {...(route.path === '/'
             ? {isDesktopSize: isDesktopSize, setFacilitiesSectionAvailability: setFacilitiesSectionAvailability}
             : route.path === '/o-nas' && {scrollbar: scrollbar})} /> }

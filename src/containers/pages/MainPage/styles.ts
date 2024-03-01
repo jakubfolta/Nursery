@@ -71,6 +71,13 @@ export const StyledImageContainerShadow = styled.div`
     left: 6rem;
     height: 85%;
   }
+
+  @media only screen and (min-width: 1400px) {
+    width: 550px;
+    height: 520px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `
 
 export const StyledImage = styled.img`
