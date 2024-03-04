@@ -62,21 +62,17 @@ export const StyledImageContainerShadow = styled.div`
 
   @media only screen and (min-width: 536px) { left: 8rem; }
   @media only screen and (min-width: 992px) {
-    top: 5rem;
-    left: 4rem;
-    height: 90%;
+    top: 50%;
+    left: 5rem;
+    width: 380px;
+    height: 480px;
+    transform: translateY(-50%);
   }
 
-  @media only screen and (min-width: 1200px) {
-    left: 6rem;
-    height: 85%;
-  }
-
+  @media only screen and (min-width: 1200px) { width: 475px; }
   @media only screen and (min-width: 1400px) {
     width: 550px;
     height: 520px;
-    top: 50%;
-    transform: translateY(-50%);
   }
 `
 
