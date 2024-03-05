@@ -16,6 +16,7 @@ export const ContactDetailsContainer = styled.div`
     flex-direction: initial;
     flex-wrap: wrap;
   }
+  @media only screen and (min-width: 1200px) { flex-wrap: nowrap;}
 `
 
 export const ContactContainer = styled.div`
@@ -27,6 +28,7 @@ export const ContactContainer = styled.div`
   &:not(:last-child) { margin-bottom: 3rem; }
 
   @media only screen and (min-width: 768px) { width: 50%; }
+  @media only screen and (min-width: 1200px) { && { margin-bottom: 0; } }
 `
 
 export const ContactImageContainer = styled.div`
