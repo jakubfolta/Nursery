@@ -111,7 +111,7 @@ export const SubmitButton = styled.button<{isFormValid: boolean}>`
   align-items: center;
   width: 80%;
   padding: 1rem 2rem;
-  background-color: var(--color-accent-4);
+  background-color: transparent;
   border: 3px solid;
   border-color: ${props => props.isFormValid ? 'var(--color-accent)' : 'var(--color-contact-invalid)'};
   border-radius: 5px;
