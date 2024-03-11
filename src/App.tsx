@@ -1,6 +1,6 @@
 import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Navigate } from 'react-router-dom';
 import { CONSTANTS, GlobalStyle } from './styles/global';
 import { Layout } from './components';
 import WebpageContextProvider from './store/webpage-context';
@@ -218,6 +218,7 @@ export const App: React.FC = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes location={displayLocation}>
             {routes}
+            <Route path='/*' element={<Navigate to="/" />} />
           </Routes>
         </Suspense>
       </Layout>
