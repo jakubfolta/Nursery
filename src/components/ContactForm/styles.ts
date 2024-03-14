@@ -122,6 +122,8 @@ export const SubmitButton = styled.button<{isFormValid: boolean}>`
   cursor: ${props => props.isFormValid ? 'pointer' : 'not-allowed'};
   transition: all .3s;
 
+  && { margin-top: 4rem; }
+
   @media only screen and (min-width: 1024px) { width: 60%; }
 `
 
@@ -131,10 +133,16 @@ export const ButtonText = styled.span<{isLoading: boolean}>`
 
 export const ResultMessage = styled.span<{isMessageSent: boolean}>`
   position: absolute;
-  bottom: 6rem;
+  bottom: ${props => props.isMessageSent ? '7rem' : '6rem'};
   align-self: center;
   font-size: var(--small-font-size);
   font-weight: bold;
   letter-spacing: 1px;
   color: ${props => props.isMessageSent ? 'var(--color-accent)' : 'var(--color-warning)'};
+
+  @media only screen and (min-width: 460px) {
+    width: 110%;
+    text-align: center;
+    bottom: 7rem;
+  }
 `
