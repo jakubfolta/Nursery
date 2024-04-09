@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator, MinLeng
 from django.utils.text import slugify
 
 class Page(models.Model):
-  description = models.CharField(max_length=50)
+  description = models.CharField(max_length=50, blank=False)
   heading_1 = models.CharField(max_length=50, blank=False)
   text_1 = models.TextField(max_length=210, blank=False)
   heading_2 = models.CharField(max_length=50, blank=True)
@@ -113,3 +113,20 @@ class Schedule(models.Model):
 
   def __str__(self):
     return self.facility
+
+class Photo(models.Model):
+  facility = models.CharField(max_length=50, blank=False)
+
+  def __str__(self):
+    return self.facility
+  
+  # class Meta:
+  #     verbose_name_plural = 'Photosy'
+
+class FacilityPhoto(models.Model):
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+    image = models.ImageField()
+    # name = models.CharField(max_length=50, default=None, blank=True)
+ 
+    def __str__(self):
+        return self.photo.facility

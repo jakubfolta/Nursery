@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps, UpdatedPageProps, SchedulesProps, FetchedScheduleProps, UpdatedScheduleProps } from "../shared/api.interfaces";
+import { NavigationItemProps, FetchedPageProps, PagesProps, NurseryDetailsProps, UpdatedPageProps, SchedulesProps, FetchedScheduleProps, UpdatedScheduleProps, GalleryProps } from "../shared/api.interfaces";
 import { Context } from "./interfaces";
 import { debounce } from "lodash-es";
 
@@ -14,7 +14,8 @@ export const WebpageContext = React.createContext<Context>({
   isFetchingError: false,
   headerHeight: -1,
   isNurseriesContentAvailable: false,
-  schedules: {} as SchedulesProps
+  schedules: {} as SchedulesProps,
+  gallery: {} as GalleryProps
 });
 
 const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
@@ -24,7 +25,8 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
   const [isFetchingError, setIsFetchingError] = useState(Boolean);
   const [headerHeight, setHeaderHeight] = useState(-1);
   const [isNurseriesContentAvailable, setIsNurseriesContentAvailable] = useState(false);
-  const [schedules, setSchedules] = useState<SchedulesProps>({} as SchedulesProps)
+  const [schedules, setSchedules] = useState<SchedulesProps>({} as SchedulesProps);
+  const [gallery, setGallery] = useState<GalleryProps>({} as GalleryProps);
 
   useEffect(() => {
     getHeaderHeight();
@@ -77,6 +79,20 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
           updatedSchedulesContent[facility] = updatedRest as UpdatedScheduleProps;
         })
 
+        // NURSERIES GALLERY
+        const updatedGallery: GalleryProps = {};
+        const maluszkowoImagesUrls: string[] = [];
+        const starszakowoImagesUrls: string[] = [];
+
+        data.facility_photos.forEach((image: {url: string, facility: string}) => {
+          image.facility === 'Maluszkowo' && maluszkowoImagesUrls.push(image.url);
+          image.facility === 'Starszakowo' && starszakowoImagesUrls.push(image.url);
+        })
+
+        updatedGallery['Maluszkowo'] = maluszkowoImagesUrls;
+        updatedGallery['Starszakowo'] = starszakowoImagesUrls;
+
+        console.log('UPDATED GALLERIES', updatedGallery);
         console.log('UPDATED PAGES', updatedPagesContent);
         console.log('UPDATED SCHEDULES', updatedSchedulesContent);
         // console.log('NAVIGATION ITEMS', updatedNavigationItems);
@@ -85,6 +101,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
         setIsNurseriesContentAvailable(isNurseriesContentAvailable);
         setNurseryDetails(nurseryDetails);
         setSchedules(updatedSchedulesContent);
+        setGallery(updatedGallery);
       })
       .catch(error => {
         const errorMessage = error.response.data.error;
@@ -105,7 +122,8 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
     isFetchingError: isFetchingError,
     headerHeight: headerHeight,
     isNurseriesContentAvailable: isNurseriesContentAvailable,
-    schedules: schedules
+    schedules: schedules,
+    gallery: gallery
   };
 
   return (

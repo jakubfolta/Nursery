@@ -145,6 +145,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/uploads/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -157,6 +159,8 @@ CORS_ALLOWED_ORIGINS = [
     'https://localhost:3000',
     'https://maluszkowo-438432782-ea148edbd2ec.herokuapp.com',
     'http://maluszkowo-438432782-ea148edbd2ec.herokuapp.com',
+    'http://maluszkowozw.pl',
+    'https://maluszkowozw.pl',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -169,3 +173,4 @@ RECIPIENT_ADDRESS = os.environ.get('RECIPIENT_ADDRESS')
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+WHITENOISE_KEEP_ONLY_HASHED_FILES = True

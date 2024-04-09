@@ -128,9 +128,9 @@ const Contact: React.FC<{theme: string}> = props => {
       message: formState.formFields.message.value
     };
 
-    // axios.post("http://localhost:8000/send-message", formData)
+    axios.post("http://localhost:8000/send-message", formData)
     // axios.post("https://maluszkowozw.pl/send-message", formData)
-    axios.post("https://maluszkowo-438432782-ea148edbd2ec.herokuapp.com/send-message", formData)
+    // axios.post("https://maluszkowo-438432782-ea148edbd2ec.herokuapp.com/send-message", formData)
       .then(result => {
         setSendingMessageResult('Wiadomość wysłana.', true);
         setFormState({formFields: defaultFormState});

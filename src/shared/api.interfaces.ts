@@ -6,6 +6,10 @@ export interface SchedulesProps {
   [facility: string]: UpdatedScheduleProps;
 }
 
+export interface GalleryProps {
+  [facility: string]: string[];
+}
+
 export interface FetchedPageProps {
   description: string;
   heading_1: string;

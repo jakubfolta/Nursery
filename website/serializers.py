@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Page, NavigationItem, Review, NurseryDetail, Schedule
+from .models import Page, NavigationItem, NurseryDetail, Schedule, Photo, FacilityPhoto
 
 class PageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -41,15 +41,15 @@ class NavigationItemSerializer(serializers.ModelSerializer):
           'slug'
         )
 
-class ReviewSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Review
-        fields = ('author',
-          'review',
-          'rating',
-          'is_main_page_review',
-          'date'
-        )
+# class ReviewSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Review
+#         fields = ('author',
+#           'review',
+#           'rating',
+#           'is_main_page_review',
+#           'date'
+#         )
 
 class NurseryDetailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -96,3 +96,11 @@ class ScheduleSerializer(serializers.ModelSerializer):
           'list_item_heading_15',
           'list_item_description_15'
         )
+
+class FacilityPhotoSerializer(serializers.ModelSerializer):
+    facility = serializers.ReadOnlyField(source='photo.facility')
+    url = serializers.ImageField(source='image')
+
+    class Meta:
+        model = FacilityPhoto
+        fields = ('facility', 'url')

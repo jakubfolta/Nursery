@@ -5,5 +5,6 @@ export const Backdrop: React.FC<Props> = props => (
 	<StyledBackdrop
 		onClick={props.onBackdropClick}
 		isVisible={props.isVisible} 
-		isClicked={props.isClicked} />   
+		isClicked={props.isClicked}
+    isGallery={props.isGallery} />   
 )

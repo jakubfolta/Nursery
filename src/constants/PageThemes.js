@@ -3,5 +3,6 @@ export const pageThemes = {
   '/o-nas': 'aboutUsPageTheme',
   '/oferta': 'offerPageTheme',
   '/kontakt': 'contactPageTheme',
-  '/dla-rodzicow': 'parentsPageTheme'
+  '/dla-rodzicow': 'parentsPageTheme',
+  '/galeria': 'galleryPageTheme'
 }

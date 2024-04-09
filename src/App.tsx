@@ -202,7 +202,7 @@ export const App: React.FC = () => {
           theme={getThemeColor(route.themeLabel)}
           {...(route.path === '/'
             ? {isDesktopSize: isDesktopSize, setFacilitiesSectionAvailability: setFacilitiesSectionAvailability}
-            : route.path === '/o-nas' && {scrollbar: scrollbar})} /> }
+            : (route.path === '/o-nas' || route.path === '/galeria') && {scrollbar: scrollbar})} /> }
       />
     );
   });

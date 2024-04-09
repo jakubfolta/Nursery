@@ -16,7 +16,7 @@ const COLORS = {
   accentThree: '#F6BA39',
   accentFour: '#8D3682',
   accentFive: '#303772',
-  accentSix: '#91C952'
+  accentSix: '#e3fc25'
 }
 
 export const CONSTANTS = {
@@ -28,6 +28,7 @@ export const CONSTANTS = {
   offerPageTheme: COLORS.accentThree,
   contactPageTheme: COLORS.accentFour,
   parentsPageTheme: COLORS.accentFive,
+  galleryPageTheme: COLORS.accentSix,
   waveHeight: 100
 };
 
@@ -140,6 +141,7 @@ export const GlobalStyle = createGlobalStyle`
     --padding-xsmall: 0.3rem;
     --padding-small: 1rem;
     --padding-medium: 2rem;
+    --gallery-image-max-width: 850px;
     
     // Colors
     --color-accent: ${COLORS.accentOne};
@@ -147,6 +149,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-accent-3: ${COLORS.accentThree};
     --color-accent-4: ${COLORS.accentFour};
     --color-accent-5: ${COLORS.accentFive};
+    --color-accent-6: ${COLORS.accentSix};
 
     --color-accent-copyright: hsl(200, 95%, 10%);
     --color-contact-text: hsl(192, 20%, 100%);

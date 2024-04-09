@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.template import loader
 from rest_framework import viewsets, status
-from .serializers import PageSerializer, NavigationItemSerializer, ReviewSerializer, NurseryDetailSerializer, ScheduleSerializer
-from .models import Page, NavigationItem, Review, NurseryDetail, Schedule
+from .serializers import PageSerializer, NavigationItemSerializer, NurseryDetailSerializer, ScheduleSerializer, FacilityPhotoSerializer
+from .models import Page, NavigationItem, NurseryDetail, Schedule, FacilityPhoto
 from drf_multiple_model.views import ObjectMultipleModelAPIView
 from rest_framework.views import APIView
 from django.conf import settings
@@ -25,11 +25,11 @@ class PageView(ObjectMultipleModelAPIView, viewsets.ModelViewSet):
             'serializer_class': NavigationItemSerializer,
             'label': 'navigation_items'
         },
-        {
-            'queryset': Review.objects.all(),
-            'serializer_class': ReviewSerializer,
-            'label': 'reviews'
-        },
+        # {
+        #     'queryset': Review.objects.all(),
+        #     'serializer_class': ReviewSerializer,
+        #     'label': 'reviews'
+        # },
         {
             'queryset': NurseryDetail.objects.all(),
             'serializer_class': NurseryDetailSerializer,
@@ -39,6 +39,11 @@ class PageView(ObjectMultipleModelAPIView, viewsets.ModelViewSet):
             'queryset': Schedule.objects.all(),
             'serializer_class': ScheduleSerializer,
             'label': 'schedules'
+        },
+        {
+            'queryset': FacilityPhoto.objects.all(),
+            'serializer_class': FacilityPhotoSerializer,
+            'label': 'facility_photos'
         },
     ]
 
