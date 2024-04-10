@@ -90,6 +90,8 @@ if IS_HEROKU_APP:
             ssl_require=True,
         ),
     }
+
+    STATICFILES_STORAGE = "storages.backends.s3.S3Storage"
 else:
     # When running locally in development or in CI, a sqlite database file will be used instead
     # to simplify initial setup. Longer term it's recommended to use Postgres locally too.
@@ -100,6 +102,7 @@ else:
         }
     }
 
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -143,8 +146,6 @@ STATICFILES_DIRS = [
 
 STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
 # Default primary key field type
@@ -174,3 +175,8 @@ RECIPIENT_ADDRESS = os.environ.get('RECIPIENT_ADDRESS')
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 # WHITENOISE_KEEP_ONLY_HASHED_FILES = True
+
+AWS_S3_ACCESS_KEY_ID = os.environ.get('AWS_S3_ACCESS_KEY_ID')
+AWS_S3_SECRET_ACCESS_KEY = os.environ.get('AWS_S3_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_QUERYSTRING_AUTH = False
