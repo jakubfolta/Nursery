@@ -55,8 +55,8 @@ class PhotoAdmin(custom_admin.BaseAdmin):
   class Meta:
     model = Photo
 
-  def has_add_permission(self, request):
-    return False
+  # def has_add_permission(self, request):
+  #   return False
 
 class FacilityPhotoAdmin(custom_admin.BaseAdmin):
   pass

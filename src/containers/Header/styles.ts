@@ -90,6 +90,7 @@ export const StyledContainer = styled.div`
     padding: 0;
   }
 
+  @media only screen and (min-width: 992px) { max-width: 960px; }
   @media only screen and (min-width: 1200px) { max-width: 1140px; }
   @media only screen and (min-width: 1400px) { max-width: 1400px; }
 `

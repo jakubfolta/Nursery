@@ -46,7 +46,6 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
             slug: item.slug
           };
         });
-        setNavigationItems(updatedNavigationItems);
         // PAGES CONTENT
         const updatedPagesContent: PagesProps = {};
         
