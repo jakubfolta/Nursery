@@ -50,7 +50,7 @@ class FacilityPhotoAdmin(admin.StackedInline):
 class PhotoAdmin(custom_admin.BaseAdmin):
   inlines = [FacilityPhotoAdmin]
   list_display = ('facility',)
-  readonly_fields = ('facility',)
+  # readonly_fields = ('facility',)
 
   class Meta:
     model = Photo
