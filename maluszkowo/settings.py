@@ -91,14 +91,14 @@ if IS_HEROKU_APP:
         ),
     }
 
-    STORAGES = {
-        "default": {
-            "BACKEND": "storages.backends.s3.S3Storage",
-        },
-        "staticfiles": {
-            "BACKEND": "storages.backends.s3.S3Storage",
-        },
-    }
+    # STORAGES = {
+    #     "default": {
+    #         "BACKEND": "storages.backends.s3.S3Storage",
+    #     },
+    #     "staticfiles": {
+    #         "BACKEND": "storages.backends.s3.S3Storage",
+    #     },
+    # }
 else:
     # When running locally in development or in CI, a sqlite database file will be used instead
     # to simplify initial setup. Longer term it's recommended to use Postgres locally too.
@@ -109,7 +109,16 @@ else:
         }
     }
 
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+        },
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        },
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -152,6 +161,8 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
