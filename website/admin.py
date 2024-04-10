@@ -10,7 +10,7 @@ def check_limit(actual_count, limit):
 
 class PageAdmin(custom_admin.BaseAdmin):
   list_display = ('description', 'heading_1')
-  # readonly_fields = ('description',)
+  readonly_fields = ('description',)
 
   def has_add_permission(self, request):
     num_objects = self.model.objects.count()
@@ -50,13 +50,13 @@ class FacilityPhotoAdmin(admin.StackedInline):
 class PhotoAdmin(custom_admin.BaseAdmin):
   inlines = [FacilityPhotoAdmin]
   list_display = ('facility',)
-  # readonly_fields = ('facility',)
+  readonly_fields = ('facility',)
 
   class Meta:
     model = Photo
 
-  # def has_add_permission(self, request):
-  #   return False
+  def has_add_permission(self, request):
+    return False
 
 class FacilityPhotoAdmin(custom_admin.BaseAdmin):
   pass
