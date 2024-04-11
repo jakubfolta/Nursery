@@ -86,6 +86,7 @@ export const CarouselImagesContainer = styled.div<{isClicked: boolean, headerHei
   transform: translate(-50%, calc(${props => props.headerHeight / 2}px - 50%)) scale(0);
   display: flex;
   width: 80%;
+  height: 65%;
   max-width: var(--gallery-image-max-width);
   overflow: hidden;
   cursor: zoom-out;
@@ -93,7 +94,12 @@ export const CarouselImagesContainer = styled.div<{isClicked: boolean, headerHei
 
 	${props => props.isClicked && css`animation: carouselHide var(--menu-animation-duration);`}
 
-  @media only screen and (min-width: 992px) { width: 70%; }
+  @media only screen and (min-width: 640px) { height: 90%; }
+  @media only screen and (min-width: 768px) { height: 115%; }
+  @media only screen and (min-width: 992px) {
+    width: 70%;
+    height: 135%;
+  }
 
 	@keyframes carouselAppear {
 		100% { transform: translate(-50%, calc(${props => props.headerHeight / 2}px - 50%)) scale(1); }
@@ -107,6 +113,7 @@ export const CarouselImagesContainer = styled.div<{isClicked: boolean, headerHei
 export const CarouselSlides = styled.div<{translateValue: string}>`
   display: flex;
   align-items: center;
+  width: 100%;
   transform: translateX(-${props => props.translateValue}%);
   transition: transform .5s;
 `
