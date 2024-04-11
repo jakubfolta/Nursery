@@ -28,7 +28,7 @@ export const GalleryStyledImage = styled.img`
   border-radius: 20px;
   object-fit: cover;
   cursor: zoom-in;
-  /* filter: drop-shadow(7px 9px 9px var(--color-dark)); */
+  box-shadow: 7px 9px 15px var(--color-dark);
   transition: all .4s;
 
   @media only screen and (min-width: 768px) { height: 210px; }
