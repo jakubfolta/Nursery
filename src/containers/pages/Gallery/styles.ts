@@ -31,40 +31,42 @@ export const GalleryStyledImage = styled.img`
   filter: drop-shadow(7px 9px 9px var(--color-dark));
   transition: all .4s;
 
-  &:nth-child(6n + 1):hover {
-    border-radius: 45% 74% 34% 46% / 64% 77% 33% 46%;
-    filter: drop-shadow(7px 9px 4px var(--color-accent));
-  }
-
-  &:nth-child(6n + 2):hover {
-    border-radius: 25% 54% 14% 66% / 44% 57% 33% 26%;
-    filter: drop-shadow(7px 9px 4px var(--color-accent-2));
-  }
-
-  &:nth-child(6n + 3):hover {
-    border-radius: 15% 34% 54% 26% / 24% 37% 43% 36%;
-    filter: drop-shadow(7px 9px 4px var(--color-accent-3));
-  }
-
-  &:nth-child(6n + 4):hover {
-    border-radius: 25% 14% 34% 46% / 64% 27% 43% 46%;
-    filter: drop-shadow(7px 9px 4px var(--color-accent-4));
-  }
-
-  &:nth-child(6n + 5):hover {
-    border-radius: 25% 34% 34% 46% / 64% 36% 73% 46%;
-    filter: drop-shadow(7px 9px 4px var(--color-accent-5));
-  }
-
-  &:nth-child(6n + 6):hover {
-    border-radius: 65% 24% 34% 26% / 54% 47% 53% 26%;
-    filter: drop-shadow(7px 9px 4px var(--color-accent-6));
-  }
-
   @media only screen and (min-width: 768px) { height: 210px; }
   @media only screen and (min-width: 992px) {
     width: 30%;
     height: 190px;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    &:nth-child(6n + 1):hover {
+      border-radius: 45% 74% 34% 46% / 64% 77% 33% 46%;
+      filter: drop-shadow(7px 9px 4px var(--color-accent));
+    }
+  
+    &:nth-child(6n + 2):hover {
+      border-radius: 25% 54% 14% 66% / 44% 57% 33% 26%;
+      filter: drop-shadow(7px 9px 4px var(--color-accent-2));
+    }
+  
+    &:nth-child(6n + 3):hover {
+      border-radius: 15% 34% 54% 26% / 24% 37% 43% 36%;
+      filter: drop-shadow(7px 9px 4px var(--color-accent-3));
+    }
+  
+    &:nth-child(6n + 4):hover {
+      border-radius: 25% 14% 34% 46% / 64% 27% 43% 46%;
+      filter: drop-shadow(7px 9px 4px var(--color-accent-4));
+    }
+  
+    &:nth-child(6n + 5):hover {
+      border-radius: 25% 34% 34% 46% / 64% 36% 73% 46%;
+      filter: drop-shadow(7px 9px 4px var(--color-accent-5));
+    }
+  
+    &:nth-child(6n + 6):hover {
+      border-radius: 65% 24% 34% 26% / 54% 47% 53% 26%;
+      filter: drop-shadow(7px 9px 4px var(--color-accent-6));
+    }
   }
 
   @media only screen and (min-width: 1200px) { height: 225px; }
