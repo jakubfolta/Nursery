@@ -29,7 +29,6 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   const galleryImages = useContext(WebpageContext).gallery;
   const headerHeight = useContext(WebpageContext).headerHeight;
   const translatePercentValue = 100;
-  console.log(headerHeight);
 
   useEffect(() => {
     if (galleryPageContent && galleryImages) {
@@ -120,13 +119,6 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
       {isPhotoClicked &&
         <>
           <CarouselContainer id="carousel">
-            <CloseIconContainer 
-              headerHeight={headerHeight}
-              isBackdropClicked={isBackdropClicked}
-              onClick={closeSlider}>
-              <CloseIcon />
-              <CloseIcon />
-            </CloseIconContainer>
             <Backdrop
               onBackdropClick={closeSlider}
               isClicked={isBackdropClicked}
@@ -150,6 +142,13 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
                 <Arrow />
               </ArrowIconContainer>
             </ArrowContainer>
+            <CloseIconContainer 
+              headerHeight={headerHeight}
+              isBackdropClicked={isBackdropClicked}
+              onClick={closeSlider}>
+              <CloseIcon />
+              <CloseIcon />
+            </CloseIconContainer>
             <CarouselImagesContainer
               onClick={closeSlider}
               isClicked={isBackdropClicked}
