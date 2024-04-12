@@ -16,6 +16,7 @@ const line = css`
   position: relative;
   height: .3rem;
   background-color: var(--color-dark);
+  border-radius: 10px;
 `
 
 export const Line1 = styled.span`

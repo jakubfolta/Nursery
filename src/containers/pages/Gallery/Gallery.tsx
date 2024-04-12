@@ -3,7 +3,7 @@ import Hero from "../../../components/Hero/Hero";
 import mobileParrot from "../../../assets/images/parrot-mobile.png";
 import desktopParrot from "../../../assets/images/parrot-desktop.png";
 import { WebpageContext } from "../../../store/webpage-context";
-import { Arrow, ArrowContainer, ArrowIconContainer, CarouselContainer, CarouselImage, CarouselImageContainer, CarouselImagesContainer, CarouselSlides, GalleryContainer, GalleryStyledImage, StyledImage, StyledImageContainer } from "./styles";
+import { Arrow, ArrowContainer, ArrowIconContainer, CarouselContainer, CarouselImage, CarouselImageContainer, CarouselImagesContainer, CarouselSlides, CloseIcon, CloseIconContainer, GalleryContainer, GalleryStyledImage, StyledImage, StyledImageContainer } from "./styles";
 import { Backdrop } from "../../../components";
 import { CONSTANTS } from "../../../styles/global";
 import { Scrollbar } from "smooth-scrollbar/scrollbar";
@@ -29,6 +29,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   const galleryImages = useContext(WebpageContext).gallery;
   const headerHeight = useContext(WebpageContext).headerHeight;
   const translatePercentValue = 100;
+  console.log(headerHeight);
 
   useEffect(() => {
     if (galleryPageContent && galleryImages) {
@@ -119,6 +120,13 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
       {isPhotoClicked &&
         <>
           <CarouselContainer id="carousel">
+            <CloseIconContainer 
+              headerHeight={headerHeight}
+              isBackdropClicked={isBackdropClicked}
+              onClick={closeSlider}>
+              <CloseIcon />
+              <CloseIcon />
+            </CloseIconContainer>
             <Backdrop
               onBackdropClick={closeSlider}
               isClicked={isBackdropClicked}

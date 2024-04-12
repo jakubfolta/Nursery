@@ -40,6 +40,7 @@ export const NavigationText = styled.span`
     left: 0;
     width: 0%;
     height: 3px;
+    border-radius: 10px;
     transform: rotate(-1deg);
     background-color: var(--color-dark);
     transition: width .2s;

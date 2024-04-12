@@ -288,4 +288,41 @@ export const Arrow = styled.span<{isLeft?: boolean}>`
   }
 `
 
+export const CloseIconContainer = styled.div<{headerHeight: number, isBackdropClicked: boolean}>`
+  position: absolute;
+  top: calc(${props => props.headerHeight}px + var(--header-border) + 10px);
+  right: 10px;
+  padding: 1.5rem;
+  transform: scale(0);
+  cursor: pointer;
+  z-index: 1;
+  animation: closeIconAppear var(--menu-animation-duration) forwards;
+
+${props => props.isBackdropClicked && css`animation: closeIconHide var(--menu-animation-duration);`}
+
+  @keyframes closeIconAppear {
+		100% { transform: scale(1); }
+	}
+
+  @keyframes closeIconHide {
+		0% { transform: scale(1); }
+	}
+`
+
+export const CloseIcon = styled.span`
+  display: flex;
+  width: 30px;
+  height: 3px;
+  background-color: var(--color-dark);
+  border-radius: 10px;
+  transform: rotate(45deg);
+
+  &:last-child { transform: rotate(-45deg); }
+
+  @media only screen and (min-width: 768px) {
+    width: 35px;
+    height: 4px;
+  }  
+`
+
 
