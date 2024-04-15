@@ -13,6 +13,7 @@ const slideUp = (height: number) => keyframes`
 
 export const Container = styled.div<StyledProps>`
   background: var(--color-white);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 45px 40px -50px;
   overflow: hidden;
 
   ${props => !props.isDesktop && css`
