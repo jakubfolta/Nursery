@@ -64,6 +64,13 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
     const translateValue = `${imageId * translatePercentValue}`;
     const facilityImages = facility === 'maluszkowo' ? maluszkowoImagesUrls : starszakowoImagesUrls;
 
+    setTimeout(() => {
+      const carousel = document.getElementById('carousel');
+      
+      carousel?.addEventListener('wheel', e => e.preventDefault());
+      carousel?.addEventListener('touchmove', e => e.preventDefault());
+    }, 200);
+
     setIsFirstImage(!imageId);
     setIsLastImage(imageId + 1 === facilityImages.length);
     setCarouselTranslateValue(translateValue);
@@ -143,8 +150,8 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
               </ArrowIconContainer>
             </ArrowContainer>
             <CloseIconContainer 
-              headerHeight={headerHeight}
               isBackdropClicked={isBackdropClicked}
+              headerHeight={headerHeight}
               onClick={closeSlider}>
               <CloseIcon />
               <CloseIcon />

@@ -57,6 +57,9 @@ export const Header: React.FC<{children: React.ReactNode, theme: string, isMainP
   const onClickHandler = () => {  
     if (!isMenuReady) return;
 
+    const header = document.getElementById('header');
+
+    header?.addEventListener('touchmove', e => e.preventDefault());
     toggleNavigation();
   };
 
