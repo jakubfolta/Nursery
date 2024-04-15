@@ -90,6 +90,8 @@ export const StyledHero = styled.div`
     flex-direction: row;
     max-width: 960px;
     margin-top: 8rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
   @media only screen and (min-width: 1200px) {
@@ -158,7 +160,6 @@ export const StyledUnderline = styled.span`
 export const StyledDivider = styled.div`
   position: relative;
   bottom: -1px;
-  overflow: hidden;
   width: 100%;
   height: 90px;
 `
