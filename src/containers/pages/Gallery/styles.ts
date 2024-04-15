@@ -87,7 +87,7 @@ export const CarouselImagesContainer = styled.div<{isClicked: boolean, headerHei
   left: 50%;
   transform: translate(-50%, calc(${props => props.headerHeight / 2}px - 50%)) scale(0);
   display: flex;
-  width: 80%;
+  width: 75%;
   height: 65%;
   max-width: var(--gallery-image-max-width);
   overflow: hidden;
@@ -169,7 +169,7 @@ export const ArrowContainer = styled.div<{isLeft?: boolean, isBackdropClicked: b
     : css`cursor: pointer;`
   }
 
-  width: 10%;
+  width: 12.5%;
   height: 30%;
   transform: translateY(calc(${props => props.headerHeight / 2}px - 50%)) scale(0);
   animation: arrowAppear var(--menu-animation-duration) forwards;
