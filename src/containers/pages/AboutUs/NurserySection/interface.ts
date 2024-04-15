@@ -6,4 +6,5 @@ export interface Props {
   isMaluszkowo?: boolean;
   isStarszakowo?: boolean;
   isCharacteristic: boolean;
+  isGalleryAvailable: boolean;
 }

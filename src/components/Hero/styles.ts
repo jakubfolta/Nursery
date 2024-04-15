@@ -160,6 +160,7 @@ export const StyledUnderline = styled.span`
 export const StyledDivider = styled.div`
   position: relative;
   bottom: -1px;
+  overflow: hidden;
   width: 100%;
   height: 90px;
 `

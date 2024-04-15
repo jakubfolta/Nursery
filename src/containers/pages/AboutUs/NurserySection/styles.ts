@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import Background from "./../../../../assets/images/waves.svg";
+import { NavLink } from "react-router-dom";
 
 const gradient = keyframes`
   0% { background-position: 0%; }
@@ -44,6 +45,7 @@ export const NurseryContentContainer = styled.div<{isCharacteristic: boolean, is
   margin-top: -13rem;
   margin-bottom: ${props => props.isStarszakowo ? '7rem' : props.isCharacteristic && '3rem'};
   padding: 0 1rem;
+  z-index: 1;
   
   @media only screen and (min-width: 768px) {
     margin-top: 0;
@@ -54,6 +56,15 @@ export const NurseryContentContainer = styled.div<{isCharacteristic: boolean, is
   @media only screen and (min-width: 1200px) { max-width: 1140px; }
   @media only screen and (min-width: 1400px) { max-width: 1320px; }
   @media only screen and (min-width: 1700px) { max-width: 1608px; }
+`
+
+export const LinkToGallery = styled(NavLink)`
+  text-decoration: none;
+  line-height: 1.7;
+  font-weight: bold;
+  color: var(--color-white);
+  letter-spacing: 1px;
+  border-bottom: 2px solid;
 `
 
 export const NurseryContentHeading = styled.h2<{starszakowo?: boolean}>`

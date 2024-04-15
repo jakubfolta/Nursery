@@ -26,6 +26,7 @@ const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   
   const aboutUsPageContent = useContext(WebpageContext).pages['About us'];
   const hash = window.location.hash.replace('#', '');
+  const galleryContent = useContext(WebpageContext).gallery;
   
   useEffect(() => {
     if (aboutUsPageContent) {
@@ -102,6 +103,7 @@ const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
           sectionDescription={maluszkowoSectionDescription}
           isStarszakowo={!!starszakowoSectionHeading}
           isCharacteristic={!!curriculumSectionHeading}
+          isGalleryAvailable={!!galleryContent['Maluszkowo'].length}
         />
       }
       
@@ -113,6 +115,7 @@ const AboutUs: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
           sectionDescription={starszakowoSectionDescription}
           isMaluszkowo={!!maluszkowoSectionHeading}
           isCharacteristic={!!curriculumSectionHeading}
+          isGalleryAvailable={!!galleryContent['Starszakowo'].length}
         />
       }
 

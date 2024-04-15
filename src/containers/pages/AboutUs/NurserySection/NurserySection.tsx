@@ -4,7 +4,7 @@ import desktopMaluszkowo from "../../../../assets/images/maluszkowo-desktop.jpg"
 import mobileStarszakowo from "../../../../assets/images/starszakowo-mobile.jpg";
 import desktopStarszakowo from "../../../../assets/images/starszakowo-desktop.jpg";
 import { Props } from "./interface";
-import { NurseryContentContainer, NurseryContentHeading, NurseryStyledSection, NurseryWaveBottom, NurseryWaveTop, StyledNurseryImage, StyledNurseryImageContainer } from "./styles";
+import { LinkToGallery, NurseryContentContainer, NurseryContentHeading, NurseryStyledSection, NurseryWaveBottom, NurseryWaveTop, StyledNurseryImage, StyledNurseryImageContainer } from "./styles";
 import wave from "../../../../assets/images/waves.svg";
 
 export const NurserySection: React.FC<Props> = props => (
@@ -38,7 +38,12 @@ export const NurserySection: React.FC<Props> = props => (
       isCharacteristic={props.isCharacteristic}
       isStarszakowo={props.isStarszakowo}>
       <NurseryContentHeading starszakowo={props.starszakowo}>{props.sectionHeading}</NurseryContentHeading>
-      <p>{props.sectionDescription}</p>
+      <p>
+        {props.sectionDescription}&nbsp;
+        {props.isGalleryAvailable &&
+          <LinkToGallery to={!props.starszakowo ? '/galeria#maluszkowo-gallery' : '/galeria#starszakowo-gallery'}>Sprawdź naszą galerię!</LinkToGallery>
+        }
+      </p>
     </NurseryContentContainer>
     {(props.isCharacteristic && (!props.isStarszakowo || props.starszakowo)) &&
       <NurseryWaveBottom />

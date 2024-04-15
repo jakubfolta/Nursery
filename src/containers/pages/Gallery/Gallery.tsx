@@ -29,6 +29,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   const galleryImages = useContext(WebpageContext).gallery;
   const headerHeight = useContext(WebpageContext).headerHeight;
   const translatePercentValue = 100;
+  const hash = window.location.hash.replace('#', '');
 
   useEffect(() => {
     if (galleryPageContent && galleryImages) {
@@ -57,7 +58,21 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
       });
     }
 
-  }, [isPhotoClicked])
+  }, [isPhotoClicked]);
+
+  useEffect(() => {
+    if (hash === 'maluszkowo-gallery' || hash === 'starszakowo-gallery') {
+      setTimeout(() => {
+        scrollToSection(hash);
+      }, 100);
+    }
+  }, [hash, headerHeight]);
+
+  const scrollToSection = ((sectionId: string) => {
+    const sectionElement = document.getElementById(sectionId);
+    const position = sectionElement!.offsetTop - headerHeight - 10;
+    props.scrollbar?.scrollTo(0, position);    
+  });
 
   const onPhotoClickHandler = (event: any, facility: string) => {
     const imageId = +event.target.id.replace(/^\D+/g, '');
@@ -190,7 +205,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
 
       {maluszkowoGallerySectionHeading &&
         <section>
-          <div>
+          <div id="maluszkowo-gallery">
             <h2>{maluszkowoGallerySectionHeading}</h2>
             <GalleryContainer>
               {maluszkowoImagesUrls.map((url, index) => 
@@ -208,7 +223,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
 
       {starszakowoGallerySectionHeading &&
         <section>
-          <div>
+          <div id="starszakowo-gallery">
             <h2>{starszakowoGallerySectionHeading}</h2>
             <GalleryContainer>
               {starszakowoImagesUrls.map((url, index) => 
