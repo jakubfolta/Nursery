@@ -290,8 +290,8 @@ export const Arrow = styled.span<{isLeft?: boolean}>`
 
 export const CloseIconContainer = styled.div<{headerHeight: number, isBackdropClicked: boolean}>`
   position: absolute;
-  top: calc(${props => props.headerHeight}px + var(--header-border) + 10px);
-  right: 10px;
+  top: calc(${props => props.headerHeight}px + var(--header-border) + 30px);
+  right: 30px;
   padding: 1.5rem;
   transform: scale(0);
   cursor: pointer;
