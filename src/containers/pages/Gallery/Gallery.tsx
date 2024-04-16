@@ -64,7 +64,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
     if (hash === 'maluszkowo-gallery' || hash === 'starszakowo-gallery') {
       setTimeout(() => {
         scrollToSection(hash);
-      }, 100);
+      }, 300);
     }
   }, [hash, headerHeight]);
 
