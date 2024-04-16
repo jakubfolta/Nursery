@@ -24,6 +24,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   const [carouselTranslateValue, setCarouselTranslateValue] = useState('');
   const [isFirstImage, setIsFirstImage] = useState(false);
   const [isLastImage, setIsLastImage] = useState(false);
+  const [isReadyToToggle, setIsReadyToToggle] = useState(true);
   
   const galleryPageContent = useContext(WebpageContext).pages['Gallery'];
   const galleryImages = useContext(WebpageContext).gallery;
@@ -51,17 +52,11 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
 
     if (carousel) {
       (carousel as HTMLElement).style.top = props.scrollbar?.offset.y + 'px';
-      
-      props.scrollbar?.addListener(function(status) {
-        let offset = status.offset;
-        (carousel as HTMLElement).style.top = offset.y + 'px';
-      });
     }
-
   }, [isPhotoClicked]);
 
   useEffect(() => {
-    if (hash === 'maluszkowo-gallery' || hash === 'starszakowo-gallery') {
+    if ((hash === 'maluszkowo-gallery' && headerHeight) || (hash === 'starszakowo-gallery' && headerHeight)) {
       setTimeout(() => {
         scrollToSection(hash);
       }, 300);
@@ -75,9 +70,20 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   });
 
   const onPhotoClickHandler = (event: any, facility: string) => {
+    if (!isReadyToToggle) return;
+
     const imageId = +event.target.id.replace(/^\D+/g, '');
     const translateValue = `${imageId * translatePercentValue}`;
     const facilityImages = facility === 'maluszkowo' ? maluszkowoImagesUrls : starszakowoImagesUrls;
+
+    setIsFirstImage(!imageId);
+    setIsLastImage(imageId + 1 === facilityImages.length);
+    setCarouselTranslateValue(translateValue);
+    setIsBackdropClicked(false);
+    setIsPhotoClicked(true);
+    setIsReadyToToggle(false);
+    setFacilityCarousel(facility);
+    setCarouselLength(facilityImages.length);
 
     setTimeout(() => {
       const carousel = document.getElementById('carousel');
@@ -86,20 +92,25 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
       carousel?.addEventListener('touchmove', e => e.preventDefault());
     }, 200);
 
-    setIsFirstImage(!imageId);
-    setIsLastImage(imageId + 1 === facilityImages.length);
-    setCarouselTranslateValue(translateValue);
-    setIsBackdropClicked(false);
-    setIsPhotoClicked(true);
-    setFacilityCarousel(facility);
-    setCarouselLength(facilityImages.length);
-  }
+    setTimeout(() => {
+      setIsReadyToToggle(true);
+    }, 500);
+  };
 
   const closeSlider = () => {
-    setIsBackdropClicked(true);
+    if (!isReadyToToggle) return;
 
-    setTimeout(() => {setIsPhotoClicked(false);}, menuAnimationDuration)
-  }
+    setIsBackdropClicked(true);
+    setIsReadyToToggle(false);
+
+    setTimeout(() => {
+      setIsPhotoClicked(false);
+    }, menuAnimationDuration);
+
+    setTimeout(() => {
+      setIsReadyToToggle(true);
+    }, 500);
+  };
 
   const onPreviousClickHandler = () => {
     if (isFirstImage) return;
@@ -109,7 +120,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
 
     setCarouselTranslateValue(updatedCarouselTranslateValue);
     updatedCarouselTranslateValue === '0' && setIsFirstImage(true);
-  }
+  };
 
   const onNextClickHandler = () => {
     if (isLastImage) return;
@@ -120,7 +131,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
 
     setCarouselTranslateValue(updatedCarouselTranslateValue);
     updatedCarouselTranslateValue === lastImageTranslateValue && setIsLastImage(true);
-  }
+  };
 
   return (
     <>
