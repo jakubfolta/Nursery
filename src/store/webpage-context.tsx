@@ -29,7 +29,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
   const [gallery, setGallery] = useState<GalleryProps>({} as GalleryProps);
 
   useEffect(() => {
-    getHeaderHeight();
+    // getHeaderHeight();
     window.addEventListener('resize', getHeaderHeight);
 
     axios.get("/api/website/")
@@ -101,6 +101,7 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
         setNurseryDetails(nurseryDetails);
         setSchedules(updatedSchedulesContent);
         setGallery(updatedGallery);
+        getHeaderHeight();
       })
       .catch(error => {
         const errorMessage = error.response.data.error;
@@ -109,10 +110,14 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
       })
   }, []);
 
+  useEffect(() => {
+    
+  }, [navigationItems.length])
+
   const getHeaderHeight = debounce(() => {
     const headHeight = document.getElementById('header')!.clientHeight;
     setHeaderHeight(headHeight);
-  }, 300);
+  }, 200);
 
   const contextValue: Context = {
     pages: pagesContent,

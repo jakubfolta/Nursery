@@ -52,6 +52,12 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
 
     if (carousel) {
       (carousel as HTMLElement).style.top = props.scrollbar?.offset.y + 'px';
+
+      props.scrollbar?.addListener(function(status) {
+        let offset = status.offset;
+        
+        (carousel as HTMLElement).style.top = offset.y + 'px';
+      });
     }
   }, [isPhotoClicked]);
 
