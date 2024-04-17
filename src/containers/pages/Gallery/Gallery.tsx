@@ -18,7 +18,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
   const [maluszkowoImagesUrls, setMaluszkowoImagesUrls] = useState<string[]>([]);
   const [starszakowoImagesUrls, setStarszakowoImagesUrls] = useState<string[]>([]);
   const [isPhotoClicked, setIsPhotoClicked] = useState(false);
-  const [isBackdropClicked, setIsBackdropClicked] = useState(false);
+  const [isBackdropClicked, setIsBackdropClicked] = useState(true);
   const [facilityCarousel, setFacilityCarousel] = useState('');
   const [carouselLength, setCarouselLength] = useState(-1);
   const [carouselTranslateValue, setCarouselTranslateValue] = useState('');
@@ -77,17 +77,17 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
 
   const onPhotoClickHandler = (event: any, facility: string) => {
     if (!isReadyToToggle) return;
-
+    
     const imageId = +event.target.id.replace(/^\D+/g, '');
     const translateValue = `${imageId * translatePercentValue}`;
     const facilityImages = facility === 'maluszkowo' ? maluszkowoImagesUrls : starszakowoImagesUrls;
-
+    
+    setIsReadyToToggle(false);
     setIsFirstImage(!imageId);
     setIsLastImage(imageId + 1 === facilityImages.length);
     setCarouselTranslateValue(translateValue);
     setIsBackdropClicked(false);
     setIsPhotoClicked(true);
-    setIsReadyToToggle(false);
     setFacilityCarousel(facility);
     setCarouselLength(facilityImages.length);
 
@@ -100,14 +100,14 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
 
     setTimeout(() => {
       setIsReadyToToggle(true);
-    }, 500);
+    }, 300);
   };
 
   const closeSlider = () => {
     if (!isReadyToToggle) return;
 
-    setIsBackdropClicked(true);
     setIsReadyToToggle(false);
+    setIsBackdropClicked(true);
 
     setTimeout(() => {
       setIsPhotoClicked(false);
@@ -115,7 +115,7 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
 
     setTimeout(() => {
       setIsReadyToToggle(true);
-    }, 500);
+    }, 300);
   };
 
   const onPreviousClickHandler = () => {
@@ -155,70 +155,68 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
         </StyledImageContainer>
       </Hero>
 
-      {isPhotoClicked &&
-        <>
-          <CarouselContainer id="carousel">
-            <Backdrop
-              onBackdropClick={closeSlider}
-              isClicked={isBackdropClicked}
-              isGallery />
-            <ArrowContainer
-              isBackdropClicked={isBackdropClicked}
-              isLeft
-              isFirstImage={isFirstImage}
-              headerHeight={headerHeight}
-              onClick={onPreviousClickHandler}>
-              <ArrowIconContainer isLeft>
-                <Arrow isLeft />
-              </ArrowIconContainer>
-            </ArrowContainer>
-            <ArrowContainer
-              isBackdropClicked={isBackdropClicked}
-              isLastImage={isLastImage}
-              headerHeight={headerHeight}
-              onClick={onNextClickHandler}>
-              <ArrowIconContainer>
-                <Arrow />
-              </ArrowIconContainer>
-            </ArrowContainer>
-            <CloseIconContainer 
-              isBackdropClicked={isBackdropClicked}
-              headerHeight={headerHeight}
-              onClick={closeSlider}>
-              <CloseIcon />
-              <CloseIcon />
-            </CloseIconContainer>
-            <CarouselImagesContainer
-              onClick={closeSlider}
-              isClicked={isBackdropClicked}
-              headerHeight={headerHeight}>
-              
-              <CarouselSlides 
-                id="carousel-slides"
-                translateValue={carouselTranslateValue}>
-                {facilityCarousel === 'maluszkowo'
-                  ? maluszkowoImagesUrls.map(url => 
-                      <CarouselImageContainer>
-                        <CarouselImage 
-                          src={url}
-                          alt="Zdjęcie z Maluszkowa"
-                        />
-                      </CarouselImageContainer>
-                    )
-                  : starszakowoImagesUrls.map(url =>
-                      <CarouselImageContainer>
-                        <CarouselImage 
-                          src={url}
-                          alt="Zdjęcie ze Starszakowa"
-                        />
-                      </CarouselImageContainer>
-                    )
-                }
-              </CarouselSlides>
-            </CarouselImagesContainer>
-          </CarouselContainer>
-        </>
-      }
+      <CarouselContainer id="carousel" isPhotoClicked={isPhotoClicked}>
+        <Backdrop
+          onBackdropClick={closeSlider}
+          isClicked={isBackdropClicked}
+          isGallery />
+        <ArrowContainer
+          isBackdropClicked={isBackdropClicked}
+          isLeft
+          isFirstImage={isFirstImage}
+          headerHeight={headerHeight}
+          onClick={onPreviousClickHandler}>
+          <ArrowIconContainer isLeft>
+            <Arrow isLeft />
+          </ArrowIconContainer>
+        </ArrowContainer>
+        <ArrowContainer
+          isBackdropClicked={isBackdropClicked}
+          isLastImage={isLastImage}
+          headerHeight={headerHeight}
+          onClick={onNextClickHandler}>
+          <ArrowIconContainer>
+            <Arrow />
+          </ArrowIconContainer>
+        </ArrowContainer>
+        <CloseIconContainer 
+          isBackdropClicked={isBackdropClicked}
+          headerHeight={headerHeight}
+          onClick={closeSlider}>
+          <CloseIcon />
+          <CloseIcon />
+        </CloseIconContainer>
+
+        {isPhotoClicked && 
+          <CarouselImagesContainer
+            onClick={closeSlider}
+            isClicked={isBackdropClicked}
+            headerHeight={headerHeight}>
+            <CarouselSlides 
+              id="carousel-slides"
+              translateValue={carouselTranslateValue}>
+              {facilityCarousel === 'maluszkowo'
+                ? maluszkowoImagesUrls.map(url => 
+                  <CarouselImageContainer>
+                    <CarouselImage 
+                      src={url}
+                      alt="Zdjęcie z Maluszkowa"
+                    />
+                  </CarouselImageContainer>
+                )
+                : starszakowoImagesUrls.map(url =>
+                  <CarouselImageContainer>
+                    <CarouselImage 
+                      src={url}
+                      alt="Zdjęcie ze Starszakowa"
+                    />
+                  </CarouselImageContainer>
+                )
+              }
+            </CarouselSlides>
+          </CarouselImagesContainer>
+        }
+      </CarouselContainer>
 
       {maluszkowoGallerySectionHeading &&
         <section>
@@ -257,6 +255,6 @@ const Gallery: React.FC<{theme: string, scrollbar?: Scrollbar}> = props => {
       }
     </>
   );
-}
+};
 
 export default Gallery;

@@ -54,4 +54,4 @@ export const NavigationList: React.FC<Props> = props => {
       {navigation}
     </Container>
   );
-}
+};

@@ -29,7 +29,6 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
   const [gallery, setGallery] = useState<GalleryProps>({} as GalleryProps);
 
   useEffect(() => {
-    // getHeaderHeight();
     window.addEventListener('resize', getHeaderHeight);
 
     axios.get("/api/website/")
@@ -109,10 +108,6 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
         setIsFetchingError(true);
       })
   }, []);
-
-  useEffect(() => {
-    
-  }, [navigationItems.length])
 
   const getHeaderHeight = debounce(() => {
     const headHeight = document.getElementById('header')!.clientHeight;

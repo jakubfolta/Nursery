@@ -74,11 +74,12 @@ export const GalleryStyledImage = styled.img`
   @media only screen and (min-width: 1700px) { height: 320px; }
 `
 
-export const CarouselContainer = styled.div`
+export const CarouselContainer = styled.div<{isPhotoClicked: boolean}>`
   position: fixed;
   width: 100%;
   height: 100dvh;
-  z-index: 1;
+  z-index: ${props => props.isPhotoClicked ? 1 : -1};
+  visibility: ${props => props.isPhotoClicked ? 'visible' : 'hidden'};
 `
 
 export const CarouselImagesContainer = styled.div<{isClicked: boolean, headerHeight: number}>`
@@ -133,7 +134,6 @@ export const CarouselImageContainer = styled.div`
 export const CarouselImage = styled.img`
   width: 100%;
   object-fit: contain;
-  display: none; // Change display to block when arrow clicked to show next image
   display: block;
 `
 

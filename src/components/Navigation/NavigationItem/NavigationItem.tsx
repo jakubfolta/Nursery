@@ -10,4 +10,4 @@ export const NavigationItem: React.FC<Props> = props => (
       </NavigationText>
     </NavigationLink>
   </NavItem>
-)
+);
