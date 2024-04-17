@@ -9,7 +9,7 @@ export const getFirefoxColors = (theme: string) => {
     case '#303772':
       return ['#232753', '#2d336c'];
     case '#e3fc25':
-      return ['#353a08', '#454c0b'];
+      return ['#667402', '#859702'];
     default:
       return ['', ''];
   }
