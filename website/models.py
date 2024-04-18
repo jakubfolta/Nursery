@@ -127,6 +127,10 @@ class FacilityPhoto(models.Model):
     photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
     image = models.ImageField()
     # name = models.CharField(max_length=50, default=None, blank=True)
+
+    def delete(self):
+      self.image.delete(save=False)
+      super().delete()
  
     def __str__(self):
         return self.photo.facility
