@@ -87,13 +87,13 @@ const WebpageContextProvider: React.FC<{children: React.ReactNode}> = props => {
           image.facility === 'Starszakowo' && starszakowoImagesUrls.push(image.url);
         })
 
-        updatedGallery['Maluszkowo'] = maluszkowoImagesUrls;
-        updatedGallery['Starszakowo'] = starszakowoImagesUrls;
+        updatedGallery['Maluszkowo'] = maluszkowoImagesUrls.reverse();
+        updatedGallery['Starszakowo'] = starszakowoImagesUrls.reverse();
 
         console.log('UPDATED GALLERIES', updatedGallery);
         console.log('UPDATED PAGES', updatedPagesContent);
         console.log('UPDATED SCHEDULES', updatedSchedulesContent);
-        // console.log('NAVIGATION ITEMS', updatedNavigationItems);
+        
         setNavigationItems(updatedNavigationItems);
         setPagesContent(updatedPagesContent);
         setIsNurseriesContentAvailable(isNurseriesContentAvailable);
